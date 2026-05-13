@@ -1,6 +1,12 @@
 import { useCounters } from "@/hooks/use-counters";
 import { BRANCH_ADDRESS, BRAND_NAME, LEAD_EMAIL } from "@/lib/countries";
-import { SERVICES } from "./ServicePills";
+
+const FOOTER_SERVICES = [
+  "Medical Appointment Booking (Gulf Region)",
+  "Visa Appointment Booking (All European Countries)",
+  "Air Ticket Booking (Gulf & Worldwide)",
+  "Hotel Booking (International)",
+];
 
 export function SiteFooter() {
   const counters = useCounters();
@@ -18,9 +24,9 @@ export function SiteFooter() {
         <div>
           <h4 className="text-xs tracking-[0.3em] text-gold mb-4">SERVICES</h4>
           <ul className="space-y-2 text-sm">
-            {SERVICES.map((s) => (
-              <li key={s.label} className="text-muted-foreground hover:text-foreground">
-                {s.label}
+            {FOOTER_SERVICES.map((label) => (
+              <li key={label} className="text-muted-foreground hover:text-foreground">
+                {label}
               </li>
             ))}
           </ul>
