@@ -14,13 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analytics_counters: {
+        Row: {
+          id: string
+          name: string
+          updated_at: string
+          value: number
+        }
+        Insert: {
+          id?: string
+          name: string
+          updated_at?: string
+          value?: number
+        }
+        Update: {
+          id?: string
+          name?: string
+          updated_at?: string
+          value?: number
+        }
+        Relationships: []
+      }
+      blogs: {
+        Row: {
+          country: string | null
+          cover_image: string | null
+          created_at: string
+          id: string
+          query: string
+          sections: Json
+          title: string
+        }
+        Insert: {
+          country?: string | null
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          query: string
+          sections?: Json
+          title: string
+        }
+        Update: {
+          country?: string | null
+          cover_image?: string | null
+          created_at?: string
+          id?: string
+          query?: string
+          sections?: Json
+          title?: string
+        }
+        Relationships: []
+      }
+      country_leads: {
+        Row: {
+          created_at: string
+          first_name: string
+          id: string
+          last_name: string
+          passport_number: string
+          phone: string
+          source_type: string
+          target_country: string
+        }
+        Insert: {
+          created_at?: string
+          first_name: string
+          id?: string
+          last_name: string
+          passport_number: string
+          phone: string
+          source_type: string
+          target_country: string
+        }
+        Update: {
+          created_at?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          passport_number?: string
+          phone?: string
+          source_type?: string
+          target_country?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_counter: { Args: { counter_name: string }; Returns: number }
     }
     Enums: {
       [_ in never]: never
