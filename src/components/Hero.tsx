@@ -1,4 +1,6 @@
-import { ServicePills } from "./ServicePills";
+import { useState } from "react";
+import { ServicePills, type ServiceKey } from "./ServicePills";
+import { ServiceModal } from "./ServiceModal";
 import { AISearchWidget } from "./AISearchWidget";
 import { CheckCircle2 } from "lucide-react";
 
