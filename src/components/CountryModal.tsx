@@ -65,8 +65,9 @@ export function CountryModal({ sourceType, onClose }: Props) {
           </>
         ) : (
           <LeadForm
-            country={selected}
+            subject={selected}
             sourceType={sourceType!}
+            requirePassport
             onBack={() => setSelected(null)}
             onDone={() => {
               setSelected(null);

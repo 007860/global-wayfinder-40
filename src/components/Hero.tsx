@@ -1,10 +1,14 @@
-import { ServicePills } from "./ServicePills";
+import { useState } from "react";
+import { ServicePills, type ServiceKey } from "./ServicePills";
+import { ServiceModal } from "./ServiceModal";
 import { AISearchWidget } from "./AISearchWidget";
 import { CheckCircle2 } from "lucide-react";
 
 export function Hero() {
+  const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
   return (
     <section className="relative overflow-hidden bg-mesh">
+      <ServiceModal service={service} onClose={() => setService(null)} />
       {/* Decorative flight-path SVG (no animation) */}
       <svg
         className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
@@ -49,7 +53,7 @@ export function Hero() {
         </p>
 
         <div className="mt-10">
-          <ServicePills />
+          <ServicePills onSelect={(key, label) => setService({ key, label })} />
         </div>
 
         <div className="mt-14">

@@ -6,9 +6,9 @@ const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
   phone: z.string().trim().min(5).max(40),
-  passport_number: z.string().trim().min(3).max(40),
-  target_country: z.string().trim().min(1).max(80),
-  source_type: z.enum(["foreign_countries", "airline_ticket"]),
+  passport_number: z.string().trim().max(40).optional().default(""),
+  target_country: z.string().trim().min(1).max(120),
+  source_type: z.string().trim().min(1).max(60),
 });
 
 const LEAD_EMAIL = "Al.bahr.medical.appointmens@gmail.com";
