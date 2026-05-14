@@ -5,8 +5,10 @@ import { AISearchWidget } from "./AISearchWidget";
 import { CheckCircle2 } from "lucide-react";
 
 export function Hero() {
+  const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
   return (
     <section className="relative overflow-hidden bg-mesh">
+      <ServiceModal service={service} onClose={() => setService(null)} />
       {/* Decorative flight-path SVG (no animation) */}
       <svg
         className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
