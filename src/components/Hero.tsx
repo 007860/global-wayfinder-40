@@ -51,7 +51,7 @@ export function Hero() {
         </p>
 
         <div className="mt-10">
-          <ServicePills />
+          <ServicePills onSelect={(key, label) => setService({ key, label })} />
         </div>
 
         <div className="mt-14">
