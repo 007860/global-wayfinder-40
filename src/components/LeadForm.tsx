@@ -28,6 +28,7 @@ export function LeadForm({
     last_name: "",
     phone: "",
     passport_number: "",
+    visa_number: "",
   });
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
