@@ -43,6 +43,7 @@ export function LeadForm({
         data: {
           ...form,
           passport_number: requirePassport ? form.passport_number : "",
+          visa_number: requirePassport ? form.visa_number : "",
           target_country: subject,
           source_type: sourceType,
         },
