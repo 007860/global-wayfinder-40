@@ -64,11 +64,9 @@ export function BurgerMenu() {
                   if (l.interactive) {
                     setOpen(false);
                     setTimeout(() => setModal(l.interactive!), 200);
-                  } else if (l.href) {
+                  } else if (l.service) {
                     setOpen(false);
-                    setTimeout(() => {
-                      document.querySelector(l.href)?.scrollIntoView({ behavior: "smooth" });
-                    }, 250);
+                    setTimeout(() => setService(l.service!), 200);
                   }
                 }}
                 className="group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all"
