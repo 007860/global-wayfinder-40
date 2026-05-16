@@ -90,6 +90,7 @@ export function BurgerMenu() {
         sourceType={modal}
         onClose={() => setModal(null)}
       />
+      <ServiceModal service={service} onClose={() => setService(null)} />
     </>
   );
 }
