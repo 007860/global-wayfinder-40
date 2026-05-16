@@ -1,17 +1,25 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CountryModal } from "./CountryModal";
+import { ServiceModal } from "./ServiceModal";
+import type { ServiceKey } from "./ServicePills";
 
-const LINKS = [
-  { id: "visa", label: "Visa Appointments", href: "#visa-appointments" },
-  { id: "flight", label: "Flight Booking", href: "#flight-booking" },
-  { id: "foreign", label: "Foreign Countries", interactive: "foreign_countries" as const },
-  { id: "airline", label: "Airline Ticket Booking", interactive: "airline_ticket" as const },
+const LINKS: {
+  id: string;
+  label: string;
+  interactive?: "foreign_countries" | "airline_ticket";
+  service?: { key: ServiceKey; label: string };
+}[] = [
+  { id: "visa", label: "Visa Appointments", service: { key: "visa", label: "Visa Services" } },
+  { id: "flight", label: "Flight Booking", service: { key: "flight", label: "Flight Booking" } },
+  { id: "foreign", label: "Foreign Countries", interactive: "foreign_countries" },
+  { id: "airline", label: "Airline Ticket Booking", interactive: "airline_ticket" },
 ];
 
 export function BurgerMenu() {
   const [open, setOpen] = useState(false);
   const [modal, setModal] = useState<null | "foreign_countries" | "airline_ticket">(null);
+  const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
 
   return (
     <>
@@ -56,11 +64,9 @@ export function BurgerMenu() {
                   if (l.interactive) {
                     setOpen(false);
                     setTimeout(() => setModal(l.interactive!), 200);
-                  } else if (l.href) {
+                  } else if (l.service) {
                     setOpen(false);
-                    setTimeout(() => {
-                      document.querySelector(l.href)?.scrollIntoView({ behavior: "smooth" });
-                    }, 250);
+                    setTimeout(() => setService(l.service!), 200);
                   }
                 }}
                 className="group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all"
@@ -84,6 +90,7 @@ export function BurgerMenu() {
         sourceType={modal}
         onClose={() => setModal(null)}
       />
+      <ServiceModal service={service} onClose={() => setService(null)} />
     </>
   );
 }
