@@ -86,11 +86,18 @@ export function LeadForm({
         <Field label="Last Name" value={form.last_name} onChange={update("last_name")} />
         <Field label="Phone Number" value={form.phone} onChange={update("phone")} type="tel" />
         {requirePassport && (
-          <Field
-            label="Passport Number"
-            value={form.passport_number}
-            onChange={update("passport_number")}
-          />
+          <>
+            <Field
+              label="Passport Number"
+              value={form.passport_number}
+              onChange={update("passport_number")}
+            />
+            <Field
+              label="Visa Number"
+              value={form.visa_number}
+              onChange={update("visa_number")}
+            />
+          </>
         )}
       </div>
 
