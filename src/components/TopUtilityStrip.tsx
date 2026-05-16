@@ -14,9 +14,13 @@ export function TopUtilityStrip() {
           <Mail className="size-3.5" />
           <span className="truncate">Al.bahr.medical.appointmens@gmail.com</span>
         </a>
-        <span className="hidden md:flex items-center gap-1.5">
-          <Phone className="size-3.5 text-gold" /> Lahore Branch
-        </span>
+        <a
+          href="tel:+923434762264"
+          className="hidden md:flex items-center gap-1.5 hover:text-gold transition-colors"
+        >
+          <Phone className="size-3.5 text-gold" />
+          <span>Lahore Branch — 0343 4762264</span>
+        </a>
         <div className="hidden sm:block text-gold tracking-wider font-medium">
           {BRAND_NAME}
         </div>
