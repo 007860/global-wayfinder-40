@@ -28,6 +28,7 @@ export function LeadForm({
     last_name: "",
     phone: "",
     passport_number: "",
+    visa_number: "",
   });
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -42,6 +43,7 @@ export function LeadForm({
         data: {
           ...form,
           passport_number: requirePassport ? form.passport_number : "",
+          visa_number: requirePassport ? form.visa_number : "",
           target_country: subject,
           source_type: sourceType,
         },
@@ -84,11 +86,18 @@ export function LeadForm({
         <Field label="Last Name" value={form.last_name} onChange={update("last_name")} />
         <Field label="Phone Number" value={form.phone} onChange={update("phone")} type="tel" />
         {requirePassport && (
-          <Field
-            label="Passport Number"
-            value={form.passport_number}
-            onChange={update("passport_number")}
-          />
+          <>
+            <Field
+              label="Passport Number"
+              value={form.passport_number}
+              onChange={update("passport_number")}
+            />
+            <Field
+              label="Visa Number"
+              value={form.visa_number}
+              onChange={update("visa_number")}
+            />
+          </>
         )}
       </div>
 
