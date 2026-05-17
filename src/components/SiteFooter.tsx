@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { useCounters } from "@/hooks/use-counters";
 import { BRANCH_ADDRESS, BRAND_NAME, LEAD_EMAIL } from "@/lib/countries";
+import { ServiceModal } from "./ServiceModal";
+import type { ServiceKey } from "./ServicePills";
 
-const FOOTER_SERVICES = [
-  "Medical Appointment Booking (Gulf Region)",
-  "Visa Appointment Booking (All European Countries)",
-  "Air Ticket Booking (Gulf & Worldwide)",
-  "Hotel Booking (International)",
+const FOOTER_SERVICES: { key: ServiceKey; label: string }[] = [
+  { key: "medical", label: "Medical Appointment Booking (Gulf Region)" },
+  { key: "visa", label: "Visa Appointment Booking (All European Countries)" },
+  { key: "flight", label: "Air Ticket Booking (Gulf & Worldwide)" },
+  { key: "hotel", label: "Hotel Booking (International)" },
 ];
 
 export function SiteFooter() {
   const counters = useCounters();
+  const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
   return (
     <footer className="border-t border-white/10 bg-[var(--midnight-light)]/60">
       <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-4 gap-10">
