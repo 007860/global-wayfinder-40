@@ -38,6 +38,7 @@ export function SiteFooter() {
                 </button>
               </li>
             ))}
+          </ul>
         </div>
 
         <div>
