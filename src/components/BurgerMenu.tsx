@@ -60,26 +60,42 @@ export function BurgerMenu() {
           </div>
 
           <nav className="flex flex-col gap-2">
-            {LINKS.map((l, i) => (
-              <button
-                key={l.id}
-                onClick={() => {
-                  if (l.interactive) {
-                    setOpen(false);
-                    setTimeout(() => setModal(l.interactive!), 200);
-                  } else if (l.service) {
-                    setOpen(false);
-                    setTimeout(() => setService(l.service!), 200);
-                  }
-                }}
-                className="group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all"
-              >
-                <span className="text-xs text-gold font-mono opacity-60">0{i + 1}</span>
-                <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors">
-                  {l.label}
-                </span>
-              </button>
-            ))}
+            {LINKS.map((l, i) => {
+              const inner = (
+                <>
+                  <span className="text-xs text-gold font-mono opacity-60">0{i + 1}</span>
+                  <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors">
+                    {l.label}
+                  </span>
+                </>
+              );
+              const cls =
+                "group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all";
+              if (l.to) {
+                return (
+                  <Link key={l.id} to={l.to} onClick={() => setOpen(false)} className={cls}>
+                    {inner}
+                  </Link>
+                );
+              }
+              return (
+                <button
+                  key={l.id}
+                  onClick={() => {
+                    if (l.interactive) {
+                      setOpen(false);
+                      setTimeout(() => setModal(l.interactive!), 200);
+                    } else if (l.service) {
+                      setOpen(false);
+                      setTimeout(() => setService(l.service!), 200);
+                    }
+                  }}
+                  className={cls}
+                >
+                  {inner}
+                </button>
+              );
+            })}
           </nav>
 
           <div className="absolute bottom-8 left-8 right-8 text-xs text-muted-foreground">
