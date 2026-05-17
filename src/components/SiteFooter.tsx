@@ -28,12 +28,16 @@ export function SiteFooter() {
         <div>
           <h4 className="text-xs tracking-[0.3em] text-gold mb-4">SERVICES</h4>
           <ul className="space-y-2 text-sm">
-            {FOOTER_SERVICES.map((label) => (
-              <li key={label} className="text-muted-foreground hover:text-foreground">
-                {label}
+            {FOOTER_SERVICES.map((s) => (
+              <li key={s.key}>
+                <button
+                  onClick={() => setService(s)}
+                  className="text-left text-muted-foreground hover:text-gold transition-colors"
+                >
+                  {s.label}
+                </button>
               </li>
             ))}
-          </ul>
         </div>
 
         <div>
