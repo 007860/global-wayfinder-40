@@ -65,6 +65,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10 py-5 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
       </div>
+      <ServiceModal service={service} onClose={() => setService(null)} />
     </footer>
   );
 }
