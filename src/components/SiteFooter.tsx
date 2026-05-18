@@ -21,7 +21,7 @@ export function SiteFooter() {
           <h3 className="font-display text-2xl text-gold-gradient mb-3">{BRAND_NAME}</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Trusted since 2015. Lahore-based consultancy for international visas, medical
-            appointments, flights, and hotels.
+            appointments, flights, and hotels Booking.
           </p>
         </div>
 
