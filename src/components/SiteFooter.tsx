@@ -14,6 +14,12 @@ const FOOTER_SERVICES: { key: ServiceKey; label: string }[] = [
 export function SiteFooter() {
   const counters = useCounters();
   const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
+
+  const openService = (nextService: { key: ServiceKey; label: string }) => {
+    setService(null);
+    requestAnimationFrame(() => setService(nextService));
+  };
+
   return (
     <footer className="border-t border-white/10 bg-[var(--midnight-light)]/60">
       <div className="max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-4 gap-10">
@@ -31,8 +37,9 @@ export function SiteFooter() {
             {FOOTER_SERVICES.map((s) => (
               <li key={s.key}>
                 <button
-                  onClick={() => setService(s)}
-                  className="text-left text-muted-foreground hover:text-gold transition-colors"
+                  type="button"
+                  onClick={() => openService(s)}
+                  className="cursor-pointer text-left text-muted-foreground hover:text-gold transition-colors"
                 >
                   {s.label}
                 </button>
