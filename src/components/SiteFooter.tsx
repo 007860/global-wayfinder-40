@@ -53,9 +53,7 @@ export function SiteFooter() {
           <p className="text-sm text-muted-foreground mb-2">{BRANCH_ADDRESS}</p>
           <a
             href={`mailto:${LEAD_EMAIL}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-foreground hover:text-gold"
+            className="text-sm text-foreground hover:text-gold break-all"
           >
             {LEAD_EMAIL}
           </a>
