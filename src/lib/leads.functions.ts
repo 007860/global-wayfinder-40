@@ -1,6 +1,16 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
+import { createClient } from "@supabase/supabase-js";
+
+// Hardcoded public credentials (safe — publishable/anon key respects RLS).
+// This avoids requiring SUPABASE_SERVICE_ROLE_KEY on Vercel.
+const SUPABASE_URL = "https://gpwwjosckbesylfrqnvg.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdwd3dqb3Nja2Jlc3lsZnJxbnZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2ODg1NTMsImV4cCI6MjA5NDI2NDU1M30.r_gEtFFh_CbFPaZpPxYnwZ6u8GgQdJeEN1VSxrT2nR8";
+
+const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+  auth: { persistSession: false, autoRefreshToken: false },
+});
 
 const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
