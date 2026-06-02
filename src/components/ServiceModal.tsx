@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { LeadForm } from "./LeadForm";
-import { COUNTRIES } from "@/lib/countries";
+import { COUNTRIES, GCC_COUNTRIES, EU_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
 type Props = {
@@ -15,6 +15,12 @@ export function ServiceModal({ service, onClose }: Props) {
   if (!service) return null;
   // Visa Services form does NOT ask for passport/visa number.
   const requirePassport = service.key !== "visa";
+  const countryList =
+    service.key === "medical"
+      ? GCC_COUNTRIES
+      : service.key === "visa"
+      ? EU_COUNTRIES
+      : COUNTRIES;
 
   const close = () => {
     setSelected(null);
