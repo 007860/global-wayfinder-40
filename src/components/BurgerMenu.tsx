@@ -75,6 +75,24 @@ export function BurgerMenu() {
               );
               const cls =
                 "group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all";
+              if (l.href) {
+                return (
+                  <a
+                    key={l.id}
+                    href={l.href}
+                    target={l.external ? "_blank" : undefined}
+                    rel={l.external ? "noopener noreferrer" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={cls}
+                  >
+                    <span className="text-xs text-gold font-mono opacity-60">0{i + 1}</span>
+                    <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors flex items-center gap-2">
+                      <MessageCircle className="size-5 text-gold" />
+                      {l.label}
+                    </span>
+                  </a>
+                );
+              }
               if (l.to) {
                 return (
                   <Link key={l.id} to={l.to} onClick={() => setOpen(false)} className={cls}>
