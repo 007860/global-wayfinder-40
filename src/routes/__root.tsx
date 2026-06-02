@@ -20,7 +20,7 @@ const LOCAL_BUSINESS_LD = {
   "@type": "TravelAgency",
   name: SITE_NAME,
   description: SITE_DESC,
-  email: "Al.bahr.medical.appointmens@gmail.com",
+  email: "al.bahr.medical.appointments@gmail.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "78 E Block, Architect Engineering Housing Society",
