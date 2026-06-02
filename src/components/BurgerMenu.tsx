@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CountryModal } from "./CountryModal";
 import { ServiceModal } from "./ServiceModal";
 import type { ServiceKey } from "./ServicePills";
+import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
 
 const LINKS: {
   id: string;
@@ -11,12 +12,15 @@ const LINKS: {
   interactive?: "foreign_countries" | "airline_ticket";
   service?: { key: ServiceKey; label: string };
   to?: string;
+  href?: string;
+  external?: boolean;
 }[] = [
   { id: "countries", label: "All Countries", to: "/countries" },
   { id: "visa", label: "Visa Appointments", service: { key: "visa", label: "Visa Services" } },
   { id: "flight", label: "Flight Booking", service: { key: "flight", label: "Flight Booking" } },
   { id: "foreign", label: "Foreign Countries", interactive: "foreign_countries" },
   { id: "airline", label: "Airline Ticket Booking", interactive: "airline_ticket" },
+  { id: "whatsapp", label: `WhatsApp ${WHATSAPP_DISPLAY}`, href: WHATSAPP_URL, external: true },
 ];
 
 export function BurgerMenu() {
