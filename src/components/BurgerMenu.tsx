@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CountryModal } from "./CountryModal";
 import { ServiceModal } from "./ServiceModal";
 import type { ServiceKey } from "./ServicePills";
+import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
 
 const LINKS: {
   id: string;
@@ -11,12 +12,15 @@ const LINKS: {
   interactive?: "foreign_countries" | "airline_ticket";
   service?: { key: ServiceKey; label: string };
   to?: string;
+  href?: string;
+  external?: boolean;
 }[] = [
   { id: "countries", label: "All Countries", to: "/countries" },
   { id: "visa", label: "Visa Appointments", service: { key: "visa", label: "Visa Services" } },
   { id: "flight", label: "Flight Booking", service: { key: "flight", label: "Flight Booking" } },
   { id: "foreign", label: "Foreign Countries", interactive: "foreign_countries" },
   { id: "airline", label: "Airline Ticket Booking", interactive: "airline_ticket" },
+  { id: "whatsapp", label: `WhatsApp ${WHATSAPP_DISPLAY}`, href: WHATSAPP_URL, external: true },
 ];
 
 export function BurgerMenu() {
@@ -71,6 +75,24 @@ export function BurgerMenu() {
               );
               const cls =
                 "group text-left py-5 border-b border-white/10 flex items-baseline gap-4 hover:pl-2 transition-all";
+              if (l.href) {
+                return (
+                  <a
+                    key={l.id}
+                    href={l.href}
+                    target={l.external ? "_blank" : undefined}
+                    rel={l.external ? "noopener noreferrer" : undefined}
+                    onClick={() => setOpen(false)}
+                    className={cls}
+                  >
+                    <span className="text-xs text-gold font-mono opacity-60">0{i + 1}</span>
+                    <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors flex items-center gap-2">
+                      <MessageCircle className="size-5 text-gold" />
+                      {l.label}
+                    </span>
+                  </a>
+                );
+              }
               if (l.to) {
                 return (
                   <Link key={l.id} to={l.to} onClick={() => setOpen(false)} className={cls}>

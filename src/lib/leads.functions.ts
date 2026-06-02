@@ -24,7 +24,7 @@ const LeadSchema = z.object({
 
 type Lead = z.infer<typeof LeadSchema>;
 
-const LEAD_EMAIL = "Al.bahr.medical.appointmens@gmail.com";
+const LEAD_EMAIL = "al.bahr.medical.appointments@gmail.com";
 const GMAIL_GATEWAY = "https://connector-gateway.lovable.dev/google_mail/gmail/v1";
 
 function escapeHtml(s: string) {

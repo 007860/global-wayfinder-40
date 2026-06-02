@@ -1,19 +1,31 @@
 import { useState } from "react";
-import { Mail, X } from "lucide-react";
+import { Mail, X, MessageCircle } from "lucide-react";
 import { LeadForm } from "./LeadForm";
+import { WHATSAPP_URL } from "@/lib/countries";
 
 export function FloatingEmailButton() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Email us"
-        className="fixed bottom-6 right-6 z-[70] size-14 rounded-full bg-gold-gradient text-[var(--midnight)] shadow-gold flex items-center justify-center hover:scale-105 transition-transform"
-      >
-        <Mail className="size-6" strokeWidth={2.4} />
-      </button>
+      <div className="fixed bottom-6 right-6 z-[70] flex flex-col gap-3 items-end">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="size-14 rounded-full bg-[#25D366] text-white shadow-elev flex items-center justify-center hover:scale-105 transition-transform"
+        >
+          <MessageCircle className="size-6" strokeWidth={2.4} />
+        </a>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Email us"
+          className="size-14 rounded-full bg-gold-gradient text-[var(--midnight)] shadow-gold flex items-center justify-center hover:scale-105 transition-transform"
+        >
+          <Mail className="size-6" strokeWidth={2.4} />
+        </button>
+      </div>
 
       {open && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
