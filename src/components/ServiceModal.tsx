@@ -52,7 +52,7 @@ export function ServiceModal({ service, onClose }: Props) {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {COUNTRIES.map((c) => (
+              {countryList.map((c) => (
                 <button
                   key={c.code}
                   onClick={() => setSelected(c.name)}
