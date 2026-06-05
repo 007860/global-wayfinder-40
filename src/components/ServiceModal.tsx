@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { LeadForm } from "./LeadForm";
-import { CountryPicker } from "./CountryPicker";
-import { GCC_COUNTRIES, WORLD_COUNTRIES } from "@/lib/countries";
+import { COUNTRIES, GCC_COUNTRIES, EU_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
 type Props = {
@@ -16,8 +15,12 @@ export function ServiceModal({ service, onClose }: Props) {
   if (!service) return null;
   // Visa Services form does NOT ask for passport/visa number.
   const requirePassport = service.key !== "visa";
-  const isMedical = service.key === "medical";
-  const countryList = isMedical ? GCC_COUNTRIES : WORLD_COUNTRIES;
+  const countryList =
+    service.key === "medical"
+      ? GCC_COUNTRIES
+      : service.key === "visa"
+      ? EU_COUNTRIES
+      : COUNTRIES;
 
   const close = () => {
     setSelected(null);
@@ -48,11 +51,18 @@ export function ServiceModal({ service, onClose }: Props) {
               </p>
             </div>
 
-            <CountryPicker
-              countries={countryList}
-              onSelect={setSelected}
-              searchable={!isMedical}
-            />
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {countryList.map((c) => (
+                <button
+                  key={c.code}
+                  onClick={() => setSelected(c.name)}
+                  className="group glass rounded-xl p-4 text-left hover:bg-white/10 hover:border-gold/40 transition-all"
+                >
+                  <div className="text-3xl mb-2">{c.flag}</div>
+                  <div className="font-medium text-sm group-hover:text-gold">{c.name}</div>
+                </button>
+              ))}
+            </div>
           </>
         ) : (
           <LeadForm

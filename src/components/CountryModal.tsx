@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-import { WORLD_COUNTRIES } from "@/lib/countries";
-import { CountryPicker } from "./CountryPicker";
+import { COUNTRIES } from "@/lib/countries";
 import { LeadForm } from "./LeadForm";
 
 type Props = {
@@ -51,7 +50,18 @@ export function CountryModal({ sourceType, onClose }: Props) {
               </p>
             </div>
 
-            <CountryPicker countries={WORLD_COUNTRIES} onSelect={setSelected} searchable />
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {COUNTRIES.map((c) => (
+                <button
+                  key={c.code}
+                  onClick={() => setSelected(c.name)}
+                  className="group glass rounded-xl p-4 text-left hover:bg-white/10 hover:border-gold/40 transition-all"
+                >
+                  <div className="text-3xl mb-2">{c.flag}</div>
+                  <div className="font-medium text-sm group-hover:text-gold">{c.name}</div>
+                </button>
+              ))}
+            </div>
           </>
         ) : (
           <LeadForm
