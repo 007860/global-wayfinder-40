@@ -27,11 +27,13 @@ export function LeadForm({
     first_name: "",
     last_name: "",
     phone: "",
+    email: "",
+    message: "",
     passport_number: "",
     visa_number: "",
   });
 
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -84,6 +86,7 @@ export function LeadForm({
       <div className="grid sm:grid-cols-2 gap-4">
         <Field label="First Name" value={form.first_name} onChange={update("first_name")} />
         <Field label="Last Name" value={form.last_name} onChange={update("last_name")} />
+        <Field label="Email Address" value={form.email} onChange={update("email")} type="email" />
         <Field label="Phone Number" value={form.phone} onChange={update("phone")} type="tel" />
         {requirePassport && (
           <>
@@ -100,6 +103,18 @@ export function LeadForm({
           </>
         )}
       </div>
+
+      <label className="block mt-4">
+        <span className="text-xs uppercase tracking-wider text-muted-foreground">Message / Request</span>
+        <textarea
+          required
+          rows={4}
+          value={form.message}
+          onChange={update("message")}
+          placeholder="Tell us briefly what you need…"
+          className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors resize-y"
+        />
+      </label>
 
       <button
         type="submit"
