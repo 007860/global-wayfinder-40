@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
+import { WORLD_COUNTRIES } from "@/lib/countries";
 
 type Props = {
   subject: string;
@@ -28,13 +29,24 @@ export function LeadForm({
     last_name: "",
     phone: "",
     email: "",
+    residence_country: "",
     message: "",
     passport_number: "",
+    passport_expiry: "",
     visa_number: "",
+    visa_expiry: "",
   });
 
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
+  const update =
+    (k: keyof typeof form) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) =>
+      setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const residenceOptions = useMemo(() => WORLD_COUNTRIES, []);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +57,9 @@ export function LeadForm({
         data: {
           ...form,
           passport_number: requirePassport ? form.passport_number : "",
+          passport_expiry: requirePassport ? form.passport_expiry : "",
           visa_number: requirePassport ? form.visa_number : "",
+          visa_expiry: requirePassport ? form.visa_expiry : "",
           target_country: subject,
           source_type: sourceType,
         },
@@ -88,6 +102,28 @@ export function LeadForm({
         <Field label="Last Name" value={form.last_name} onChange={update("last_name")} />
         <Field label="Email Address" value={form.email} onChange={update("email")} type="email" />
         <Field label="Phone Number" value={form.phone} onChange={update("phone")} type="tel" />
+
+        <label className="block sm:col-span-2">
+          <span className="text-xs uppercase tracking-wider text-muted-foreground">
+            Current Country of Residence
+          </span>
+          <select
+            required
+            value={form.residence_country}
+            onChange={update("residence_country")}
+            className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors"
+          >
+            <option value="" disabled>
+              Select where you currently live…
+            </option>
+            {residenceOptions.map((c) => (
+              <option key={c.code} value={c.name} className="bg-[var(--midnight-light)] text-white">
+                {c.flag} {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
         {requirePassport && (
           <>
             <Field
@@ -96,9 +132,23 @@ export function LeadForm({
               onChange={update("passport_number")}
             />
             <Field
+              label="Passport Expiry Date"
+              value={form.passport_expiry}
+              onChange={update("passport_expiry")}
+              type="date"
+            />
+            <Field
               label="Visa Number"
               value={form.visa_number}
               onChange={update("visa_number")}
+              required={false}
+            />
+            <Field
+              label="Visa Expiry Date"
+              value={form.visa_expiry}
+              onChange={update("visa_expiry")}
+              type="date"
+              required={false}
             />
           </>
         )}
@@ -133,21 +183,23 @@ function Field({
   value,
   onChange,
   type = "text",
+  required = true,
 }: {
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   type?: string;
+  required?: boolean;
 }) {
   return (
     <label className="block">
       <span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>
       <input
-        required
+        required={required}
         type={type}
         value={value}
         onChange={onChange}
-        className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors"
+        className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors [color-scheme:dark]"
       />
     </label>
   );
