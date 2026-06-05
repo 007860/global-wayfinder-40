@@ -16,6 +16,8 @@ const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
   phone: z.string().trim().min(5).max(40),
+  email: z.string().trim().email().max(160).optional().default(""),
+  message: z.string().trim().max(2000).optional().default(""),
   passport_number: z.string().trim().max(40).optional().default(""),
   visa_number: z.string().trim().max(40).optional().default(""),
   target_country: z.string().trim().min(1).max(120),
@@ -45,22 +47,22 @@ function base64(buf: Buffer | string) {
 
 function buildLeadFile(lead: Lead) {
   const ts = new Date().toUTCString();
+  const fullName = `${lead.first_name} ${lead.last_name}`.trim();
   return [
-    "Al-Bahr Travels & Consultants — Lead Submission",
-    "================================================",
-    `Submitted     : ${ts}`,
-    `Source        : ${lead.source_type}`,
-    `Target Country: ${lead.target_country}`,
+    "Al-Bahr Travels & Consultants — New Form Submission",
+    "====================================================",
+    `Submitted: ${ts}`,
+    `Source   : ${lead.source_type}`,
     "",
-    "Applicant Details",
-    "-----------------",
-    `First Name    : ${lead.first_name}`,
-    `Last Name     : ${lead.last_name}`,
-    `Phone         : ${lead.phone}`,
-    `Passport #    : ${lead.passport_number || "—"}`,
-    `Visa #        : ${lead.visa_number || "—"}`,
+    `Client Name             : ${fullName}`,
+    `Client Email            : ${lead.email || "—"}`,
+    `Client Phone            : ${lead.phone}`,
+    `Selected Country / Service: ${lead.target_country}`,
+    `Client Message / Request: ${lead.message || "—"}`,
+    `Passport #              : ${lead.passport_number || "—"}`,
+    `Visa #                  : ${lead.visa_number || "—"}`,
     "",
-    "— End of file —",
+    "— End of submission —",
   ].join("\r\n");
 }
 
@@ -76,16 +78,19 @@ async function sendLeadEmail(lead: Lead) {
   const fileName = `lead_${lead.last_name}_${Date.now()}.txt`.replace(/\s+/g, "_");
   const fileText = buildLeadFile(lead);
 
+  const fullName = `${lead.first_name} ${lead.last_name}`.trim();
   const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;background:#0A192F;color:#fff;padding:24px">
     <div style="max-width:560px;margin:auto;background:#112240;border-radius:12px;padding:28px">
-      <h2 style="color:#F5C26B;margin:0 0 12px">Al-Bahr Travels — New Lead</h2>
-      <p style="color:#cbd5e1;margin:0 0 16px">A visitor submitted a request via the website. Full details are attached as <b>${escapeHtml(fileName)}</b>.</p>
+      <h2 style="color:#F5C26B;margin:0 0 12px">Al-Bahr Travels — New Form Submission</h2>
+      <p style="color:#cbd5e1;margin:0 0 16px">A visitor submitted the website form. Details below (also attached as <b>${escapeHtml(fileName)}</b>).</p>
       <table style="width:100%;border-collapse:collapse;color:#fff">
-        <tr><td style="padding:6px 0;color:#94a3b8">Name</td><td>${escapeHtml(lead.first_name)} ${escapeHtml(lead.last_name)}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Phone</td><td>${escapeHtml(lead.phone)}</td></tr>
+        <tr><td style="padding:6px 0;color:#94a3b8;width:200px">Client Name</td><td>${escapeHtml(fullName)}</td></tr>
+        <tr><td style="padding:6px 0;color:#94a3b8">Client Email</td><td>${escapeHtml(lead.email || "—")}</td></tr>
+        <tr><td style="padding:6px 0;color:#94a3b8">Client Phone</td><td>${escapeHtml(lead.phone)}</td></tr>
+        <tr><td style="padding:6px 0;color:#94a3b8">Selected Country / Service</td><td>${escapeHtml(lead.target_country)}</td></tr>
+        <tr><td style="padding:6px 0;color:#94a3b8;vertical-align:top">Client Message / Request</td><td style="white-space:pre-wrap">${escapeHtml(lead.message || "—")}</td></tr>
         <tr><td style="padding:6px 0;color:#94a3b8">Passport #</td><td>${escapeHtml(lead.passport_number || "—")}</td></tr>
         <tr><td style="padding:6px 0;color:#94a3b8">Visa #</td><td>${escapeHtml(lead.visa_number || "—")}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Target Country</td><td>${escapeHtml(lead.target_country)}</td></tr>
         <tr><td style="padding:6px 0;color:#94a3b8">Source</td><td>${escapeHtml(lead.source_type)}</td></tr>
         <tr><td style="padding:6px 0;color:#94a3b8">Submitted</td><td>${new Date().toUTCString()}</td></tr>
       </table>
@@ -94,6 +99,7 @@ async function sendLeadEmail(lead: Lead) {
   const boundary = `=_albahr_${Date.now().toString(36)}`;
   const mime = [
     `To: ${LEAD_EMAIL}`,
+    `Reply-To: ${lead.email || LEAD_EMAIL}`,
     `Subject: ${subject}`,
     "MIME-Version: 1.0",
     `Content-Type: multipart/mixed; boundary="${boundary}"`,
@@ -140,9 +146,9 @@ async function sendLeadEmail(lead: Lead) {
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => LeadSchema.parse(input))
   .handler(async ({ data }) => {
-    // visa_number isn't persisted to country_leads (schema unchanged); included in email file.
-    const { visa_number: _vn, ...dbRow } = data;
-    void _vn;
+    // email/message/visa_number aren't persisted to country_leads (schema unchanged); included in email body.
+    const { visa_number: _vn, email: _em, message: _msg, ...dbRow } = data;
+    void _vn; void _em; void _msg;
     const { error } = await supabaseAdmin.from("country_leads").insert(dbRow);
     if (error) {
       console.error("[leads] insert error", error);
