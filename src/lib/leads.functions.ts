@@ -16,6 +16,8 @@ const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
   phone: z.string().trim().min(5).max(40),
+  email: z.string().trim().email().max(160).optional().default(""),
+  message: z.string().trim().max(2000).optional().default(""),
   passport_number: z.string().trim().max(40).optional().default(""),
   visa_number: z.string().trim().max(40).optional().default(""),
   target_country: z.string().trim().min(1).max(120),
