@@ -1,31 +1,10 @@
 {
   "buildCommand": "bun run build",
-  "devCommand": "bun run dev",
   "installCommand": "bun install",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        }
-      ]
-    },
-    {
-      "source": "/(static|public)/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
   ]
 }
