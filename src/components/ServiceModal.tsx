@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { LeadForm } from "./LeadForm";
-import { COUNTRIES, GCC_COUNTRIES, EU_COUNTRIES } from "@/lib/countries";
+import { CountryPicker } from "./CountryPicker";
+import { WORLD_COUNTRIES, GCC_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
 type Props = {
@@ -13,14 +14,9 @@ export function ServiceModal({ service, onClose }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
 
   if (!service) return null;
-  // Visa Services form does NOT ask for passport/visa number.
   const requirePassport = service.key !== "visa";
-  const countryList =
-    service.key === "medical"
-      ? GCC_COUNTRIES
-      : service.key === "visa"
-      ? EU_COUNTRIES
-      : COUNTRIES;
+  const isMedical = service.key === "medical";
+  const countryList = isMedical ? GCC_COUNTRIES : WORLD_COUNTRIES;
 
   const close = () => {
     setSelected(null);
@@ -41,28 +37,23 @@ export function ServiceModal({ service, onClose }: Props) {
 
         {!selected ? (
           <>
-            <div className="mb-8">
+            <div className="mb-6">
               <p className="text-xs tracking-[0.3em] text-gold mb-2">STEP 1 OF 2</p>
               <h2 className="text-3xl sm:text-4xl font-display">
                 Select country for <span className="text-gold-gradient">{service.label}</span>
               </h2>
               <p className="text-muted-foreground mt-2 text-sm">
-                Choose a destination — our consultant will reach you within hours.
+                {isMedical
+                  ? "Medical appointments are arranged for GCC destinations."
+                  : "Choose your destination — search the full list below."}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {countryList.map((c) => (
-                <button
-                  key={c.code}
-                  onClick={() => setSelected(c.name)}
-                  className="group glass rounded-xl p-4 text-left hover:bg-white/10 hover:border-gold/40 transition-all"
-                >
-                  <div className="text-3xl mb-2">{c.flag}</div>
-                  <div className="font-medium text-sm group-hover:text-gold">{c.name}</div>
-                </button>
-              ))}
-            </div>
+            <CountryPicker
+              countries={countryList}
+              onSelect={setSelected}
+              searchable={!isMedical}
+            />
           </>
         ) : (
           <LeadForm
