@@ -22,4 +22,7 @@ function NotFound() {
   );
 }
 
-export const Route = createFileRoute('/$')({ component: NotFound });
+// Match ANY path that doesn't exist
+export const Route = createFileRoute('/*')({ 
+  component: NotFound 
+});
