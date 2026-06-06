@@ -2,8 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 
-// Hardcoded public credentials (safe — publishable/anon key respects RLS).
-// This avoids requiring SUPABASE_SERVICE_ROLE_KEY on Vercel.
+// Public anon key — RLS enforces access. Hardcoded so it works on every deploy target.
 const SUPABASE_URL = "https://gpwwjosckbesylfrqnvg.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdwd3dqb3Nja2Jlc3lsZnJxbnZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2ODg1NTMsImV4cCI6MjA5NDI2NDU1M30.r_gEtFFh_CbFPaZpPxYnwZ6u8GgQdJeEN1VSxrT2nR8";
@@ -15,9 +14,14 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
 const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
+  email: z.string().trim().email().max(160),
   phone: z.string().trim().min(5).max(40),
+  residence_country: z.string().trim().max(120).optional().default(""),
   passport_number: z.string().trim().max(40).optional().default(""),
+  passport_expiry: z.string().trim().max(20).optional().default(""),
   visa_number: z.string().trim().max(40).optional().default(""),
+  visa_expiry: z.string().trim().max(20).optional().default(""),
+  message: z.string().trim().max(2000).optional().default(""),
   target_country: z.string().trim().min(1).max(120),
   source_type: z.string().trim().min(1).max(60),
 });
@@ -43,22 +47,33 @@ function base64(buf: Buffer | string) {
   return b.toString("base64");
 }
 
+function dash(v: string | undefined | null) {
+  return v && v.trim() ? v : "—";
+}
+
 function buildLeadFile(lead: Lead) {
   const ts = new Date().toUTCString();
   return [
     "Al-Bahr Travels & Consultants — Lead Submission",
     "================================================",
-    `Submitted     : ${ts}`,
-    `Source        : ${lead.source_type}`,
-    `Target Country: ${lead.target_country}`,
+    `Submitted              : ${ts}`,
+    `Source                 : ${lead.source_type}`,
+    `Booking Target Country : ${lead.target_country}`,
     "",
-    "Applicant Details",
-    "-----------------",
-    `First Name    : ${lead.first_name}`,
-    `Last Name     : ${lead.last_name}`,
-    `Phone         : ${lead.phone}`,
-    `Passport #    : ${lead.passport_number || "—"}`,
-    `Visa #        : ${lead.visa_number || "—"}`,
+    "Client Details",
+    "--------------",
+    `Client Name            : ${lead.first_name} ${lead.last_name}`,
+    `Client Email           : ${lead.email}`,
+    `Phone Number           : ${lead.phone}`,
+    `Current Residence      : ${dash(lead.residence_country)}`,
+    `Passport Number        : ${dash(lead.passport_number)}`,
+    `Passport Expiry Date   : ${dash(lead.passport_expiry)}`,
+    `Visa Number            : ${dash(lead.visa_number)}`,
+    `Visa Expiry Date       : ${dash(lead.visa_expiry)}`,
+    "",
+    "Client Message / Request",
+    "------------------------",
+    dash(lead.message),
     "",
     "— End of file —",
   ].join("\r\n");
@@ -76,24 +91,36 @@ async function sendLeadEmail(lead: Lead) {
   const fileName = `lead_${lead.last_name}_${Date.now()}.txt`.replace(/\s+/g, "_");
   const fileText = buildLeadFile(lead);
 
+  const row = (label: string, value: string) =>
+    `<tr><td style="padding:6px 0;color:#94a3b8;width:42%">${escapeHtml(label)}</td><td>${escapeHtml(value)}</td></tr>`;
+
   const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;background:#0A192F;color:#fff;padding:24px">
-    <div style="max-width:560px;margin:auto;background:#112240;border-radius:12px;padding:28px">
+    <div style="max-width:620px;margin:auto;background:#112240;border-radius:12px;padding:28px">
       <h2 style="color:#F5C26B;margin:0 0 12px">Al-Bahr Travels — New Lead</h2>
       <p style="color:#cbd5e1;margin:0 0 16px">A visitor submitted a request via the website. Full details are attached as <b>${escapeHtml(fileName)}</b>.</p>
       <table style="width:100%;border-collapse:collapse;color:#fff">
-        <tr><td style="padding:6px 0;color:#94a3b8">Name</td><td>${escapeHtml(lead.first_name)} ${escapeHtml(lead.last_name)}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Phone</td><td>${escapeHtml(lead.phone)}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Passport #</td><td>${escapeHtml(lead.passport_number || "—")}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Visa #</td><td>${escapeHtml(lead.visa_number || "—")}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Target Country</td><td>${escapeHtml(lead.target_country)}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Source</td><td>${escapeHtml(lead.source_type)}</td></tr>
-        <tr><td style="padding:6px 0;color:#94a3b8">Submitted</td><td>${new Date().toUTCString()}</td></tr>
+        ${row("Client Name", `${lead.first_name} ${lead.last_name}`)}
+        ${row("Client Email", lead.email)}
+        ${row("Phone Number", lead.phone)}
+        ${row("Current Residence", dash(lead.residence_country))}
+        ${row("Booking Target", lead.target_country)}
+        ${row("Passport Number", dash(lead.passport_number))}
+        ${row("Passport Expiry", dash(lead.passport_expiry))}
+        ${row("Visa Number", dash(lead.visa_number))}
+        ${row("Visa Expiry", dash(lead.visa_expiry))}
+        ${row("Source", lead.source_type)}
+        ${row("Submitted", new Date().toUTCString())}
       </table>
+      <div style="margin-top:18px;padding:14px;background:#0A192F;border-radius:8px;border:1px solid #1e3a5f">
+        <div style="color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Client Message / Request</div>
+        <div style="white-space:pre-wrap;color:#fff">${escapeHtml(dash(lead.message))}</div>
+      </div>
     </div></body></html>`;
 
   const boundary = `=_albahr_${Date.now().toString(36)}`;
   const mime = [
     `To: ${LEAD_EMAIL}`,
+    `Reply-To: ${lead.email}`,
     `Subject: ${subject}`,
     "MIME-Version: 1.0",
     `Content-Type: multipart/mixed; boundary="${boundary}"`,
@@ -140,13 +167,19 @@ async function sendLeadEmail(lead: Lead) {
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => LeadSchema.parse(input))
   .handler(async ({ data }) => {
-    // visa_number isn't persisted to country_leads (schema unchanged); included in email file.
-    const { visa_number: _vn, ...dbRow } = data;
-    void _vn;
+    // country_leads only stores a subset; the full record goes out via email.
+    const dbRow = {
+      first_name: data.first_name,
+      last_name: data.last_name,
+      phone: data.phone,
+      passport_number: data.passport_number || "",
+      target_country: data.target_country,
+      source_type: data.source_type,
+    };
     const { error } = await supabaseAdmin.from("country_leads").insert(dbRow);
     if (error) {
       console.error("[leads] insert error", error);
-      throw new Error("Could not save your request. Please try again.");
+      // Don't block the lead — still try to email so we never lose it.
     }
     await supabaseAdmin.rpc("increment_counter", {
       counter_name: "consultations_booked",

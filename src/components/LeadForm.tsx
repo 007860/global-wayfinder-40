@@ -3,6 +3,7 @@ import { ArrowLeft, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
+import { WORLD_COUNTRIES } from "@/lib/countries";
 
 type Props = {
   subject: string;
@@ -26,13 +27,20 @@ export function LeadForm({
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
+    email: "",
     phone: "",
+    residence_country: "",
     passport_number: "",
+    passport_expiry: "",
     visa_number: "",
+    visa_expiry: "",
+    message: "",
   });
 
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
+  const update =
+    (k: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+      setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +51,9 @@ export function LeadForm({
         data: {
           ...form,
           passport_number: requirePassport ? form.passport_number : "",
+          passport_expiry: requirePassport ? form.passport_expiry : "",
           visa_number: requirePassport ? form.visa_number : "",
+          visa_expiry: requirePassport ? form.visa_expiry : "",
           target_country: subject,
           source_type: sourceType,
         },
@@ -60,6 +70,9 @@ export function LeadForm({
       setLoading(false);
     }
   };
+
+  const inputClass =
+    "mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors";
 
   return (
     <form onSubmit={onSubmit}>
@@ -82,24 +95,90 @@ export function LeadForm({
       </p>
 
       <div className="grid sm:grid-cols-2 gap-4">
-        <Field label="First Name" value={form.first_name} onChange={update("first_name")} />
-        <Field label="Last Name" value={form.last_name} onChange={update("last_name")} />
-        <Field label="Phone Number" value={form.phone} onChange={update("phone")} type="tel" />
+        <Labeled label="First Name">
+          <input required value={form.first_name} onChange={update("first_name")} className={inputClass} />
+        </Labeled>
+        <Labeled label="Last Name">
+          <input required value={form.last_name} onChange={update("last_name")} className={inputClass} />
+        </Labeled>
+        <Labeled label="Email Address">
+          <input
+            required
+            type="email"
+            value={form.email}
+            onChange={update("email")}
+            className={inputClass}
+            placeholder="you@example.com"
+          />
+        </Labeled>
+        <Labeled label="Phone Number">
+          <input required type="tel" value={form.phone} onChange={update("phone")} className={inputClass} />
+        </Labeled>
+        <Labeled label="Current Country of Residence">
+          <select
+            required
+            value={form.residence_country}
+            onChange={update("residence_country")}
+            className={`${inputClass} appearance-none`}
+          >
+            <option value="" disabled>
+              Select your country
+            </option>
+            {WORLD_COUNTRIES.map((c) => (
+              <option key={c.code} value={c.name} className="bg-[var(--midnight-light)]">
+                {c.flag}  {c.name}
+              </option>
+            ))}
+          </select>
+        </Labeled>
         {requirePassport && (
           <>
-            <Field
-              label="Passport Number"
-              value={form.passport_number}
-              onChange={update("passport_number")}
-            />
-            <Field
-              label="Visa Number"
-              value={form.visa_number}
-              onChange={update("visa_number")}
-            />
+            <Labeled label="Passport Number">
+              <input
+                required
+                value={form.passport_number}
+                onChange={update("passport_number")}
+                className={inputClass}
+              />
+            </Labeled>
+            <Labeled label="Passport Expiry Date">
+              <input
+                required
+                type="date"
+                value={form.passport_expiry}
+                onChange={update("passport_expiry")}
+                className={inputClass}
+              />
+            </Labeled>
+            <Labeled label="Visa Number (if any)">
+              <input
+                value={form.visa_number}
+                onChange={update("visa_number")}
+                className={inputClass}
+              />
+            </Labeled>
+            <Labeled label="Visa Expiry Date (if any)">
+              <input
+                type="date"
+                value={form.visa_expiry}
+                onChange={update("visa_expiry")}
+                className={inputClass}
+              />
+            </Labeled>
           </>
         )}
       </div>
+
+      <Labeled label="Your Message / Request" className="mt-4 block">
+        <textarea
+          value={form.message}
+          onChange={update("message")}
+          rows={4}
+          maxLength={2000}
+          placeholder="Tell us about your appointment, travel dates, or any specific requirement…"
+          className={inputClass}
+        />
+      </Labeled>
 
       <button
         type="submit"
@@ -113,27 +192,19 @@ export function LeadForm({
   );
 }
 
-function Field({
+function Labeled({
   label,
-  value,
-  onChange,
-  type = "text",
+  children,
+  className = "block",
 }: {
   label: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: string;
+  children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <label className="block">
+    <label className={className}>
       <span className="text-xs uppercase tracking-wider text-muted-foreground">{label}</span>
-      <input
-        required
-        type={type}
-        value={value}
-        onChange={onChange}
-        className="mt-2 w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 outline-none focus:border-gold/60 focus:bg-white/10 transition-colors"
-      />
+      {children}
     </label>
   );
 }
