@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CountriesRouteImport } from './routes/countries'
 import { Route as BlogsRouteImport } from './routes/blogs'
+import { Route as CatchAllRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -29,6 +30,11 @@ const BlogsRoute = BlogsRouteImport.update({
   path: '/blogs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CatchAllRoute = CatchAllRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$': typeof CatchAllRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$': typeof CatchAllRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$': typeof CatchAllRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blogs' | '/countries' | '/sitemap.xml'
+  fullPaths: '/' | '/blogs' | '/countries' | '/sitemap.xml' | '/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blogs' | '/countries' | '/sitemap.xml'
-  id: '__root__' | '/' | '/blogs' | '/countries' | '/sitemap.xml'
+  to: '/' | '/blogs' | '/countries' | '/sitemap.xml' | '/$'
+  id: '__root__' | '/' | '/blogs' | '/countries' | '/sitemap.xml' | '/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   CountriesRoute: typeof CountriesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CatchAllRoute: typeof CatchAllRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof CatchAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   CountriesRoute: CountriesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CatchAllRoute: CatchAllRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
