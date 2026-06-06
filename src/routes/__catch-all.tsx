@@ -1,7 +1,7 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 
-const NotFoundContent = () => {
+const CatchAllComponent = () => {
   const router = useRouter();
 
   return (
@@ -31,6 +31,6 @@ const NotFoundContent = () => {
   );
 };
 
-export const Route = createFileRoute("/__catch-all")({
-  component: NotFoundContent,
+export const Route = createFileRoute("/$")({
+  component: CatchAllComponent,
 });
