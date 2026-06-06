@@ -59,6 +59,7 @@ export function ServiceModal({ service, onClose }: Props) {
           <LeadForm
             subject={`${service.label} — ${selected}`}
             sourceType={`service_${service.key}`}
+            serviceKey={service.key}
             requirePassport={requirePassport}
             onBack={() => setSelected(null)}
             onDone={close}
