@@ -11,6 +11,11 @@ const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
+const ExtraSchema = z.object({
+  label: z.string().trim().min(1).max(80),
+  value: z.string().trim().max(400).default(""),
+});
+
 const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
@@ -22,8 +27,10 @@ const LeadSchema = z.object({
   visa_number: z.string().trim().max(40).optional().default(""),
   visa_expiry: z.string().trim().max(20).optional().default(""),
   message: z.string().trim().max(2000).optional().default(""),
-  target_country: z.string().trim().min(1).max(120),
+  target_country: z.string().trim().min(1).max(160),
   source_type: z.string().trim().min(1).max(60),
+  service_key: z.string().trim().max(20).optional().default(""),
+  extras: z.array(ExtraSchema).max(30).optional().default([]),
 });
 
 type Lead = z.infer<typeof LeadSchema>;
@@ -48,17 +55,28 @@ function base64(buf: Buffer | string) {
 }
 
 function dash(v: string | undefined | null) {
-  return v && v.trim() ? v : "—";
+  return v && String(v).trim() ? String(v) : "—";
+}
+
+function serviceLabel(key: string) {
+  switch (key) {
+    case "medical": return "Medical Appointment Booking";
+    case "visa": return "Visa Appointment Booking";
+    case "flight": return "Air Ticket Booking";
+    case "hotel": return "Hotel Booking";
+    default: return "General Enquiry";
+  }
 }
 
 function buildLeadFile(lead: Lead) {
   const ts = new Date().toUTCString();
-  return [
+  const lines = [
     "Al-Bahr Travels & Consultants — Lead Submission",
     "================================================",
     `Submitted              : ${ts}`,
+    `Service Type           : ${serviceLabel(lead.service_key || "")}`,
     `Source                 : ${lead.source_type}`,
-    `Booking Target Country : ${lead.target_country}`,
+    `Booking Target         : ${lead.target_country}`,
     "",
     "Client Details",
     "--------------",
@@ -70,13 +88,25 @@ function buildLeadFile(lead: Lead) {
     `Passport Expiry Date   : ${dash(lead.passport_expiry)}`,
     `Visa Number            : ${dash(lead.visa_number)}`,
     `Visa Expiry Date       : ${dash(lead.visa_expiry)}`,
+  ];
+
+  if (lead.extras.length) {
+    lines.push("", `${serviceLabel(lead.service_key || "")} — Specifics`, "------------------------------------");
+    const pad = Math.min(28, Math.max(...lead.extras.map((e) => e.label.length)));
+    for (const ex of lead.extras) {
+      lines.push(`${ex.label.padEnd(pad)} : ${dash(ex.value)}`);
+    }
+  }
+
+  lines.push(
     "",
     "Client Message / Request",
     "------------------------",
     dash(lead.message),
     "",
     "— End of file —",
-  ].join("\r\n");
+  );
+  return lines.join("\r\n");
 }
 
 async function sendLeadEmail(lead: Lead) {
@@ -87,34 +117,48 @@ async function sendLeadEmail(lead: Lead) {
     return { sent: false, reason: "no_connector" as const };
   }
 
-  const subject = `New Lead — ${lead.target_country} (${lead.source_type})`;
+  const svc = serviceLabel(lead.service_key || "");
+  const subject = `New ${svc} Lead — ${lead.target_country}`;
   const fileName = `lead_${lead.last_name}_${Date.now()}.txt`.replace(/\s+/g, "_");
   const fileText = buildLeadFile(lead);
 
   const row = (label: string, value: string) =>
     `<tr><td style="padding:6px 0;color:#94a3b8;width:42%">${escapeHtml(label)}</td><td>${escapeHtml(value)}</td></tr>`;
 
+  const extraRows = lead.extras.map((e) => row(e.label, dash(e.value))).join("");
+
   const html = `<!doctype html><html><body style="font-family:Arial,sans-serif;background:#0A192F;color:#fff;padding:24px">
-    <div style="max-width:620px;margin:auto;background:#112240;border-radius:12px;padding:28px">
-      <h2 style="color:#F5C26B;margin:0 0 12px">Al-Bahr Travels — New Lead</h2>
-      <p style="color:#cbd5e1;margin:0 0 16px">A visitor submitted a request via the website. Full details are attached as <b>${escapeHtml(fileName)}</b>.</p>
-      <table style="width:100%;border-collapse:collapse;color:#fff">
+    <div style="max-width:640px;margin:auto;background:#112240;border-radius:12px;padding:28px">
+      <p style="color:#F5C26B;letter-spacing:3px;font-size:11px;margin:0 0 4px">AL-BAHR TRAVELS — NEW LEAD</p>
+      <h2 style="color:#fff;margin:0 0 16px">${escapeHtml(svc)}</h2>
+      <p style="color:#cbd5e1;margin:0 0 16px">Full details attached as <b>${escapeHtml(fileName)}</b>.</p>
+
+      <h3 style="color:#F5C26B;font-size:13px;letter-spacing:2px;margin:18px 0 8px;text-transform:uppercase">Client</h3>
+      <table style="width:100%;border-collapse:collapse;color:#fff;font-size:14px">
         ${row("Client Name", `${lead.first_name} ${lead.last_name}`)}
         ${row("Client Email", lead.email)}
         ${row("Phone Number", lead.phone)}
         ${row("Current Residence", dash(lead.residence_country))}
         ${row("Booking Target", lead.target_country)}
+      </table>
+
+      <h3 style="color:#F5C26B;font-size:13px;letter-spacing:2px;margin:18px 0 8px;text-transform:uppercase">Travel Documents</h3>
+      <table style="width:100%;border-collapse:collapse;color:#fff;font-size:14px">
         ${row("Passport Number", dash(lead.passport_number))}
         ${row("Passport Expiry", dash(lead.passport_expiry))}
         ${row("Visa Number", dash(lead.visa_number))}
         ${row("Visa Expiry", dash(lead.visa_expiry))}
-        ${row("Source", lead.source_type)}
-        ${row("Submitted", new Date().toUTCString())}
       </table>
-      <div style="margin-top:18px;padding:14px;background:#0A192F;border-radius:8px;border:1px solid #1e3a5f">
-        <div style="color:#94a3b8;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Client Message / Request</div>
-        <div style="white-space:pre-wrap;color:#fff">${escapeHtml(dash(lead.message))}</div>
-      </div>
+
+      ${extraRows ? `
+      <h3 style="color:#F5C26B;font-size:13px;letter-spacing:2px;margin:18px 0 8px;text-transform:uppercase">${escapeHtml(svc)} — Specifics</h3>
+      <table style="width:100%;border-collapse:collapse;color:#fff;font-size:14px">${extraRows}</table>
+      ` : ""}
+
+      <h3 style="color:#F5C26B;font-size:13px;letter-spacing:2px;margin:18px 0 8px;text-transform:uppercase">Message</h3>
+      <div style="padding:14px;background:#0A192F;border-radius:8px;border:1px solid #1e3a5f;white-space:pre-wrap;color:#fff;font-size:14px">${escapeHtml(dash(lead.message))}</div>
+
+      <p style="color:#64748b;font-size:11px;margin-top:18px">Source: ${escapeHtml(lead.source_type)} · Submitted: ${new Date().toUTCString()}</p>
     </div></body></html>`;
 
   const boundary = `=_albahr_${Date.now().toString(36)}`;
@@ -167,7 +211,7 @@ async function sendLeadEmail(lead: Lead) {
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => LeadSchema.parse(input))
   .handler(async ({ data }) => {
-    // country_leads only stores a subset; the full record goes out via email.
+    // country_leads only persists a subset; full record goes via email.
     const dbRow = {
       first_name: data.first_name,
       last_name: data.last_name,
@@ -179,7 +223,7 @@ export const submitLead = createServerFn({ method: "POST" })
     const { error } = await supabaseAdmin.from("country_leads").insert(dbRow);
     if (error) {
       console.error("[leads] insert error", error);
-      // Don't block the lead — still try to email so we never lose it.
+      // Don't block — still email so we never lose the lead.
     }
     await supabaseAdmin.rpc("increment_counter", {
       counter_name: "consultations_booked",

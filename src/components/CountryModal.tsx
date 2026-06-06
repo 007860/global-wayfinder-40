@@ -53,6 +53,7 @@ export function CountryModal({ sourceType, onClose }: Props) {
           <LeadForm
             subject={selected}
             sourceType={sourceType!}
+            serviceKey={sourceType === "airline_ticket" ? "flight" : undefined}
             requirePassport
             onBack={() => setSelected(null)}
             onDone={close}
