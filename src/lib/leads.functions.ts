@@ -1,6 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 const ExtraSchema = z.object({
   label: z.string().trim().min(1).max(80),
@@ -202,6 +201,7 @@ async function sendLeadEmail(lead: Lead) {
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => LeadSchema.parse(input))
   .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     // country_leads only persists a subset; full record goes via email.
     const dbRow = {
       first_name: data.first_name,
