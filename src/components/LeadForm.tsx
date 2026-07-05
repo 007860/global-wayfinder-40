@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
 import { WORLD_COUNTRIES } from "@/lib/countries";
+import { LaserDropzone } from "./LaserDropzone";
 
 export type LeadServiceKey = "medical" | "visa" | "flight" | "hotel";
 
@@ -165,6 +166,10 @@ export function LeadForm({
                 </Labeled>
               </>
             )}
+          </div>
+          <div className="mt-5 grid sm:grid-cols-2 gap-4">
+            <LaserDropzone label="Upload Passport Bio Page" />
+            {needsVisa && <LaserDropzone label="Upload Existing Visa" />}
           </div>
         </>
       )}

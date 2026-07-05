@@ -4,6 +4,7 @@ import { BurgerMenu } from "@/components/BurgerMenu";
 import { Hero } from "@/components/Hero";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FloatingEmailButton } from "@/components/FloatingEmailButton";
+import { LiveStatusTicker } from "@/components/LiveStatusTicker";
 import { useCounters } from "@/hooks/use-counters";
 import { Link } from "@tanstack/react-router";
 
@@ -31,6 +32,8 @@ function Index() {
       <TopUtilityStrip />
       <BurgerMenu />
       <Hero />
+
+      <LiveStatusTicker />
 
       {/* Counters band */}
       <section className="border-y border-white/10 bg-[var(--midnight-light)]/40">
