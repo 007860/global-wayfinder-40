@@ -33,6 +33,8 @@ function Index() {
       <BurgerMenu />
       <Hero />
 
+      <LiveStatusTicker />
+
       {/* Counters band */}
       <section className="border-y border-white/10 bg-[var(--midnight-light)]/40">
         <div className="max-w-5xl mx-auto px-6 py-10 grid sm:grid-cols-3 gap-6 text-center">
