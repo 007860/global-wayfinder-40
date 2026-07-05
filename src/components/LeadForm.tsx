@@ -167,6 +167,10 @@ export function LeadForm({
               </>
             )}
           </div>
+          <div className="mt-5 grid sm:grid-cols-2 gap-4">
+            <LaserDropzone label="Upload Passport Bio Page" />
+            {needsVisa && <LaserDropzone label="Upload Existing Visa" />}
+          </div>
         </>
       )}
 
