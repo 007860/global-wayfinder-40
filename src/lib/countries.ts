@@ -96,7 +96,9 @@ export const COUNTRIES: Country[] = WORLD_COUNTRIES;
 export const LEAD_EMAIL = "al.bahr.medical.appointments@gmail.com";
 export const WHATSAPP_NUMBER = "923434762264";
 export const WHATSAPP_DISPLAY = "+92 343 4762264";
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+export const WHATSAPP_PREFILL =
+  "Hello Al-Bahr Travels & Consultants — I'd like to enquire about your booking and visa services.";
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`;
 export const BRANCH_ADDRESS =
   "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
 export const BRAND_NAME = "Al-Bahr Travels & Consultants";
