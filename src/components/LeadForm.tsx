@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
 import { WORLD_COUNTRIES } from "@/lib/countries";
+import { LaserDropzone } from "./LaserDropzone";
 
 export type LeadServiceKey = "medical" | "visa" | "flight" | "hotel";
 
