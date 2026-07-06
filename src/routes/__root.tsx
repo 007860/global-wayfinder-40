@@ -12,8 +12,10 @@ import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
 const SITE_NAME = "Al-Bahr Travels & Consultants";
+const SITE_TITLE =
+  "Al-Bahr Travels & Consultants | Premium Travel & Visa Logistics";
 const SITE_DESC =
-  "Premium visa appointments, flight & hotel bookings, and medical appointment consultancy. Trusted Lahore-based agency since 2015.";
+  "Elite travel consultancy and strategic visa logistics for Pakistani travellers. Specialized in Gulf medical appointments, Europe visa pipelines, and optimized flight routing.";
 
 const LOCAL_BUSINESS_LD = {
   "@context": "https://schema.org",
@@ -101,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${SITE_NAME} — International Visa & Booking Hub` },
+      { title: SITE_TITLE },
       { name: "description", content: SITE_DESC },
       { name: "author", content: SITE_NAME },
       { name: "keywords", content: "visa appointments Lahore, Schengen visa Pakistan, Saudi visa, UAE visa, flight booking Pakistan, medical appointment Europe, Al-Bahr Travels" },
