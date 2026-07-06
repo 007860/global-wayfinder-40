@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { useCounters } from "@/hooks/use-counters";
 import {
@@ -32,10 +33,16 @@ export function SiteFooter() {
       <div className="max-w-7xl mx-auto px-6 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
         <div>
           <h3 className="font-display text-2xl text-gold-gradient mb-3">{BRAND_NAME}</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
             Trusted since 2015. Lahore-based consultancy for international visas, medical
             appointments, flights, and hotels Booking.
           </p>
+          <Link
+            to="/about"
+            className="inline-flex items-center gap-1 text-sm text-gold hover:text-gold-deep transition-colors"
+          >
+            About Us — meet the team →
+          </Link>
         </div>
 
         <div>
