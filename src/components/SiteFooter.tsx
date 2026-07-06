@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { useCounters } from "@/hooks/use-counters";
 import {
