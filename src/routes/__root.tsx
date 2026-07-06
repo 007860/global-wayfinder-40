@@ -103,7 +103,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${SITE_NAME} — International Visa & Booking Hub` },
+      { title: SITE_TITLE },
       { name: "description", content: SITE_DESC },
       { name: "author", content: SITE_NAME },
       { name: "keywords", content: "visa appointments Lahore, Schengen visa Pakistan, Saudi visa, UAE visa, flight booking Pakistan, medical appointment Europe, Al-Bahr Travels" },
