@@ -47,8 +47,8 @@ const EXECUTIVES: Exec[] = [
   },
   {
     eyebrow: "02 — Director of Operations",
-    name: "Mubashir Ali Khan",
-    title: "Director, Al-Bahr Travels & Consultants",
+    name: "Mubashir Khan Lungah",
+    title: "Director & Gulf Visa Logistics Expert",
     photo: directorPortrait,
     message:
       "Operational integrity and technological innovation are the core pillars of Al-Bahr. In an era where travel compliance and consular dynamics shift rapidly, our team working behind the scenes guarantees that your documentation remains flawless and secure.",
