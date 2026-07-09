@@ -1,6 +1,7 @@
 // @lovable.dev/vite-tanstack-config already includes the framework/build plugins.
 // We only add targeted overrides here.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/tanstack/vite";
 
 export default defineConfig({
   // Force a Nitro server build outside the Lovable sandbox so Vercel receives
@@ -11,4 +12,5 @@ export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
+  plugins: [mcpPlugin()],
 });
