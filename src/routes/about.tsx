@@ -93,10 +93,12 @@ function AboutPage() {
                 <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-elev bg-[var(--midnight-light)]">
                   <img
                     src={exec.photo}
-                    alt={`Portrait of ${exec.name}, ${exec.title}`}
+                    alt={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
+                    aria-label={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
                     width={768}
                     height={768}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-auto aspect-square object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[var(--midnight)] to-transparent pointer-events-none" />

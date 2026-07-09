@@ -95,7 +95,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-muted-foreground px-4">
-        © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+        © 2026 {BRAND_NAME}. All Rights Reserved.
       </div>
       <ServiceModal service={service} onClose={() => setService(null)} />
     </footer>
