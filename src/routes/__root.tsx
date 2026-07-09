@@ -13,24 +13,89 @@ import appCss from "../styles.css?url";
 
 const SITE_NAME = "Al-Bahr Travels & Consultants";
 const SITE_TITLE =
-  "Al-Bahr Travels & Consultants | Premium Travel & Visa Logistics";
+  "Al-Bahr Travels & Consultants | Elite Visa & Premium Travel Logistics";
 const SITE_DESC =
-  "Elite travel consultancy and strategic visa logistics for Pakistani travellers. Specialized in Gulf medical appointments, Europe visa pipelines, and optimized flight routing.";
+  "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
+const OG_TITLE = "Al-Bahr Travels & Consultants | Premium Global Mobility";
+const OG_DESC =
+  "Premium consultancy for Pakistani travellers — Gulf, Europe, and beyond. Embassy-grade expertise, white-glove service.";
+
+const KEYWORDS = [
+  "Al-Bahr Travels & Consultants",
+  "Gamca medical registration Pakistan",
+  "Wafid medical appointment booking online",
+  "Gulf medical test center tracking",
+  "Best visa consultants in Pakistan",
+  "Schengen visa appointment pipeline",
+  "Saudi medical token online",
+  "Europe work visa consultancy",
+  "Qatar visa processing agency",
+  "premium travel logistics Pakistan",
+  "luxury travel consultants",
+  "Pakistan to Europe travel agency",
+  "Muhammad Khan CEO",
+  "Mubashir Khan Lungah",
+].join(", ");
 
 const LOCAL_BUSINESS_LD = {
   "@context": "https://schema.org",
-  "@type": "TravelAgency",
+  "@type": ["TravelAgency", "LocalBusiness"],
   name: SITE_NAME,
+  legalName: "Al-Bahr Travels & Consultants",
   description: SITE_DESC,
   email: "al.bahr.medical.appointments@gmail.com",
+  url: "https://https-al-bahr-travels-consultants.lovable.app",
+  telephone: "+92 343 4762264",
   address: {
     "@type": "PostalAddress",
     streetAddress: "78 E Block, Architect Engineering Housing Society",
     addressLocality: "Lahore",
+    addressRegion: "Punjab",
     addressCountry: "PK",
   },
-  areaServed: ["Saudi Arabia", "Qatar", "UAE", "Kuwait", "Oman", "Bahrain", "United Kingdom", "Italy", "Germany", "France", "Spain", "Poland", "Netherlands"],
+  areaServed: [
+    "Saudi Arabia",
+    "Qatar",
+    "United Arab Emirates",
+    "Kuwait",
+    "Oman",
+    "Bahrain",
+    "United Kingdom",
+    "Italy",
+    "Germany",
+    "France",
+    "Spain",
+    "Poland",
+    "Netherlands",
+    "Gulf",
+    "Europe",
+    "International",
+  ],
   foundingDate: "2015",
+  founder: [
+    {
+      "@type": "Person",
+      name: "Muhammad Khan",
+      jobTitle: "Chief Executive Officer",
+    },
+    {
+      "@type": "Person",
+      name: "Mubashir Khan Lungah",
+      jobTitle: "Director",
+    },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: "+92 343 4762264",
+      email: "al.bahr.medical.appointments@gmail.com",
+      areaServed: ["PK", "SA", "QA", "AE", "KW", "OM", "BH", "EU"],
+      availableLanguage: ["en", "ur"],
+      url: "https://wa.me/923434762264",
+    },
+  ],
+  sameAs: ["https://wa.me/923434762264"],
   priceRange: "$$",
 };
 
@@ -106,14 +171,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: SITE_TITLE },
       { name: "description", content: SITE_DESC },
       { name: "author", content: SITE_NAME },
-      { name: "keywords", content: "visa appointments Lahore, Schengen visa Pakistan, Saudi visa, UAE visa, flight booking Pakistan, medical appointment Europe, Al-Bahr Travels" },
-      { property: "og:title", content: SITE_NAME },
-      { property: "og:description", content: SITE_DESC },
+      { name: "keywords", content: KEYWORDS },
+      { name: "geo.region", content: "PK" },
+      { name: "geo.placename", content: "Pakistan" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:title", content: OG_TITLE },
+      { property: "og:description", content: OG_DESC },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: SITE_NAME },
-      { name: "twitter:description", content: SITE_DESC },
+      { name: "twitter:title", content: OG_TITLE },
+      { name: "twitter:description", content: OG_DESC },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [

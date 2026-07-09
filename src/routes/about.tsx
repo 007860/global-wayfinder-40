@@ -47,8 +47,8 @@ const EXECUTIVES: Exec[] = [
   },
   {
     eyebrow: "02 — Director of Operations",
-    name: "Mubashir Ali Khan",
-    title: "Director, Al-Bahr Travels & Consultants",
+    name: "Mubashir Khan Lungah",
+    title: "Director & Gulf Visa Logistics Expert",
     photo: directorPortrait,
     message:
       "Operational integrity and technological innovation are the core pillars of Al-Bahr. In an era where travel compliance and consular dynamics shift rapidly, our team working behind the scenes guarantees that your documentation remains flawless and secure.",
@@ -93,10 +93,12 @@ function AboutPage() {
                 <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-elev bg-[var(--midnight-light)]">
                   <img
                     src={exec.photo}
-                    alt={`Portrait of ${exec.name}, ${exec.title}`}
+                    alt={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
+                    aria-label={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
                     width={768}
                     height={768}
                     loading="lazy"
+                    decoding="async"
                     className="w-full h-auto aspect-square object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[var(--midnight)] to-transparent pointer-events-none" />
