@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_gen_events: {
+        Row: {
+          created_at: string
+          id: string
+          ip: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip?: string
+        }
+        Relationships: []
+      }
       analytics_counters: {
         Row: {
           id: string
@@ -41,6 +59,7 @@ export type Database = {
           cover_image: string | null
           created_at: string
           id: string
+          is_published: boolean
           query: string
           sections: Json
           title: string
@@ -50,6 +69,7 @@ export type Database = {
           cover_image?: string | null
           created_at?: string
           id?: string
+          is_published?: boolean
           query: string
           sections?: Json
           title: string
@@ -59,6 +79,7 @@ export type Database = {
           cover_image?: string | null
           created_at?: string
           id?: string
+          is_published?: boolean
           query?: string
           sections?: Json
           title?: string
