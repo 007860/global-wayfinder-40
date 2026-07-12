@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ServicePills, type ServiceKey } from "./ServicePills";
 import { ServiceModal } from "./ServiceModal";
-import { AISearchWidget } from "./AISearchWidget";
+
 import { CheckCircle2 } from "lucide-react";
 
 export function Hero() {
@@ -56,12 +56,6 @@ export function Hero() {
           <ServicePills onSelect={(key, label) => setService({ key, label })} />
         </div>
 
-        <div className="mt-14">
-          <AISearchWidget />
-          <p className="text-xs text-muted-foreground mt-3">
-            AI agent fetches live visa & travel intelligence — saved as a permanent blog brief.
-          </p>
-        </div>
       </div>
     </section>
   );
