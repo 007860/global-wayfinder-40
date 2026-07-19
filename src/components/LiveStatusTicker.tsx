@@ -125,7 +125,7 @@ export function LiveStatusTicker() {
                   {n.region}
                 </p>
                 <p className={`mt-2 font-mono text-lg font-semibold tracking-tight ${line}`}>
-                  {n.value()}
+                  {mounted ? n.value() : "—"}
                 </p>
               </div>
             );
