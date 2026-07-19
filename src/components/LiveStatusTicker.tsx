@@ -63,7 +63,9 @@ const NODES: Node[] = [
 
 export function LiveStatusTicker() {
   const [tick, setTick] = useState(0);
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
+    setMounted(true);
     const t = setInterval(() => setTick((n) => n + 1), 2200);
     return () => clearInterval(t);
   }, []);
