@@ -18,7 +18,7 @@ import {
 
 const EXPIRY = new Date("2026-09-01T00:00:00Z"); // disappears after Aug 31, 2026
 const WHATSAPP = "https://wa.me/923434762264";
-const ADDRESS = "Empress Tower MZ-06, Empress Road, Lahore";
+const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
 
 type Row = { label: string; value: string };
 
