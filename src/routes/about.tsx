@@ -47,7 +47,7 @@ const EXECUTIVES: Exec[] = [
   },
   {
     eyebrow: "02 — Director of Operations",
-    name: "Mubashir Khan Lungah",
+    name: "Mubashir Khan Langah",
     title: "Director & Gulf Visa Logistics Expert",
     photo: directorPortrait,
     message:
