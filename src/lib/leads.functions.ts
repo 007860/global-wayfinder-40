@@ -108,8 +108,10 @@ async function sendLeadEmail(lead: Lead) {
   }
 
   const svc = serviceLabel(lead.service_key || "");
-  const subject = `New ${svc} Lead — ${lead.target_country}`;
-  const fileName = `lead_${lead.last_name}_${Date.now()}.txt`.replace(/\s+/g, "_");
+  const sanitizeHeader = (v: string) => v.replace(/[\r\n]+/g, " ").trim();
+  const sanitizeFilename = (v: string) => v.replace(/[\r\n"\\]+/g, "_");
+  const subject = sanitizeHeader(`New ${svc} Lead — ${lead.target_country}`);
+  const fileName = sanitizeFilename(`lead_${lead.last_name}_${Date.now()}.txt`).replace(/\s+/g, "_");
   const fileText = buildLeadFile(lead);
 
   const row = (label: string, value: string) =>
