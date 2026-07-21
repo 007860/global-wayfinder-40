@@ -456,13 +456,29 @@ function AirSialTab() {
                 </span>
               </div>
             </div>
-            <div className="shrink-0 text-right">
-              <div className="text-[10px] tracking-[0.25em] text-muted-foreground">
-                FROM
+            <div className="shrink-0 flex sm:flex-col items-end gap-3 sm:gap-2">
+              <div className="text-right">
+                <div className="text-[10px] tracking-[0.25em] text-muted-foreground">
+                  FROM
+                </div>
+                <div className="font-display text-2xl text-gold-gradient tabular-nums">
+                  {g.price}
+                </div>
               </div>
-              <div className="font-display text-2xl text-gold-gradient tabular-nums">
-                {g.price}
-              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  bookOnWhatsApp(`AirSial Umrah Group — ${g.nights}`, [
+                    `Depart: ${g.depart}`,
+                    `Return: ${g.ret}`,
+                    `Price: ${g.price}`,
+                  ])
+                }
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] text-white text-xs font-semibold px-3.5 py-2 hover:scale-[1.03] transition-transform whitespace-nowrap"
+              >
+                <MessageCircle className="size-3.5" />
+                Book Now
+              </button>
             </div>
           </div>
         ))}
@@ -470,3 +486,4 @@ function AirSialTab() {
     </div>
   );
 }
+
