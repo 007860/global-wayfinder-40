@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { LeadForm } from "./LeadForm";
+import { LeadForm, type LeadServiceKey } from "./LeadForm";
 import { CountryPicker } from "./CountryPicker";
 import { ServiceTabBar } from "./ServiceTabBar";
+import { UmrahPackages } from "./UmrahPackages";
 import { WORLD_COUNTRIES, GCC_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
@@ -17,6 +18,7 @@ const LABELS: Record<ServiceKey, string> = {
   visa: "Visa Services",
   flight: "Flight Booking",
   hotel: "Hotel Booking",
+  umrah: "Hajj & Umrah Packages",
 };
 
 export function ServiceModal({ service, onClose }: Props) {
@@ -26,6 +28,7 @@ export function ServiceModal({ service, onClose }: Props) {
   if (!service) return null;
   const currentKey: ServiceKey = activeKey ?? service.key;
   const currentLabel = LABELS[currentKey];
+  const isUmrah = currentKey === "umrah";
   const requirePassport = currentKey !== "visa";
   const isMedical = currentKey === "medical";
   const countryList = isMedical ? GCC_COUNTRIES : WORLD_COUNTRIES;
@@ -35,6 +38,7 @@ export function ServiceModal({ service, onClose }: Props) {
     setActiveKey(null);
     onClose();
   };
+
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
