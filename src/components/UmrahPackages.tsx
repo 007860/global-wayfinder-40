@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   Plane,
   UtensilsCrossed,
@@ -17,8 +18,25 @@ import {
 } from "lucide-react";
 
 const EXPIRY = new Date("2026-09-01T00:00:00Z"); // disappears after Aug 31, 2026
-const WHATSAPP = "https://wa.me/923434762264";
+const WHATSAPP_NUMBER = "923434762264";
+const WHATSAPP = `https://wa.me/${WHATSAPP_NUMBER}`;
 const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
+
+function bookOnWhatsApp(packageName: string, details: string[]) {
+  const lines = [
+    "Assalam-o-Alaikum Al-Bahr Travels,",
+    "",
+    `I want to book the following Umrah package:`,
+    `• ${packageName}`,
+    ...details.map((d) => `• ${d}`),
+    "",
+    "Please contact me with next steps. JazakAllah.",
+  ];
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+  toast.success("Request sent on WhatsApp — our consultant will contact you shortly.");
+}
+
 
 type Row = { label: string; value: string };
 
@@ -343,9 +361,19 @@ function PackageCard({
       <div className="border-t border-white/10 pt-4">
         <div className="grid grid-cols-2 gap-2">
           {rows.map((r) => (
-            <div
+            <button
+              type="button"
               key={r.label}
-              className="rounded-lg bg-[#0A192F] border border-white/5 px-3 py-2.5"
+              onClick={() =>
+                bookOnWhatsApp(title, [
+                  subtitle ? `Dates: ${subtitle}` : "",
+                  `Makkah Hotel: ${makkah}`,
+                  `Madinah Hotel: ${madinah}`,
+                  `Occupancy: ${r.label}`,
+                  `Price: ${r.value}`,
+                ].filter(Boolean))
+              }
+              className="text-left rounded-lg bg-[#0A192F] border border-white/5 px-3 py-2.5 hover:border-gold/60 hover:bg-[#0d2140] transition-colors cursor-pointer group"
             >
               <div className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase flex items-center gap-1">
                 <Users className="size-3 text-gold" /> {r.label}
@@ -353,10 +381,17 @@ function PackageCard({
               <div className="text-sm font-semibold text-gold-gradient tabular-nums mt-0.5">
                 {r.value}
               </div>
-            </div>
+              <div className="mt-1.5 flex items-center gap-1 text-[10px] text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">
+                <MessageCircle className="size-3" /> Book on WhatsApp
+              </div>
+            </button>
           ))}
         </div>
+        <p className="mt-3 text-[10px] text-muted-foreground text-center">
+          Tap any price to book instantly on WhatsApp
+        </p>
       </div>
+
     </div>
   );
 }
@@ -421,13 +456,29 @@ function AirSialTab() {
                 </span>
               </div>
             </div>
-            <div className="shrink-0 text-right">
-              <div className="text-[10px] tracking-[0.25em] text-muted-foreground">
-                FROM
+            <div className="shrink-0 flex sm:flex-col items-end gap-3 sm:gap-2">
+              <div className="text-right">
+                <div className="text-[10px] tracking-[0.25em] text-muted-foreground">
+                  FROM
+                </div>
+                <div className="font-display text-2xl text-gold-gradient tabular-nums">
+                  {g.price}
+                </div>
               </div>
-              <div className="font-display text-2xl text-gold-gradient tabular-nums">
-                {g.price}
-              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  bookOnWhatsApp(`AirSial Umrah Group — ${g.nights}`, [
+                    `Depart: ${g.depart}`,
+                    `Return: ${g.ret}`,
+                    `Price: ${g.price}`,
+                  ])
+                }
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] text-white text-xs font-semibold px-3.5 py-2 hover:scale-[1.03] transition-transform whitespace-nowrap"
+              >
+                <MessageCircle className="size-3.5" />
+                Book Now
+              </button>
             </div>
           </div>
         ))}
@@ -435,3 +486,4 @@ function AirSialTab() {
     </div>
   );
 }
+
