@@ -36,7 +36,7 @@ function Index() {
 
       <LiveStatusTicker />
 
-      <UmrahPackages />
+
 
       {/* Counters band */}
       <section className="border-y border-white/10 bg-[var(--midnight-light)]/40">
