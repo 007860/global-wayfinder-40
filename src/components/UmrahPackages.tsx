@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   Plane,
   UtensilsCrossed,
@@ -17,8 +18,25 @@ import {
 } from "lucide-react";
 
 const EXPIRY = new Date("2026-09-01T00:00:00Z"); // disappears after Aug 31, 2026
-const WHATSAPP = "https://wa.me/923434762264";
+const WHATSAPP_NUMBER = "923434762264";
+const WHATSAPP = `https://wa.me/${WHATSAPP_NUMBER}`;
 const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
+
+function bookOnWhatsApp(packageName: string, details: string[]) {
+  const lines = [
+    "Assalam-o-Alaikum Al-Bahr Travels,",
+    "",
+    `I want to book the following Umrah package:`,
+    `• ${packageName}`,
+    ...details.map((d) => `• ${d}`),
+    "",
+    "Please contact me with next steps. JazakAllah.",
+  ];
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+  toast.success("Request sent on WhatsApp — our consultant will contact you shortly.");
+}
+
 
 type Row = { label: string; value: string };
 
