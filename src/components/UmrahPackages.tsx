@@ -361,9 +361,19 @@ function PackageCard({
       <div className="border-t border-white/10 pt-4">
         <div className="grid grid-cols-2 gap-2">
           {rows.map((r) => (
-            <div
+            <button
+              type="button"
               key={r.label}
-              className="rounded-lg bg-[#0A192F] border border-white/5 px-3 py-2.5"
+              onClick={() =>
+                bookOnWhatsApp(title, [
+                  subtitle ? `Dates: ${subtitle}` : "",
+                  `Makkah Hotel: ${makkah}`,
+                  `Madinah Hotel: ${madinah}`,
+                  `Occupancy: ${r.label}`,
+                  `Price: ${r.value}`,
+                ].filter(Boolean))
+              }
+              className="text-left rounded-lg bg-[#0A192F] border border-white/5 px-3 py-2.5 hover:border-gold/60 hover:bg-[#0d2140] transition-colors cursor-pointer group"
             >
               <div className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase flex items-center gap-1">
                 <Users className="size-3 text-gold" /> {r.label}
@@ -371,10 +381,17 @@ function PackageCard({
               <div className="text-sm font-semibold text-gold-gradient tabular-nums mt-0.5">
                 {r.value}
               </div>
-            </div>
+              <div className="mt-1.5 flex items-center gap-1 text-[10px] text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">
+                <MessageCircle className="size-3" /> Book on WhatsApp
+              </div>
+            </button>
           ))}
         </div>
+        <p className="mt-3 text-[10px] text-muted-foreground text-center">
+          Tap any price to book instantly on WhatsApp
+        </p>
       </div>
+
     </div>
   );
 }
