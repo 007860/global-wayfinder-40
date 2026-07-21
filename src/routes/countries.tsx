@@ -78,7 +78,8 @@ function CountriesPage() {
           </h2>
           <p className="text-muted-foreground text-sm mb-8">Pick the service you need.</p>
           <div className="grid sm:grid-cols-2 gap-3">
-            {SERVICES.map(({ key, icon: Icon, label }) => (
+            {SERVICES.filter((s) => s.key !== "umrah").map(({ key, icon: Icon, label }) => (
+
               <button
                 key={key}
                 onClick={() => setService({ key, label })}
@@ -101,7 +102,7 @@ function CountriesPage() {
           <LeadForm
             subject={`${service.label} — ${country}`}
             sourceType={`countries_page_${service.key}`}
-            serviceKey={service.key}
+            serviceKey={service.key as Exclude<ServiceKey, "umrah">}
             requirePassport={service.key !== "visa"}
             onBack={() => setService(null)}
             backLabel="Change service"

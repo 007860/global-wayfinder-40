@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { LeadForm } from "./LeadForm";
+import { LeadForm, type LeadServiceKey } from "./LeadForm";
 import { CountryPicker } from "./CountryPicker";
 import { ServiceTabBar } from "./ServiceTabBar";
+import { UmrahPackages } from "./UmrahPackages";
 import { WORLD_COUNTRIES, GCC_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
@@ -17,6 +18,7 @@ const LABELS: Record<ServiceKey, string> = {
   visa: "Visa Services",
   flight: "Flight Booking",
   hotel: "Hotel Booking",
+  umrah: "Hajj & Umrah Packages",
 };
 
 export function ServiceModal({ service, onClose }: Props) {
@@ -26,6 +28,7 @@ export function ServiceModal({ service, onClose }: Props) {
   if (!service) return null;
   const currentKey: ServiceKey = activeKey ?? service.key;
   const currentLabel = LABELS[currentKey];
+  const isUmrah = currentKey === "umrah";
   const requirePassport = currentKey !== "visa";
   const isMedical = currentKey === "medical";
   const countryList = isMedical ? GCC_COUNTRIES : WORLD_COUNTRIES;
@@ -35,6 +38,7 @@ export function ServiceModal({ service, onClose }: Props) {
     setActiveKey(null);
     onClose();
   };
+
 
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center p-4">
@@ -48,7 +52,11 @@ export function ServiceModal({ service, onClose }: Props) {
           <X className="size-5" />
         </button>
 
-        {!selected ? (
+        {isUmrah ? (
+          <div className="-mx-6 sm:-mx-10 -mt-6 sm:-mt-10">
+            <UmrahPackages />
+          </div>
+        ) : !selected ? (
           <>
             <div className="mb-6">
               <p className="text-xs tracking-[0.3em] text-gold mb-2">STEP 1 OF 2</p>
@@ -63,7 +71,7 @@ export function ServiceModal({ service, onClose }: Props) {
             </div>
 
             <ServiceTabBar
-              active={currentKey}
+              active={currentKey as Exclude<ServiceKey, "umrah">}
               onChange={(k) => setActiveKey(k)}
             />
 
@@ -76,7 +84,7 @@ export function ServiceModal({ service, onClose }: Props) {
         ) : (
           <motion.div layout transition={{ type: "spring", stiffness: 260, damping: 30 }}>
             <ServiceTabBar
-              active={currentKey}
+              active={currentKey as Exclude<ServiceKey, "umrah">}
               onChange={(k) => {
                 setActiveKey(k);
                 // Reset country if new service is medical and old country is not GCC.
@@ -97,7 +105,7 @@ export function ServiceModal({ service, onClose }: Props) {
                 <LeadForm
                   subject={`${currentLabel} — ${selected}`}
                   sourceType={`service_${currentKey}`}
-                  serviceKey={currentKey}
+                  serviceKey={currentKey as LeadServiceKey}
                   requirePassport={requirePassport}
                   onBack={() => setSelected(null)}
                   onDone={close}
@@ -106,6 +114,7 @@ export function ServiceModal({ service, onClose }: Props) {
             </AnimatePresence>
           </motion.div>
         )}
+
       </div>
     </div>
   );

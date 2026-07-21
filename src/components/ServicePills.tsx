@@ -1,6 +1,6 @@
-import { Stethoscope, Globe2, Plane, Hotel } from "lucide-react";
+import { Stethoscope, Globe2, Plane, Hotel, Moon } from "lucide-react";
 
-export type ServiceKey = "medical" | "visa" | "flight" | "hotel";
+export type ServiceKey = "medical" | "visa" | "flight" | "hotel" | "umrah";
 
 export const SERVICES: {
   key: ServiceKey;
@@ -11,7 +11,9 @@ export const SERVICES: {
   { key: "visa", icon: Globe2, label: "Visa Services" },
   { key: "flight", icon: Plane, label: "Flight Booking" },
   { key: "hotel", icon: Hotel, label: "Hotel Booking" },
+  { key: "umrah", icon: Moon, label: "Hajj & Umrah Packages" },
 ];
+
 
 type Props = {
   onSelect: (key: ServiceKey, label: string) => void;
