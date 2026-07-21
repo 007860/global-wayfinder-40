@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { SiteFooter } from "@/components/SiteFooter";
 import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 import { LiveStatusTicker } from "@/components/LiveStatusTicker";
-import { UmrahPackages } from "@/components/UmrahPackages";
+
 import { useCounters } from "@/hooks/use-counters";
 import { Link } from "@tanstack/react-router";
 
