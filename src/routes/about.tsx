@@ -5,7 +5,7 @@ import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LEAD_EMAIL, WHATSAPP_URL, WHATSAPP_DISPLAY, BRAND_NAME } from "@/lib/countries";
 import ceoPortrait from "@/assets/portrait-ceo.jpg";
-import directorPortrait from "@/assets/portrait-director.jpg";
+
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,

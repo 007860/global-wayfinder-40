@@ -33,8 +33,7 @@ const KEYWORDS = [
   "premium travel logistics Pakistan",
   "luxury travel consultants",
   "Pakistan to Europe travel agency",
-  "Muhammad Khan CEO",
-  "Mubashir Khan Lungah",
+  "Mubashir Ali CEO",
 ].join(", ");
 
 const LOCAL_BUSINESS_LD = {
@@ -75,13 +74,8 @@ const LOCAL_BUSINESS_LD = {
   founder: [
     {
       "@type": "Person",
-      name: "Muhammad Khan",
+      name: "Mubashir Ali",
       jobTitle: "Chief Executive Officer",
-    },
-    {
-      "@type": "Person",
-      name: "Mubashir Khan Lungah",
-      jobTitle: "Director",
     },
   ],
   contactPoint: [
