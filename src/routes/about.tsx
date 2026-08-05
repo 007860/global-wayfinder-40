@@ -5,7 +5,7 @@ import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { LEAD_EMAIL, WHATSAPP_URL, WHATSAPP_DISPLAY, BRAND_NAME } from "@/lib/countries";
 import ceoPortrait from "@/assets/portrait-ceo.jpg";
-import directorPortrait from "@/assets/portrait-director.jpg";
+
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -39,21 +39,14 @@ type Exec = {
 const EXECUTIVES: Exec[] = [
   {
     eyebrow: "01 — Chief Executive Officer",
-    name: "Muhammad Khan",
+    name: "MUBASHIR ALI",
     title: "CEO, Al-Bahr Travels & Consultants",
     photo: ceoPortrait,
     message:
       "At Al-Bahr Travels, we don't just facilitate travel; we engineer seamless global mobility. Our mission is to bridge the gap between premium Pakistani talent and global horizons with absolute transparency, embassy-grade precision, and an unyielding commitment to white-glove consulting.",
   },
-  {
-    eyebrow: "02 — Director of Operations",
-    name: "Mubashir Khan Langah",
-    title: "Director & Gulf Visa Logistics Expert",
-    photo: directorPortrait,
-    message:
-      "Operational integrity and technological innovation are the core pillars of Al-Bahr. In an era where travel compliance and consular dynamics shift rapidly, our team working behind the scenes guarantees that your documentation remains flawless and secure.",
-  },
 ];
+
 
 function AboutPage() {
   return (
