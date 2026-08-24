@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, ChevronDown, GraduationCap } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CountryModal } from "./CountryModal";
 import { ServiceModal } from "./ServiceModal";
 import type { ServiceKey } from "./ServicePills";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
+import { STUDY_DESTINATIONS } from "@/lib/study-destinations";
 
 const LINKS: {
   id: string;
@@ -25,8 +26,10 @@ const LINKS: {
 
 export function BurgerMenu() {
   const [open, setOpen] = useState(false);
+  const [destOpen, setDestOpen] = useState(true);
   const [modal, setModal] = useState<null | "foreign_countries" | "airline_ticket">(null);
   const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
+
 
   return (
     <>
@@ -119,6 +122,44 @@ export function BurgerMenu() {
               );
             })}
           </nav>
+
+          {/* Destinations dropdown */}
+          <div className="mt-2 border-b border-white/10 pb-4">
+            <button
+              type="button"
+              aria-expanded={destOpen}
+              onClick={() => setDestOpen((v) => !v)}
+              className="group w-full text-left py-5 flex items-center gap-4"
+            >
+              <span className="text-xs text-gold font-mono opacity-60">07</span>
+              <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors flex items-center gap-2">
+                <GraduationCap className="size-5 text-gold" />
+                Destinations
+              </span>
+              <ChevronDown
+                className={`size-5 ml-auto text-gold transition-transform ${destOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {destOpen && (
+              <div className="flex flex-col pl-8">
+                {STUDY_DESTINATIONS.map((d) => (
+                  <Link
+                    key={d.slug}
+                    to={d.route}
+                    onClick={() => setOpen(false)}
+                    className="py-3 text-base text-muted-foreground hover:text-gold transition-colors flex items-center gap-3"
+                  >
+                    <span className="text-lg leading-none">{d.flag}</span>
+                    {d.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="h-24" />
+
+
 
           <div className="absolute bottom-8 left-8 right-8 text-xs text-muted-foreground">
             <p className="mb-2 text-gold font-medium tracking-wider">AL-BAHR TRAVELS</p>
