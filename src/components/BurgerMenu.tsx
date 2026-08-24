@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, ChevronDown, GraduationCap } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { CountryModal } from "./CountryModal";
 import { ServiceModal } from "./ServiceModal";
 import type { ServiceKey } from "./ServicePills";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
+import { STUDY_DESTINATIONS } from "@/lib/study-destinations";
 
 const LINKS: {
   id: string;
@@ -25,8 +26,10 @@ const LINKS: {
 
 export function BurgerMenu() {
   const [open, setOpen] = useState(false);
+  const [destOpen, setDestOpen] = useState(true);
   const [modal, setModal] = useState<null | "foreign_countries" | "airline_ticket">(null);
   const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
+
 
   return (
     <>
