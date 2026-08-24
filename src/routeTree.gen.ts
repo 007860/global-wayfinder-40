@@ -9,6 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
+import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
+import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
+import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
+import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CountriesRouteImport } from './routes/countries'
 import { Route as BlogsRouteImport } from './routes/blogs'
@@ -16,6 +21,31 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StudyInTurkeyRoute = StudyInTurkeyRouteImport.update({
+  id: '/study-in-turkey',
+  path: '/study-in-turkey',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInSouthKoreaRoute = StudyInSouthKoreaRouteImport.update({
+  id: '/study-in-south-korea',
+  path: '/study-in-south-korea',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInItalyRoute = StudyInItalyRouteImport.update({
+  id: '/study-in-italy',
+  path: '/study-in-italy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInHungaryRoute = StudyInHungaryRouteImport.update({
+  id: '/study-in-hungary',
+  path: '/study-in-hungary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInChinaRoute = StudyInChinaRouteImport.update({
+  id: '/study-in-china',
+  path: '/study-in-china',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -54,6 +84,11 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-hungary': typeof StudyInHungaryRoute
+  '/study-in-italy': typeof StudyInItalyRoute
+  '/study-in-south-korea': typeof StudyInSouthKoreaRoute
+  '/study-in-turkey': typeof StudyInTurkeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +97,11 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-hungary': typeof StudyInHungaryRoute
+  '/study-in-italy': typeof StudyInItalyRoute
+  '/study-in-south-korea': typeof StudyInSouthKoreaRoute
+  '/study-in-turkey': typeof StudyInTurkeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +111,39 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-hungary': typeof StudyInHungaryRoute
+  '/study-in-italy': typeof StudyInItalyRoute
+  '/study-in-south-korea': typeof StudyInSouthKoreaRoute
+  '/study-in-turkey': typeof StudyInTurkeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/about' | '/blogs' | '/countries' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/blogs'
+    | '/countries'
+    | '/sitemap.xml'
+    | '/study-in-china'
+    | '/study-in-hungary'
+    | '/study-in-italy'
+    | '/study-in-south-korea'
+    | '/study-in-turkey'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/about' | '/blogs' | '/countries' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/blogs'
+    | '/countries'
+    | '/sitemap.xml'
+    | '/study-in-china'
+    | '/study-in-hungary'
+    | '/study-in-italy'
+    | '/study-in-south-korea'
+    | '/study-in-turkey'
   id:
     | '__root__'
     | '/'
@@ -85,6 +152,11 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/countries'
     | '/sitemap.xml'
+    | '/study-in-china'
+    | '/study-in-hungary'
+    | '/study-in-italy'
+    | '/study-in-south-korea'
+    | '/study-in-turkey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,10 +166,50 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   CountriesRoute: typeof CountriesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StudyInChinaRoute: typeof StudyInChinaRoute
+  StudyInHungaryRoute: typeof StudyInHungaryRoute
+  StudyInItalyRoute: typeof StudyInItalyRoute
+  StudyInSouthKoreaRoute: typeof StudyInSouthKoreaRoute
+  StudyInTurkeyRoute: typeof StudyInTurkeyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/study-in-turkey': {
+      id: '/study-in-turkey'
+      path: '/study-in-turkey'
+      fullPath: '/study-in-turkey'
+      preLoaderRoute: typeof StudyInTurkeyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-south-korea': {
+      id: '/study-in-south-korea'
+      path: '/study-in-south-korea'
+      fullPath: '/study-in-south-korea'
+      preLoaderRoute: typeof StudyInSouthKoreaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-italy': {
+      id: '/study-in-italy'
+      path: '/study-in-italy'
+      fullPath: '/study-in-italy'
+      preLoaderRoute: typeof StudyInItalyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-hungary': {
+      id: '/study-in-hungary'
+      path: '/study-in-hungary'
+      fullPath: '/study-in-hungary'
+      preLoaderRoute: typeof StudyInHungaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-china': {
+      id: '/study-in-china'
+      path: '/study-in-china'
+      fullPath: '/study-in-china'
+      preLoaderRoute: typeof StudyInChinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -150,6 +262,11 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   CountriesRoute: CountriesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StudyInChinaRoute: StudyInChinaRoute,
+  StudyInHungaryRoute: StudyInHungaryRoute,
+  StudyInItalyRoute: StudyInItalyRoute,
+  StudyInSouthKoreaRoute: StudyInSouthKoreaRoute,
+  StudyInTurkeyRoute: StudyInTurkeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
