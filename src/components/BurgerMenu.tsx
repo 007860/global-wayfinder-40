@@ -123,6 +123,44 @@ export function BurgerMenu() {
             })}
           </nav>
 
+          {/* Destinations dropdown */}
+          <div className="mt-2 border-b border-white/10 pb-4">
+            <button
+              type="button"
+              aria-expanded={destOpen}
+              onClick={() => setDestOpen((v) => !v)}
+              className="group w-full text-left py-5 flex items-center gap-4"
+            >
+              <span className="text-xs text-gold font-mono opacity-60">07</span>
+              <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors flex items-center gap-2">
+                <GraduationCap className="size-5 text-gold" />
+                Destinations
+              </span>
+              <ChevronDown
+                className={`size-5 ml-auto text-gold transition-transform ${destOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {destOpen && (
+              <div className="flex flex-col pl-8">
+                {STUDY_DESTINATIONS.map((d) => (
+                  <Link
+                    key={d.slug}
+                    to={d.route}
+                    onClick={() => setOpen(false)}
+                    className="py-3 text-base text-muted-foreground hover:text-gold transition-colors flex items-center gap-3"
+                  >
+                    <span className="text-lg leading-none">{d.flag}</span>
+                    {d.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="h-24" />
+
+
+
           <div className="absolute bottom-8 left-8 right-8 text-xs text-muted-foreground">
             <p className="mb-2 text-gold font-medium tracking-wider">AL-BAHR TRAVELS</p>
             <p>78 E Block, Architect Engineering Housing Society, Lahore, Pakistan</p>
