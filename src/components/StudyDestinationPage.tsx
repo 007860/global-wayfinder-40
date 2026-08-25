@@ -181,7 +181,7 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
       <section id="inquiry" className="border-t border-white/10 bg-[var(--midnight-light)]/40" aria-labelledby="inquiry-heading">
         <div className="max-w-5xl mx-auto px-6 py-20 grid lg:grid-cols-[1fr_1.1fr] gap-12">
           <div>
-            <p className="text-xs tracking-[0.3em] text-gold mb-3">04 — GET STARTED</p>
+            <p className="text-xs tracking-[0.3em] text-gold mb-3">05 — GET STARTED</p>
             <h2 id="inquiry-heading" className="font-display text-3xl sm:text-4xl">
               Get your <span className="text-gold-gradient">free eligibility assessment</span>
             </h2>
