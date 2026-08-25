@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight } from "lucide-react";
+import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight, FolderCheck } from "lucide-react";
 import { TopUtilityStrip } from "./TopUtilityStrip";
 import { BurgerMenu } from "./BurgerMenu";
 import { SiteFooter } from "./SiteFooter";
 import { FloatingEmailButton } from "./FloatingEmailButton";
 import { LeadForm } from "./LeadForm";
-import { STUDY_WHATSAPP, type StudyDestination } from "@/lib/study-destinations";
+import { STUDY_WHATSAPP, getDocuments, type StudyDestination } from "@/lib/study-destinations";
 
 function waLink(d: StudyDestination) {
   const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want a FREE eligibility assessment for: ${d.title}.\nProgramme interest: (BS / Master's / PhD)\nLast qualification & CGPA:\n\nPlease guide me on the scholarship process.`;
   return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
 }
+
+function docsWaLink(d: StudyDestination) {
+  const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want to check my document eligibility for: ${d.title}.\nLast qualification & CGPA:\nDocuments ready: (degree / transcripts / IELTS or MOI / passport)\n\nPlease review my document checklist.`;
+  return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
+}
+
 
 export function StudyDestinationPage({ destination: d }: { destination: StudyDestination }) {
   const [done, setDone] = useState(false);
