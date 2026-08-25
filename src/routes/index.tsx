@@ -99,9 +99,12 @@ function Index() {
         </div>
       </section>
 
+      <StudyAbroadService />
+
       {/* Recent blogs CTA */}
       <section className="max-w-6xl mx-auto px-6 py-24 text-center">
-        <p className="text-xs tracking-[0.3em] text-gold mb-3">03 — INTELLIGENCE</p>
+        <p className="text-xs tracking-[0.3em] text-gold mb-3">05 — INTELLIGENCE</p>
+
         <h2 className="font-display text-4xl sm:text-5xl">
           Recent <span className="text-gold-gradient">Global Travel</span> Intelligence Briefs
         </h2>
