@@ -50,7 +50,7 @@ export function BurgerMenu() {
       >
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
         <aside
-          className={`absolute right-0 top-0 h-full w-full sm:w-[420px] bg-[var(--midnight-light)] border-l border-white/10 shadow-elev p-8 transition-transform duration-500 ${
+          className={`absolute right-0 top-0 h-full w-full sm:w-[420px] overflow-y-auto bg-[var(--midnight-light)] border-l border-white/10 shadow-elev p-8 transition-transform duration-500 ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
@@ -157,11 +157,7 @@ export function BurgerMenu() {
             )}
           </div>
 
-          <div className="h-24" />
-
-
-
-          <div className="absolute bottom-8 left-8 right-8 text-xs text-muted-foreground">
+          <div className="mt-10 text-xs text-muted-foreground">
             <p className="mb-2 text-gold font-medium tracking-wider">AL-BAHR TRAVELS</p>
             <p>78 E Block, Architect Engineering Housing Society, Lahore, Pakistan</p>
           </div>
