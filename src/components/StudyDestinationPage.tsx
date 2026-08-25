@@ -20,6 +20,8 @@ function docsWaLink(d: StudyDestination) {
 
 export function StudyDestinationPage({ destination: d }: { destination: StudyDestination }) {
   const [done, setDone] = useState(false);
+  const docs = getDocuments(d.slug);
+
 
   return (
     <main className="min-h-screen">
