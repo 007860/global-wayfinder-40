@@ -76,7 +76,7 @@ export function StudyAbroadService() {
           {STUDY_DESTINATIONS.map((d) => (
             <Link
               key={d.slug}
-              to={d.route}
+              to={d.route as "/study-in-italy"}
               className="glass rounded-full px-5 py-2.5 flex items-center gap-2 text-sm font-medium hover:bg-white/10 hover:border-gold/40 transition-colors"
             >
               <span className="text-base leading-none">{d.flag}</span>
