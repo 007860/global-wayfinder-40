@@ -1,19 +1,27 @@
 import { useState } from "react";
-import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight } from "lucide-react";
+import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight, FolderCheck } from "lucide-react";
 import { TopUtilityStrip } from "./TopUtilityStrip";
 import { BurgerMenu } from "./BurgerMenu";
 import { SiteFooter } from "./SiteFooter";
 import { FloatingEmailButton } from "./FloatingEmailButton";
 import { LeadForm } from "./LeadForm";
-import { STUDY_WHATSAPP, type StudyDestination } from "@/lib/study-destinations";
+import { STUDY_WHATSAPP, getDocuments, type StudyDestination } from "@/lib/study-destinations";
 
 function waLink(d: StudyDestination) {
   const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want a FREE eligibility assessment for: ${d.title}.\nProgramme interest: (BS / Master's / PhD)\nLast qualification & CGPA:\n\nPlease guide me on the scholarship process.`;
   return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
 }
 
+function docsWaLink(d: StudyDestination) {
+  const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want to check my document eligibility for: ${d.title}.\nLast qualification & CGPA:\nDocuments ready: (degree / transcripts / IELTS or MOI / passport)\n\nPlease review my document checklist.`;
+  return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
+}
+
+
 export function StudyDestinationPage({ destination: d }: { destination: StudyDestination }) {
   const [done, setDone] = useState(false);
+  const docs = getDocuments(d.slug);
+
 
   return (
     <main className="min-h-screen">
@@ -116,11 +124,64 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
         </ol>
       </section>
 
+      {/* Required Documents Checklist */}
+      {docs.length > 0 && (
+        <section
+          id="documents"
+          className="border-y border-white/10 bg-[var(--midnight-light)]/40"
+          aria-labelledby="documents-heading"
+        >
+          <div className="max-w-6xl mx-auto px-6 py-20">
+            <p className="text-xs tracking-[0.3em] text-gold mb-3">04 — REQUIRED DOCUMENTS CHECKLIST</p>
+            <h2 id="documents-heading" className="font-display text-3xl sm:text-4xl">
+              {d.country} <span className="text-gold-gradient">document &amp; visa file</span> checklist
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Prepare these documents before your application. Our Lahore desk verifies every file
+              before submission.
+            </p>
+
+            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+              {docs.map((g) => (
+                <div key={g.group} className="glass rounded-2xl border border-white/10 p-6">
+                  <h3 className="font-display text-xl flex items-center gap-2">
+                    <FolderCheck className="size-5 text-gold shrink-0" />
+                    {g.group}
+                  </h3>
+                  <ul className="mt-4 space-y-3">
+                    {g.items.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="size-4 text-gold shrink-0 mt-1" />
+                        <span className="text-sm text-foreground/90 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <a
+                href={docsWaLink(d)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[var(--midnight)] px-7 py-4 text-sm sm:text-base font-bold text-center hover:opacity-90 transition-opacity shadow-elev"
+              >
+                <MessageCircle className="size-5 shrink-0" />
+                Check Your Document Eligibility on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+
+
       {/* Inquiry + WhatsApp CTA */}
       <section id="inquiry" className="border-t border-white/10 bg-[var(--midnight-light)]/40" aria-labelledby="inquiry-heading">
         <div className="max-w-5xl mx-auto px-6 py-20 grid lg:grid-cols-[1fr_1.1fr] gap-12">
           <div>
-            <p className="text-xs tracking-[0.3em] text-gold mb-3">04 — GET STARTED</p>
+            <p className="text-xs tracking-[0.3em] text-gold mb-3">05 — GET STARTED</p>
             <h2 id="inquiry-heading" className="font-display text-3xl sm:text-4xl">
               Get your <span className="text-gold-gradient">free eligibility assessment</span>
             </h2>
