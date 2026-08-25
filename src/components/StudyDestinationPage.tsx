@@ -122,6 +122,59 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
         </ol>
       </section>
 
+      {/* Required Documents Checklist */}
+      {docs.length > 0 && (
+        <section
+          id="documents"
+          className="border-y border-white/10 bg-[var(--midnight-light)]/40"
+          aria-labelledby="documents-heading"
+        >
+          <div className="max-w-6xl mx-auto px-6 py-20">
+            <p className="text-xs tracking-[0.3em] text-gold mb-3">04 — REQUIRED DOCUMENTS CHECKLIST</p>
+            <h2 id="documents-heading" className="font-display text-3xl sm:text-4xl">
+              {d.country} <span className="text-gold-gradient">document &amp; visa file</span> checklist
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Prepare these documents before your application. Our Lahore desk verifies every file
+              before submission.
+            </p>
+
+            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+              {docs.map((g) => (
+                <div key={g.group} className="glass rounded-2xl border border-white/10 p-6">
+                  <h3 className="font-display text-xl flex items-center gap-2">
+                    <FolderCheck className="size-5 text-gold shrink-0" />
+                    {g.group}
+                  </h3>
+                  <ul className="mt-4 space-y-3">
+                    {g.items.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="size-4 text-gold shrink-0 mt-1" />
+                        <span className="text-sm text-foreground/90 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex justify-center">
+              <a
+                href={docsWaLink(d)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[var(--midnight)] px-7 py-4 text-sm sm:text-base font-bold text-center hover:opacity-90 transition-opacity shadow-elev"
+              >
+                <MessageCircle className="size-5 shrink-0" />
+                Check Your Document Eligibility on WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+
+
       {/* Inquiry + WhatsApp CTA */}
       <section id="inquiry" className="border-t border-white/10 bg-[var(--midnight-light)]/40" aria-labelledby="inquiry-heading">
         <div className="max-w-5xl mx-auto px-6 py-20 grid lg:grid-cols-[1fr_1.1fr] gap-12">
