@@ -188,3 +188,165 @@ export function getDestination(slug: string): StudyDestination {
   if (!found) throw new Error(`Unknown destination: ${slug}`);
   return found;
 }
+
+export type DocGroup = { group: string; items: string[] };
+
+export const STUDY_DOCUMENTS: Record<string, DocGroup[]> = {
+  "study-in-italy": [
+    {
+      group: "Academic Documents",
+      items: [
+        "Matric & Intermediate transcripts / certificates",
+        "Bachelor's degree & transcript",
+        "All documents attested by IBCC, HEC & MOFA",
+      ],
+    },
+    {
+      group: "English Proficiency",
+      items: ["Medium of Instruction (MOI) certificate", "OR IELTS with minimum 6.0 band"],
+    },
+    {
+      group: "Legalization & DOV",
+      items: ["Declaration of Value (DOV) / legalization from the Italian Embassy or Consulate"],
+    },
+    {
+      group: "DSU Scholarship Documents",
+      items: [
+        "Family income certificate (ISEE Parificato — under €25,000/year)",
+        "Property / asset certificate",
+        "Family Registration Certificate (FRC from NADRA)",
+      ],
+    },
+    {
+      group: "Visa Documents",
+      items: [
+        "Valid passport",
+        "Universitaly summary form",
+        "Pre-enrollment summary",
+        "Proof of accommodation in Italy",
+        "Flight reservation",
+        "Bank statement (visa backup)",
+      ],
+    },
+  ],
+  "study-in-china": [
+    {
+      group: "Academic Documents",
+      items: ["Degree & transcripts notarized by Notary Public", "HEC attestation", "MOFA attestation"],
+    },
+    {
+      group: "Health & Legal",
+      items: [
+        "Foreigner Physical Examination Form signed by a recognized hospital",
+        "Police Clearance Certificate (PCC) from local police",
+      ],
+    },
+    {
+      group: "Scholarship Papers",
+      items: [
+        "CSC online application form",
+        "University portal application form",
+        "Pre-acceptance / recommendation letters from professors (2 required for Master's & PhD)",
+      ],
+    },
+    {
+      group: "Visa Documents",
+      items: [
+        "Valid passport (minimum 6 months validity)",
+        "JW201 or JW202 form issued by the Chinese Ministry",
+        "Admission notice",
+        "Original JW201/JW202 copies for the X1 visa",
+      ],
+    },
+  ],
+  "study-in-hungary": [
+    {
+      group: "Academic Documents",
+      items: ["Educational certificates & transcripts verified by HEC", "MOFA verification"],
+    },
+    {
+      group: "Language & Test",
+      items: ["IELTS / TOEFL or MOI certificate", "Online entrance exam / interview clearance"],
+    },
+    {
+      group: "Application Documents",
+      items: [
+        "Motivation letter",
+        "Updated Europass CV",
+        "HEC online application form",
+        "Tempus Public Foundation application",
+      ],
+    },
+    {
+      group: "Visa Documents",
+      items: [
+        "Schengen D-type visa form",
+        "Medical certificate (HIV, Hepatitis B/C, chest X-ray)",
+        "Accommodation proof / dormitory acceptance",
+        "Flight itinerary",
+      ],
+    },
+  ],
+  "study-in-south-korea": [
+    {
+      group: "Academic Documents",
+      items: ["Degree & transcripts attested by HEC", "MOFA attestation", "Korean Embassy apostille"],
+    },
+    {
+      group: "Personal Documents",
+      items: [
+        "Family Registration Certificate (FRC)",
+        "Birth certificate",
+        "Parents' ID cards / passports (translated and notarized)",
+      ],
+    },
+    {
+      group: "Financial Documents",
+      items: [
+        "Official bank statement ($10,000–$20,000 in student or parent account, maintained 6 months)",
+        "Parent's income tax returns / income proof",
+      ],
+    },
+    {
+      group: "Visa Documents",
+      items: [
+        "D-2 student visa form",
+        "Certificate of Admission (CoA)",
+        "GKS award certificate (if applicable)",
+        "Study plan & personal statement",
+      ],
+    },
+  ],
+  "study-in-turkey": [
+    {
+      group: "Academic Documents",
+      items: [
+        "All academic marksheets & certificates attested by IBCC and HEC",
+        "Turkish Embassy attestation",
+        "Equivalence Certificate (Denklik document)",
+      ],
+    },
+    {
+      group: "Research / Application",
+      items: [
+        "Research proposal (MPhil / PhD applicants)",
+        "Statement of Purpose (SOP)",
+        "2 reference letters",
+      ],
+    },
+    {
+      group: "Visa Documents",
+      items: [
+        "Passport valid at least 1 year",
+        "Anatolia visa application form",
+        "Health insurance",
+        "Financial proof / bank statement",
+        "University acceptance letter",
+      ],
+    },
+  ],
+};
+
+export function getDocuments(slug: string): DocGroup[] {
+  return STUDY_DOCUMENTS[slug] ?? [];
+}
