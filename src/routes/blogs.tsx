@@ -17,9 +17,29 @@ export const Route = createFileRoute("/blogs")({
           "AI-curated visa, embassy, and travel intelligence briefs for Pakistani travellers. Updated live by Al-Bahr Travels & Consultants.",
       },
       { property: "og:title", content: "Travel Intelligence Blogs — Al-Bahr" },
-      { property: "og:url", content: "/blogs" },
+      {
+        property: "og:description",
+        content:
+          "Live visa, embassy and Gulf medical briefs from Al-Bahr Travels — practical updates for Pakistani travellers heading to the Gulf and Europe.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/blogs" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/blogs" }],
+    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/blogs" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Travel Intelligence Blogs",
+          description:
+            "Visa, embassy and travel intelligence briefs by Al-Bahr Travels & Consultants.",
+          url: "https://https-al-bahr-travels-consultants.lovable.app/blogs",
+        }),
+      },
+    ],
   }),
 });
 
