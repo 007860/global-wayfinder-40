@@ -15,16 +15,23 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Al-Bahr Travels — International Bookings & Visa Appointments | Lahore" },
+      { title: "Al-Bahr Travels — Visa & Travel Consultants, Lahore" },
       {
         name: "description",
         content:
-          "Trusted Lahore consultancy for visa appointments, flight bookings, hotel reservations, and medical appointments across the Gulf and Europe. Since 2015.",
+          "Trusted Lahore consultancy for visa appointments, flight bookings, hotel reservations, and Gulf medical appointments across the Gulf and Europe. Since 2015.",
       },
-      { property: "og:title", content: "Al-Bahr Travels & Consultants" },
-      { property: "og:url", content: "/" },
+      { property: "og:title", content: "Al-Bahr Travels — Visa & Travel Consultants, Lahore" },
+      {
+        property: "og:description",
+        content:
+          "Visa appointments, flights, hotels, Gulf medical fitness and study abroad support from our Lahore desk. Serving Pakistani travellers since 2015.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/" }],
   }),
 });
 

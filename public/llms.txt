@@ -1,0 +1,20 @@
+# Al-Bahr Travels & Consultants
+
+> Lahore-based travel and visa consultancy for Pakistani travellers: visa appointments, flight and hotel bookings, Gulf medical fitness appointments, Hajj & Umrah packages, and fully funded study abroad guidance.
+
+Operating since 2015 from 78 E Block, Architect Engineering Housing Society, Lahore, Pakistan. Contact: al.bahr.medical.appointments@gmail.com, WhatsApp +92 343 4762264.
+
+## Pages
+
+- [Home](/): Services overview — visa appointments, flight booking, hotel booking, Gulf medical appointments, Hajj & Umrah, study abroad.
+- [About](/about): Company background and leadership.
+- [Countries](/countries): Destination countries served, with service selection.
+- [Blogs](/blogs): Visa, embassy, and travel intelligence briefs.
+
+## Study Abroad
+
+- [Study in Italy](/study-in-italy): DSU regional scholarships, admission and visa process.
+- [Study in China](/study-in-china): CSC and provincial government scholarships.
+- [Study in Hungary](/study-in-hungary): Stipendium Hungaricum scholarship pathway.
+- [Study in South Korea](/study-in-south-korea): Global Korea Scholarship (GKS) and university grants.
+- [Study in Turkey](/study-in-turkey): Turkiye Burslari and private university options.
