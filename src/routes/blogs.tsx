@@ -130,9 +130,9 @@ function BlogsPage() {
                       {new Date(b.created_at).toLocaleDateString()}
                     </span>
                   </div>
-                  <h3 className="font-display text-xl group-hover:text-gold-gradient">
+                  <h2 className="font-display text-xl group-hover:text-gold-gradient">
                     {b.title}
-                  </h3>
+                  </h2>
                 </div>
               </button>
             ))}
