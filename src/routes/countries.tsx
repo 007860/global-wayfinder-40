@@ -19,8 +19,30 @@ export const Route = createFileRoute("/countries")({
         content:
           "Browse every country we serve. Pick a destination, choose a service — visa, flight, hotel or medical appointment — and our Lahore consultants will reach you.",
       },
+      { property: "og:title", content: "Countries We Serve — Al-Bahr Travels" },
+      {
+        property: "og:description",
+        content:
+          "Pick your destination country and service — visa appointments, flights, hotels or Gulf medical fitness — and our Lahore consultants will contact you.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/countries" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/countries" }],
+    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/countries" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Countries We Serve",
+          description:
+            "Directory of destination countries served by Al-Bahr Travels & Consultants for visa, flight, hotel and medical appointment services.",
+          url: "https://https-al-bahr-travels-consultants.lovable.app/countries",
+        }),
+      },
+    ],
   }),
 });
 
