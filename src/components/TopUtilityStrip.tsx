@@ -1,5 +1,6 @@
 import { Phone, Mail, MessageCircle } from "lucide-react";
 import { BRAND_NAME, LEAD_EMAIL, WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
+import { SocialIcons } from "./SocialIcons";
 
 export function TopUtilityStrip() {
   return (
@@ -30,6 +31,9 @@ export function TopUtilityStrip() {
             <span>Lahore — 0343 4762264</span>
           </a>
         </div>
+        <div className="hidden md:flex items-center gap-4 shrink-0">
+          <SocialIcons />
+        </div>
         <div className="hidden lg:block text-gold tracking-wider font-medium">
           {BRAND_NAME}
         </div>
@@ -37,3 +41,4 @@ export function TopUtilityStrip() {
     </div>
   );
 }
+
