@@ -10,7 +10,9 @@ import {
   WHATSAPP_DISPLAY,
 } from "@/lib/countries";
 import { ServiceModal } from "./ServiceModal";
+import { SocialIcons } from "./SocialIcons";
 import type { ServiceKey } from "./ServicePills";
+
 
 const FOOTER_SERVICES: { key: ServiceKey; label: string }[] = [
   { key: "medical", label: "Medical Appointment Booking (Gulf Region)" },
@@ -84,7 +86,9 @@ export function SiteFooter() {
             <Mail className="size-4 text-gold shrink-0" />
             <span className="break-all">{LEAD_EMAIL}</span>
           </a>
+          <SocialIcons className="mt-4" />
         </div>
+
 
         <div>
           <h4 className="text-xs tracking-[0.3em] text-gold mb-4">LIVE METRICS</h4>

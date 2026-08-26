@@ -3,9 +3,11 @@ import { Menu, X, MessageCircle, ChevronDown, GraduationCap } from "lucide-react
 import { Link } from "@tanstack/react-router";
 import { CountryModal } from "./CountryModal";
 import { ServiceModal } from "./ServiceModal";
+import { SocialIcons } from "./SocialIcons";
 import type { ServiceKey } from "./ServicePills";
 import { WHATSAPP_URL, WHATSAPP_DISPLAY } from "@/lib/countries";
 import { STUDY_DESTINATIONS } from "@/lib/study-destinations";
+
 
 const LINKS: {
   id: string;
@@ -157,11 +159,17 @@ export function BurgerMenu() {
             )}
           </div>
 
+          <div className="mt-10">
+            <p className="mb-3 text-xs tracking-[0.3em] text-gold">FOLLOW US</p>
+            <SocialIcons />
+          </div>
+
           <div className="mt-10 text-xs text-muted-foreground">
             <p className="mb-2 text-gold font-medium tracking-wider">AL-BAHR TRAVELS</p>
             <p>78 E Block, Architect Engineering Housing Society, Lahore, Pakistan</p>
           </div>
         </aside>
+
       </div>
 
       <CountryModal
