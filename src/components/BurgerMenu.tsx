@@ -23,6 +23,7 @@ const LINKS: {
   { id: "flight", label: "Flight Booking", service: { key: "flight", label: "Flight Booking" } },
   { id: "foreign", label: "Foreign Countries", interactive: "foreign_countries" },
   { id: "airline", label: "Airline Ticket Booking", interactive: "airline_ticket" },
+  { id: "contact", label: "Contact Us", to: "/contact" },
   { id: "whatsapp", label: `WhatsApp ${WHATSAPP_DISPLAY}`, href: WHATSAPP_URL, external: true },
 ];
 
@@ -133,7 +134,7 @@ export function BurgerMenu() {
               onClick={() => setDestOpen((v) => !v)}
               className="group w-full text-left py-5 flex items-center gap-4"
             >
-              <span className="text-xs text-gold font-mono opacity-60">07</span>
+              <span className="text-xs text-gold font-mono opacity-60">08</span>
               <span className="font-display text-2xl text-foreground group-hover:text-gold transition-colors flex items-center gap-2">
                 <GraduationCap className="size-5 text-gold" />
                 Destinations
