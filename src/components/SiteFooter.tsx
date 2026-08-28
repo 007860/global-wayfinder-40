@@ -65,7 +65,11 @@ export function SiteFooter() {
         </div>
 
         <div id="contact">
-          <h4 className="text-xs tracking-[0.3em] text-gold mb-4">CONTACT US</h4>
+          <h4 className="text-xs tracking-[0.3em] text-gold mb-4">
+            <Link to="/contact" className="hover:text-gold-deep transition-colors">
+              CONTACT US →
+            </Link>
+          </h4>
           <p className="text-sm text-muted-foreground mb-3 flex items-start gap-2">
             <MapPin className="size-4 text-gold mt-0.5 shrink-0" />
             <span>{BRANCH_ADDRESS}</span>
