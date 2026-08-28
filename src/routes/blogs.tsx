@@ -97,7 +97,7 @@ function BlogsPage() {
         ) : blogs.length === 0 ? (
           <div className="glass rounded-2xl p-12 text-center">
             <p className="text-muted-foreground">
-              No briefs yet — try the search bar on the home page to generate one.
+              No briefs yet — check back soon for fresh travel and visa intelligence updates.
             </p>
           </div>
         ) : (
