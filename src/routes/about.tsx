@@ -140,7 +140,7 @@ function AboutPage() {
                 />
                 <ServiceLink
                   to="/"
-                  hash="visa-appointments"
+                  hash="medical-appointments"
                   icon={<Stethoscope className="size-4" />}
                   label="Medical Appointments (Gulf)"
                 />
