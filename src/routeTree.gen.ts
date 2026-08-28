@@ -16,6 +16,7 @@ import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
 import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as SplatRouteImport } from './routes/$'
@@ -56,6 +57,11 @@ const CountriesRoute = CountriesRouteImport.update({
   path: '/countries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogsRoute = BlogsRouteImport.update({
   id: '/blogs',
   path: '/blogs',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRoute
+  '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -95,6 +102,7 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRoute
+  '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -109,6 +117,7 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/blogs': typeof BlogsRoute
+  '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/blogs'
+    | '/contact'
     | '/countries'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/blogs'
+    | '/contact'
     | '/countries'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/blogs'
+    | '/contact'
     | '/countries'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -164,6 +176,7 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   BlogsRoute: typeof BlogsRoute
+  ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyInChinaRoute: typeof StudyInChinaRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blogs': {
       id: '/blogs'
       path: '/blogs'
@@ -260,6 +280,7 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   BlogsRoute: BlogsRoute,
+  ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyInChinaRoute: StudyInChinaRoute,
