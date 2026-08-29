@@ -9,67 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
-import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
-import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
-import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
-import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as CountriesRouteImport } from './routes/countries'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogsRouteImport } from './routes/blogs'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as SplatRouteImport } from './routes/$'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogsRouteImport } from './routes/blogs'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
+import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
+import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
+import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
+import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
 
-const StudyInTurkeyRoute = StudyInTurkeyRouteImport.update({
-  id: '/study-in-turkey',
-  path: '/study-in-turkey',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyInSouthKoreaRoute = StudyInSouthKoreaRouteImport.update({
-  id: '/study-in-south-korea',
-  path: '/study-in-south-korea',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyInItalyRoute = StudyInItalyRouteImport.update({
-  id: '/study-in-italy',
-  path: '/study-in-italy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyInHungaryRoute = StudyInHungaryRouteImport.update({
-  id: '/study-in-hungary',
-  path: '/study-in-hungary',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyInChinaRoute = StudyInChinaRouteImport.update({
-  id: '/study-in-china',
-  path: '/study-in-china',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CountriesRoute = CountriesRouteImport.update({
-  id: '/countries',
-  path: '/countries',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogsRoute = BlogsRouteImport.update({
-  id: '/blogs',
-  path: '/blogs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -77,9 +32,54 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogsRoute = BlogsRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CountriesRoute = CountriesRouteImport.update({
+  id: '/countries',
+  path: '/countries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInChinaRoute = StudyInChinaRouteImport.update({
+  id: '/study-in-china',
+  path: '/study-in-china',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInHungaryRoute = StudyInHungaryRouteImport.update({
+  id: '/study-in-hungary',
+  path: '/study-in-hungary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInItalyRoute = StudyInItalyRouteImport.update({
+  id: '/study-in-italy',
+  path: '/study-in-italy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInSouthKoreaRoute = StudyInSouthKoreaRouteImport.update({
+  id: '/study-in-south-korea',
+  path: '/study-in-south-korea',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInTurkeyRoute = StudyInTurkeyRouteImport.update({
+  id: '/study-in-turkey',
+  path: '/study-in-turkey',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -188,74 +188,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/study-in-turkey': {
-      id: '/study-in-turkey'
-      path: '/study-in-turkey'
-      fullPath: '/study-in-turkey'
-      preLoaderRoute: typeof StudyInTurkeyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-in-south-korea': {
-      id: '/study-in-south-korea'
-      path: '/study-in-south-korea'
-      fullPath: '/study-in-south-korea'
-      preLoaderRoute: typeof StudyInSouthKoreaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-in-italy': {
-      id: '/study-in-italy'
-      path: '/study-in-italy'
-      fullPath: '/study-in-italy'
-      preLoaderRoute: typeof StudyInItalyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-in-hungary': {
-      id: '/study-in-hungary'
-      path: '/study-in-hungary'
-      fullPath: '/study-in-hungary'
-      preLoaderRoute: typeof StudyInHungaryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-in-china': {
-      id: '/study-in-china'
-      path: '/study-in-china'
-      fullPath: '/study-in-china'
-      preLoaderRoute: typeof StudyInChinaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/countries': {
-      id: '/countries'
-      path: '/countries'
-      fullPath: '/countries'
-      preLoaderRoute: typeof CountriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blogs': {
-      id: '/blogs'
-      path: '/blogs'
-      fullPath: '/blogs'
-      preLoaderRoute: typeof BlogsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -265,11 +202,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blogs': {
+      id: '/blogs'
+      path: '/blogs'
+      fullPath: '/blogs'
+      preLoaderRoute: typeof BlogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/countries': {
+      id: '/countries'
+      path: '/countries'
+      fullPath: '/countries'
+      preLoaderRoute: typeof CountriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-china': {
+      id: '/study-in-china'
+      path: '/study-in-china'
+      fullPath: '/study-in-china'
+      preLoaderRoute: typeof StudyInChinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-hungary': {
+      id: '/study-in-hungary'
+      path: '/study-in-hungary'
+      fullPath: '/study-in-hungary'
+      preLoaderRoute: typeof StudyInHungaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-italy': {
+      id: '/study-in-italy'
+      path: '/study-in-italy'
+      fullPath: '/study-in-italy'
+      preLoaderRoute: typeof StudyInItalyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-south-korea': {
+      id: '/study-in-south-korea'
+      path: '/study-in-south-korea'
+      fullPath: '/study-in-south-korea'
+      preLoaderRoute: typeof StudyInSouthKoreaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-turkey': {
+      id: '/study-in-turkey'
+      path: '/study-in-turkey'
+      fullPath: '/study-in-turkey'
+      preLoaderRoute: typeof StudyInTurkeyRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
