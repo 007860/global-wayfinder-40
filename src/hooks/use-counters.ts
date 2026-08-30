@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { logVisit } from "@/lib/leads.functions";
 
 type Counters = { traffic: number; consultations: number };
 
@@ -19,11 +20,12 @@ export function useCounters() {
       } catch {}
       if (!alreadyLogged) {
         try {
-          await supabase.rpc("increment_counter", { counter_name: "total_traffic" });
+          await logVisit({ data: { counter_name: "total_traffic" } });
           sessionStorage.setItem(key, "1");
         } catch {}
       }
       const { data } = await supabase
+
         .from("analytics_counters")
         .select("name,value");
       if (!mounted || !data) return;
