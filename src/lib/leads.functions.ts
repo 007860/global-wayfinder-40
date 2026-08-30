@@ -200,6 +200,26 @@ async function sendLeadEmail(lead: Lead) {
   }
 }
 
+const ALLOWED_COUNTERS = ["total_traffic", "consultations_booked"] as const;
+
+export const logVisit = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    z
+      .object({ counter_name: z.enum(ALLOWED_COUNTERS) })
+      .parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: value, error } = await supabaseAdmin.rpc("increment_counter", {
+      counter_name: data.counter_name,
+    });
+    if (error) {
+      console.error("[counters] increment error", error);
+      return { ok: false as const };
+    }
+    return { ok: true as const, value: Number(value ?? 0) };
+  });
+
 export const submitLead = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => LeadSchema.parse(input))
   .handler(async ({ data }) => {
