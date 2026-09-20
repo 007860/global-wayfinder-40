@@ -1,62 +1,6 @@
-import { useState } from "react";
-import { ServicePills, type ServiceKey } from "./ServicePills";
-import { ServiceModal } from "./ServiceModal";
-
-import { CheckCircle2 } from "lucide-react";
-
+import { ArrowDown, BadgeCheck } from 'lucide-react';
+import hero from '@/assets/travel-istanbul.jpg';
+import { WhatsAppInquiry } from './WhatsAppInquiry';
 export function Hero() {
-  const [service, setService] = useState<{ key: ServiceKey; label: string } | null>(null);
-  return (
-    <section className="relative overflow-hidden bg-mesh">
-      <ServiceModal service={service} onClose={() => setService(null)} />
-      {/* Decorative flight-path SVG (no animation) */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
-        viewBox="0 0 1440 800"
-        fill="none"
-        aria-hidden
-      >
-        <defs>
-          <linearGradient id="goldline" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#F59E0B" stopOpacity="0" />
-            <stop offset="50%" stopColor="#F59E0B" stopOpacity="0.7" />
-            <stop offset="100%" stopColor="#D97706" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <path d="M-50 600 Q 400 200 800 400 T 1500 250" stroke="url(#goldline)" strokeWidth="1" fill="none" />
-        <path d="M-50 200 Q 500 500 900 250 T 1500 500" stroke="url(#goldline)" strokeWidth="1" fill="none" />
-        <path d="M100 750 Q 600 350 1100 600 T 1600 400" stroke="url(#goldline)" strokeWidth="0.8" fill="none" />
-        <circle cx="400" cy="320" r="2" fill="#F59E0B" />
-        <circle cx="800" cy="400" r="2" fill="#F59E0B" />
-        <circle cx="1100" cy="280" r="2" fill="#F59E0B" />
-      </svg>
-
-      <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 text-center">
-        {/* Trust badge */}
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs sm:text-sm tracking-wider mb-8">
-          <CheckCircle2 className="size-4 text-gold" />
-          <span className="text-foreground/90">TRUSTED SINCE 2015</span>
-          <span className="text-muted-foreground">•</span>
-          <span className="text-gold font-semibold">LAHORE BRANCH</span>
-        </div>
-
-        {/* Massive H1 */}
-        <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] max-w-5xl mx-auto">
-          Your Dedicated Hub for{" "}
-          <span className="text-gold-gradient">International Bookings</span> &{" "}
-          <span className="text-gold-gradient">Visa Appointments</span>
-        </h1>
-
-        <p className="mt-8 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-          Premium consultancy for Pakistani travellers — Gulf, Europe, and beyond.
-          Embassy-grade expertise, white-glove service.
-        </p>
-
-        <div className="mt-10">
-          <ServicePills onSelect={(key, label) => setService({ key, label })} />
-        </div>
-
-      </div>
-    </section>
-  );
+ return <section className="travel-hero"><img src={hero} width={1920} height={1024} alt="Istanbul mosque and the Bosphorus waterfront" fetchPriority="high" className="hero-photo"/><div className="hero-shade"/><div className="hero-content"><div className="hero-copy"><div className="hero-badge"><BadgeCheck size={16}/> SECP REGISTERED · PERSONALLY COMMITTED</div><p className="hero-brand">AL-BAHR TRAVELS & CONSULTANTS</p><h1>Your Trusted Partner for <em>Global Visas, Umrah Packages</em> & Travel Consultancy</h1><p className="hero-description">SECP Registered Private Limited Company delivering hassle-free visa processing, direct air ticketing, and customized pilgrimage tours.</p><a href="#services" className="hero-explore">A world of possibilities, one trusted partner <ArrowDown size={17}/></a></div><WhatsAppInquiry/></div><div className="hero-location">ISTANBUL, TÜRKİYE <span>41.0082° N · 28.9784° E</span></div></section>;
 }
