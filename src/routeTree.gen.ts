@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as B2bRouteImport } from './routes/b2b'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
@@ -35,6 +36,11 @@ const SplatRoute = SplatRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const B2bRoute = B2bRouteImport.update({
+  id: '/b2b',
+  path: '/b2b',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogsRoute = BlogsRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/b2b': typeof B2bRoute
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/b2b': typeof B2bRoute
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
+  '/b2b': typeof B2bRoute
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/b2b'
     | '/blogs'
     | '/contact'
     | '/countries'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/b2b'
     | '/blogs'
     | '/contact'
     | '/countries'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/about'
+    | '/b2b'
     | '/blogs'
     | '/contact'
     | '/countries'
@@ -175,6 +187,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
+  B2bRoute: typeof B2bRoute
   BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/b2b': {
+      id: '/b2b'
+      path: '/b2b'
+      fullPath: '/b2b'
+      preLoaderRoute: typeof B2bRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blogs': {
@@ -279,6 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
+  B2bRoute: B2bRoute,
   BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
