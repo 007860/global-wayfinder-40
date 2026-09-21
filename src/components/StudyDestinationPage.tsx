@@ -3,7 +3,6 @@ import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight, Fol
 import { TopUtilityStrip } from "./TopUtilityStrip";
 import { BurgerMenu } from "./BurgerMenu";
 import { SiteFooter } from "./SiteFooter";
-import { FloatingEmailButton } from "./FloatingEmailButton";
 import { LeadForm } from "./LeadForm";
 import { STUDY_WHATSAPP, getDocuments, type StudyDestination } from "@/lib/study-destinations";
 
@@ -233,7 +232,6 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
       </section>
 
       <SiteFooter />
-      <FloatingEmailButton />
     </main>
   );
 }

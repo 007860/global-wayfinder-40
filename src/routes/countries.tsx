@@ -7,7 +7,6 @@ import { LeadForm } from "@/components/LeadForm";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
-import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 
 export const Route = createFileRoute("/countries")({
   component: CountriesPage,
@@ -89,7 +88,6 @@ function CountriesPage() {
       </section>
 
       <SiteFooter />
-      <FloatingEmailButton />
 
       {/* Step 2: services for the chosen country */}
       {country && !service && (
