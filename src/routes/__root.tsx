@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { Toaster } from "sonner";
+import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 
 import appCss from "../styles.css?url";
 
@@ -178,7 +179,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: OG_TITLE },
       { name: "twitter:description", content: OG_DESC },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Manrope:wght@400..800&display=swap" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -211,6 +217,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <FloatingEmailButton />
       <Toaster theme="dark" position="top-center" richColors />
     </QueryClientProvider>
   );

@@ -38,7 +38,7 @@
   --color-midnight: var(--midnight);
   --color-midnight-light: var(--midnight-light);
 
-  --font-display: "Playfair Display", "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Manrope", system-ui, sans-serif;
 }
 
