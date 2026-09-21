@@ -8,17 +8,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Al-Bahr Travels — Visa & Travel Consultants, Arifwala" },
+      { title: "Al-Bahr Travels — Visa & Travel Consultants, Lahore" },
       {
         name: "description",
         content:
-          "Trusted Arifwala consultancy for visa appointments, flight bookings, hotel reservations, and Gulf medical appointments across the Gulf and Europe. Since 2015.",
+          "Trusted Lahore consultancy for visa appointments, flight bookings, hotel reservations, and Gulf medical appointments across the Gulf and Europe. Since 2015.",
       },
-      { property: "og:title", content: "Al-Bahr Travels — Visa & Travel Consultants, Arifwala" },
+      { property: "og:title", content: "Al-Bahr Travels — Visa & Travel Consultants, Lahore" },
       {
         property: "og:description",
         content:
-          "Visa appointments, flights, hotels, Gulf medical fitness and study abroad support from our Arifwala desk. Serving Pakistani travellers since 2015.",
+          "Visa appointments, flights, hotels, Gulf medical fitness and study abroad support from our Lahore desk. Serving Pakistani travellers since 2015.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/" },

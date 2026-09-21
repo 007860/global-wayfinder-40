@@ -24,7 +24,7 @@ const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
 const PHONE_HREF = "tel:+923434762264";
 const PHONE_DISPLAY = "0343 4762264";
 const MAP_QUERY = encodeURIComponent(
-  "Tibbi Lal Baig, Arifwala, District Pakpattan, Punjab, Pakistan 57450",
+  "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan",
 );
 const MAP_EMBED_URL = `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`;
 const MAP_EXTERNAL_URL = `https://www.google.com/maps/search/?api=1&query=${MAP_QUERY}`;
@@ -44,14 +44,14 @@ const LOCAL_BUSINESS_LD = {
   "@type": ["TravelAgency", "LocalBusiness"],
   name: BRAND_NAME,
   description:
-    "Arifwala-based premium travel and visa consultancy serving Pakistani travellers with embassy-grade visa appointments, Gulf medical bookings, flight reservations, hotel reservations and study-abroad guidance.",
+    "Lahore-based premium travel and visa consultancy serving Pakistani travellers with embassy-grade visa appointments, Gulf medical bookings, flight reservations, hotel reservations and study-abroad guidance.",
   url: `${SITE_URL}/contact`,
   telephone: "+92 343 4762264",
   email: LEAD_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Tibbi Lal Baig, Arifwala, District Pakpattan",
-    addressLocality: "Arifwala",
+    streetAddress: "Tibbi Lal Baig, Lahore, District Pakpattan",
+    addressLocality: "Lahore",
     addressRegion: "Punjab",
     addressCountry: "PK",
   },
@@ -88,17 +88,17 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact Us — Arifwala Branch | Al-Bahr Travels & Consultants" },
+      { title: "Contact Us — Lahore Branch | Al-Bahr Travels & Consultants" },
       {
         name: "description",
         content:
-          "Visit or call Al-Bahr Travels & Consultants in Arifwala. Branch address, map, business hours, WhatsApp, phone and email for visa, medical, flight and hotel bookings.",
+          "Visit or call Al-Bahr Travels & Consultants in Lahore. Branch address, map, business hours, WhatsApp, phone and email for visa, medical, flight and hotel bookings.",
       },
-      { property: "og:title", content: "Contact Al-Bahr Travels & Consultants — Arifwala" },
+      { property: "og:title", content: "Contact Al-Bahr Travels & Consultants — Lahore" },
       {
         property: "og:description",
         content:
-          "Branch address, map, hours and contact details for Al-Bahr Travels & Consultants in Arifwala.",
+          "Branch address, map, hours and contact details for Al-Bahr Travels & Consultants in Lahore.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/contact` },
@@ -132,12 +132,12 @@ function ContactPage() {
           </Link>
           <p className="text-xs tracking-[0.35em] text-gold mb-4">GET IN TOUCH</p>
           <h1 className="font-display text-4xl sm:text-6xl leading-tight max-w-3xl">
-            Visit our <span className="text-gold-gradient">Arifwala branch</span>.
+            Visit our <span className="text-gold-gradient">Lahore branch</span>.
           </h1>
           <p className="mt-6 text-muted-foreground max-w-2xl leading-relaxed">
             Speak with a consultant in person, by phone, WhatsApp or email. We handle
             visa appointments, Gulf medical bookings, flights, hotels and study-abroad
-            guidance from our Arifwala desk.
+            guidance from our Lahore desk.
           </p>
         </div>
       </section>
@@ -229,7 +229,7 @@ function ContactPage() {
             <div className="rounded-2xl border border-white/10 bg-[var(--midnight-light)]/30 overflow-hidden">
               <div className="aspect-[4/3] w-full relative">
                 <iframe
-                  title="Al-Bahr Travels & Consultants Arifwala branch location"
+                  title="Al-Bahr Travels & Consultants Lahore branch location"
                   src={MAP_EMBED_URL}
                   className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen
@@ -257,7 +257,7 @@ function ContactPage() {
             Start a conversation on <span className="text-gold-gradient">WhatsApp</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Our Arifwala desk replies during business hours. Share your destination and travel goals
+            Our Lahore desk replies during business hours. Share your destination and travel goals
             and a consultant will guide you through the next steps.
           </p>
           <a

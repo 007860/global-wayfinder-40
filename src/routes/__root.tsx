@@ -48,8 +48,8 @@ const LOCAL_BUSINESS_LD = {
   telephone: "+92 343 4762264",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Tibbi Lal Baig, Arifwala, District Pakpattan",
-    addressLocality: "Arifwala",
+    streetAddress: "Tibbi Lal Baig, Lahore, District Pakpattan",
+    addressLocality: "Lahore",
     addressRegion: "Punjab",
     addressCountry: "PK",
   },
