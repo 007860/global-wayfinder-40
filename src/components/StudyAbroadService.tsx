@@ -37,7 +37,7 @@ export function StudyAbroadService() {
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Fully funded scholarship applications, admission files and student visa preparation for
-          Italy, China, Hungary, South Korea and Turkey — managed by senior consultants in Lahore.
+          Italy, China, Hungary, South Korea and Turkey — managed by senior consultants in Arifwala.
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

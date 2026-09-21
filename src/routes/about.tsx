@@ -15,7 +15,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Meet the leadership of Al-Bahr Travels & Consultants — a Lahore-based premium consultancy engineering seamless global mobility since 2015.",
+          "Meet the leadership of Al-Bahr Travels & Consultants — a Arifwala-based premium consultancy engineering seamless global mobility since 2015.",
       },
       { property: "og:title", content: "About Al-Bahr Travels & Consultants" },
       {
@@ -63,7 +63,7 @@ function AboutPage() {
             <span className="text-gold-gradient">{BRAND_NAME}</span>.
           </h1>
           <p className="mt-6 text-muted-foreground max-w-2xl leading-relaxed">
-            A Lahore-based consultancy quietly engineering global mobility for Pakistan's
+            A Arifwala-based consultancy quietly engineering global mobility for Pakistan's
             most discerning travellers, patients, and professionals — one embassy-grade
             appointment at a time.
           </p>

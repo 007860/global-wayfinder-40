@@ -117,7 +117,7 @@ export function LeadForm({
         <span className="text-gold-gradient">{subject}</span>
       </h2>
       <p className="text-muted-foreground text-sm mb-8">
-        Fill the details below — your information is private and routed directly to our Lahore consultants.
+        Fill the details below — your information is private and routed directly to our Arifwala consultants.
       </p>
 
       <SectionTitle>Personal details</SectionTitle>
@@ -308,7 +308,7 @@ function ServiceFields({
     return (
       <div className="grid sm:grid-cols-2 gap-4">
         <Labeled label="From (Country & City)">
-          <input required value={values.from_location} onChange={onChange("from_location")} className={inputClass} placeholder="e.g. Pakistan, Lahore" />
+          <input required value={values.from_location} onChange={onChange("from_location")} className={inputClass} placeholder="e.g. Pakistan, Arifwala" />
         </Labeled>
         <Labeled label="To (Country & City)">
           <input required value={values.to_location} onChange={onChange("to_location")} className={inputClass} placeholder="e.g. UAE, Dubai (excluding Israel)" />

@@ -7,7 +7,6 @@ import { LeadForm } from "@/components/LeadForm";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
-import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 
 export const Route = createFileRoute("/countries")({
   component: CountriesPage,
@@ -17,13 +16,13 @@ export const Route = createFileRoute("/countries")({
       {
         name: "description",
         content:
-          "Browse every country we serve. Pick a destination, choose a service — visa, flight, hotel or medical appointment — and our Lahore consultants will reach you.",
+          "Browse every country we serve. Pick a destination, choose a service — visa, flight, hotel or medical appointment — and our Arifwala consultants will reach you.",
       },
       { property: "og:title", content: "Countries We Serve — Al-Bahr Travels" },
       {
         property: "og:description",
         content:
-          "Pick your destination country and service — visa appointments, flights, hotels or Gulf medical fitness — and our Lahore consultants will contact you.",
+          "Pick your destination country and service — visa appointments, flights, hotels or Gulf medical fitness — and our Arifwala consultants will contact you.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/countries" },
@@ -89,7 +88,6 @@ function CountriesPage() {
       </section>
 
       <SiteFooter />
-      <FloatingEmailButton />
 
       {/* Step 2: services for the chosen country */}
       {country && !service && (

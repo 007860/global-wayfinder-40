@@ -3,7 +3,6 @@ import { MessageCircle, CheckCircle2, GraduationCap, FileCheck2, ArrowRight, Fol
 import { TopUtilityStrip } from "./TopUtilityStrip";
 import { BurgerMenu } from "./BurgerMenu";
 import { SiteFooter } from "./SiteFooter";
-import { FloatingEmailButton } from "./FloatingEmailButton";
 import { LeadForm } from "./LeadForm";
 import { STUDY_WHATSAPP, getDocuments, type StudyDestination } from "@/lib/study-destinations";
 
@@ -116,7 +115,7 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
               <div>
                 <h3 className="font-display text-lg sm:text-xl">{step}</h3>
                 <p className="mt-1 text-sm text-muted-foreground flex items-center gap-2">
-                  <FileCheck2 className="size-4 text-gold" /> Handled with senior consultant review at our Lahore branch.
+                  <FileCheck2 className="size-4 text-gold" /> Handled with senior consultant review at our Arifwala branch.
                 </p>
               </div>
             </li>
@@ -137,7 +136,7 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
               {d.country} <span className="text-gold-gradient">document &amp; visa file</span> checklist
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Prepare these documents before your application. Our Lahore desk verifies every file
+              Prepare these documents before your application. Our Arifwala desk verifies every file
               before submission.
             </p>
 
@@ -233,7 +232,6 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
       </section>
 
       <SiteFooter />
-      <FloatingEmailButton />
     </main>
   );
 }
