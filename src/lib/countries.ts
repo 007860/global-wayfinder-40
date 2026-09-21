@@ -100,5 +100,5 @@ export const WHATSAPP_PREFILL =
   "Hello Al-Bahr Travels & Consultants — I'd like to enquire about your booking and visa services.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`;
 export const BRANCH_ADDRESS =
-  "Tibbi Lal Baig, Arifwala, District Pakpattan, Punjab, Pakistan 57450";
+  "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
 export const BRAND_NAME = "Al-Bahr Travels & Consultants";
