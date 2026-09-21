@@ -47,8 +47,8 @@ const LOCAL_BUSINESS_LD = {
   telephone: "+92 343 4762264",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "78 E Block, Architect Engineering Housing Society",
-    addressLocality: "Lahore",
+    streetAddress: "Tibbi Lal Baig, Arifwala, District Pakpattan",
+    addressLocality: "Arifwala",
     addressRegion: "Punjab",
     addressCountry: "PK",
   },

@@ -30,7 +30,7 @@ const NODES: Node[] = [
   {
     id: "lhe-jed",
     icon: Zap,
-    region: "Lahore ⇄ Jeddah Routing",
+    region: "Karachi ⇄ Jeddah Routing",
     metric: "Corridor Optimizer",
     value: () => (Math.random() > 0.2 ? "Live · Optimal" : "Live · Rerouting"),
     tone: "gold",

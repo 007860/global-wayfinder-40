@@ -20,7 +20,7 @@ import {
 const EXPIRY = new Date("2026-09-01T00:00:00Z"); // disappears after Aug 31, 2026
 const WHATSAPP_NUMBER = "923434762264";
 const WHATSAPP = `https://wa.me/${WHATSAPP_NUMBER}`;
-const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
+const ADDRESS = "Tibbi Lal Baig, Arifwala, District Pakpattan, Punjab, Pakistan 57450";
 
 function bookOnWhatsApp(packageName: string, details: string[]) {
   const lines = [
@@ -182,7 +182,7 @@ export function UmrahPackages() {
             <span className="text-gold-gradient">Umrah Packages</span> &amp; Flight Groups
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            Curated Saudia star packages and AirSial group departures from Lahore.
+            Curated Saudia star packages and AirSial group departures from Arifwala.
             Book direct with our consultants — limited seats, official rates.
           </p>
         </div>

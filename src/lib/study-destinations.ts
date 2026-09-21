@@ -27,7 +27,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Tuition waivers, annual stipends, free meals and accommodation — guided end-to-end by Al-Bahr's Italy admissions desk.",
     metaTitle: "Study in Italy | 100% Fully Funded DSU Regional Scholarships",
     metaDescription:
-      "Apply for fully funded DSU regional scholarships in Italy: tuition fee waiver, €7,000–€8,000 annual stipend, free canteen meals and accommodation. Free eligibility assessment from Al-Bahr Travels & Consultants, Lahore.",
+      "Apply for fully funded DSU regional scholarships in Italy: tuition fee waiver, €7,000–€8,000 annual stipend, free canteen meals and accommodation. Free eligibility assessment from Al-Bahr Travels & Consultants, Arifwala.",
     benefits: [
       { title: "Full Tuition Fee Waiver", detail: "100% tuition covered under DSU regional scholarship awards." },
       { title: "€7,000–€8,000 Annual Stipend", detail: "Paid directly to scholarship holders each academic year." },
@@ -60,7 +60,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Professor outreach, CSC filing, and X1 visa handling for Bachelor's, Master's and PhD applicants from Pakistan.",
     metaTitle: "Study in China | Fully Funded CSC & Provincial Scholarships",
     metaDescription:
-      "Fully funded CSC and provincial government scholarships in China: 100% tuition waiver, free hostel, RMB 2,500–3,500 monthly stipend and 98%+ visa approval. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Fully funded CSC and provincial government scholarships in China: 100% tuition waiver, free hostel, RMB 2,500–3,500 monthly stipend and 98%+ visa approval. Free eligibility assessment from Al-Bahr Travels, Arifwala.",
     benefits: [
       { title: "100% Tuition Waiver", detail: "Complete tuition coverage under CSC and provincial awards." },
       { title: "Free University Hostel", detail: "On-campus accommodation provided by the host university." },
@@ -92,7 +92,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "A fully funded Schengen pathway into EU degrees — HEC nomination, Tempus selection and D-type visa filing handled for you.",
     metaTitle: "Study in Hungary | Stipendium Hungaricum Scholarship 2026",
     metaDescription:
-      "Apply for the Stipendium Hungaricum scholarship in Hungary: full tuition waiver, monthly stipend, free dormitory, medical insurance and Schengen access. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Apply for the Stipendium Hungaricum scholarship in Hungary: full tuition waiver, monthly stipend, free dormitory, medical insurance and Schengen access. Free eligibility assessment from Al-Bahr Travels, Arifwala.",
     benefits: [
       { title: "100% Tuition Waiver", detail: "Full tuition funded by the Hungarian government." },
       { title: "Monthly Stipend", detail: "Regular monthly allowance for living expenses." },
@@ -125,7 +125,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Embassy track or university track — we build competitive GKS files for Pakistan's strongest applicants.",
     metaTitle: "Study in South Korea | Global Korea Scholarship (GKS) Guidance",
     metaDescription:
-      "Global Korea Scholarship (GKS) and university grants for South Korea: full tuition, round-trip airfare, settlement allowance and 1,000,000 KRW monthly stipend. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Global Korea Scholarship (GKS) and university grants for South Korea: full tuition, round-trip airfare, settlement allowance and 1,000,000 KRW monthly stipend. Free eligibility assessment from Al-Bahr Travels, Arifwala.",
     benefits: [
       { title: "Full Tuition Coverage", detail: "Complete tuition funded for the entire degree." },
       { title: "Round-trip Airfare", detail: "Flight tickets to and from Korea included." },
@@ -159,7 +159,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Fully funded government scholarships or affordable private university placements, with clean visa filing at Anatolia.",
     metaTitle: "Study in Turkey | Türkiye Bursları Scholarship & Universities",
     metaDescription:
-      "Study in Turkey with Türkiye Bursları scholarships or top private universities: monthly allowance, health insurance, affordable tuition and no strict bank statement issues. Free assessment from Al-Bahr Travels, Lahore.",
+      "Study in Turkey with Türkiye Bursları scholarships or top private universities: monthly allowance, health insurance, affordable tuition and no strict bank statement issues. Free assessment from Al-Bahr Travels, Arifwala.",
     benefits: [
       { title: "Fully Funded Scholarship Options", detail: "Türkiye Bursları covers tuition, housing and stipend." },
       { title: "Affordable Tuition", detail: "Competitive private university fees for self-funded students." },
