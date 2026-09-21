@@ -50,7 +50,7 @@ const LOCAL_BUSINESS_LD = {
   email: LEAD_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Tibbi Lal Baig, Lahore, District Pakpattan",
+    streetAddress: "78 E Block, Architect Engineering Housing Society",
     addressLocality: "Lahore",
     addressRegion: "Punjab",
     addressCountry: "PK",
