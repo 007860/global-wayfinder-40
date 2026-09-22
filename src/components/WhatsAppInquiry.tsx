@@ -17,9 +17,11 @@ export function WhatsAppInquiry({ destination = '', b2b = false }: { destination
     const service = String(data.get('Service') || '');
     // Send lead to Make webhook (fire-and-forget; never blocks the user).
     try {
+      // no-cors + text/plain avoids a CORS preflight Make can't answer; Make still parses the JSON body.
       fetch(MAKE_WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ name, city, service, phone }),
       }).catch(err => console.error('[webhook] lead post failed', err));
     } catch (err) {
