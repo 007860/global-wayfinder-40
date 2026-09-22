@@ -35,7 +35,7 @@ export function WhatsAppInquiry({ destination = '', b2b = false }: { destination
     <label>Full name<input name="Full name" placeholder="Your full name" required minLength={2} autoComplete="name" /></label>
     {b2b && <label>Agency / company<input name="Agency" placeholder="Your agency name" required /></label>}
     <div className="form-pair">
-      <label>WhatsApp number<input name="WhatsApp number" type="tel" placeholder="+92 3XX XXXXXXX" autoComplete="tel" pattern="[+0-9 ()-]{7,20}" required /></label>
+      <label>WhatsApp number<input name="WhatsApp number" type="tel" placeholder="+92 3XX XXXXXXX" autoComplete="tel" pattern="[+0-9 \-]{7,20}" required /></label>
       <label>City<input name="City" placeholder="Your city" required minLength={2} autoComplete="address-level2" /></label>
     </div>
     <div className="form-pair"><label>Destination<select name="Destination" defaultValue={destination} required><option value="" disabled>Select destination</option>{['Saudi Arabia','UAE','Turkey','UK','USA','Europe/Schengen','Malaysia','Thailand','Other'].map(d => <option key={d}>{d}</option>)}</select></label><label>Service<select name="Service" required defaultValue=""><option value="" disabled>Select service</option>{['Visit Visa','Umrah Package','Work/Study File Prep','Air Ticket',...(b2b ? ['B2B Partnership'] : [])].map(d => <option key={d}>{d}</option>)}</select></label></div>
