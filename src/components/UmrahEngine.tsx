@@ -91,7 +91,7 @@ function Standard({ onBook }: { onBook: (s: Summary) => void }) {
               {OCCS.map((o) => (
                 <div key={o.key} className={`rounded-lg px-2 py-1.5 text-center ${o.key === occ ? "bg-[#D4AF37] text-[#0F172A]" : "bg-white/5 text-white/70"}`}>
                   <div className="text-[9px] uppercase tracking-wider">{o.label.split(" ")[0]}</div>
-                  <div className="text-xs font-bold tabular-nums">{(p.prices[o.key] / 1000).toFixed(o.key && p.prices[o.key] % 1000 ? 3 : 0)}k</div>
+                  <div className="text-xs font-bold tabular-nums">{p.prices[o.key].toLocaleString("en-US")}</div>
                 </div>
               ))}
             </div>
