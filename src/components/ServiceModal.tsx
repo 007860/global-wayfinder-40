@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { LeadForm, type LeadServiceKey } from "./LeadForm";
 import { CountryPicker } from "./CountryPicker";
 import { ServiceTabBar } from "./ServiceTabBar";
-import { UmrahPackages } from "./UmrahPackages";
+import { UmrahEngine } from "./UmrahEngine";
 import { WORLD_COUNTRIES, GCC_COUNTRIES } from "@/lib/countries";
 import type { ServiceKey } from "./ServicePills";
 
@@ -54,7 +54,7 @@ export function ServiceModal({ service, onClose }: Props) {
 
         {isUmrah ? (
           <div className="-mx-6 sm:-mx-10 -mt-6 sm:-mt-10">
-            <UmrahPackages />
+            <UmrahEngine />
           </div>
         ) : !selected ? (
           <>
