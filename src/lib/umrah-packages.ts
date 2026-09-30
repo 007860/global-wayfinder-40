@@ -19,7 +19,7 @@ export type UmrahPkg = {
 };
 
 const H = {
-  rawafed: { name: "Rawafed Al Asmiah", dist: "1500–2000m", min: 1500, note: "Shuttle Service" },
+  rawafed: { name: "Rawafed Al Asmah", dist: "1500–2000m", min: 1500, note: "Shuttle Service" },
   masar: { name: "Al Masar Ajyad", dist: "800–900m", min: 800, note: "Ajyad Road" },
   juhanni: { name: "Al Juhanni Ajyad", dist: "500–600m", min: 500, note: "Ajyad Road" },
   eiman: { name: "Dar Al Eiman Ajyad", dist: "300–400m", min: 300, note: "Ajyad Road" },
@@ -37,29 +37,12 @@ const p = (sharing: number, quad: number, triple: number, double: number) => ({ 
 const SJ = "Saudia / Fly-Jinnah";
 
 export const UMRAH_PACKAGES: UmrahPkg[] = [
-  { id: "s01", no: "01", series: "sep", airline: SJ, makkah: H.rawafed, madinah: H.marjan, flights: ["SV 739 · 03 Sep · LHE→JED 02:40–05:45", "SV 734 · 23 Sep · JED→LHE 01:55–08:50"], prices: p(234999, 254999, 264999, 284999) },
-  { id: "s02", no: "02", series: "sep", airline: SJ, makkah: H.masar, madinah: H.diyar, flights: ["SV 739 · 07 Sep · LHE→JED 02:40–05:45", "SV 734 · 27 Sep · JED→LHE 01:55–08:50"], prices: p(254999, 280999, 297999, 334999) },
-  { id: "s03", no: "03", series: "sep", airline: SJ, makkah: H.juhanni, madinah: H.nozl, flights: ["SV 735 · 10 Sep · LHE→JED 10:30–13:35", "SV 734 · 30 Sep · JED→LHE 18:05–01:00"], prices: p(264999, 294999, 314999, 357999) },
-  { id: "s04", no: "04", series: "sep", airline: SJ, makkah: H.eiman, madinah: H.concorde, flights: ["SV 739 · 17 Sep · LHE→JED 02:40–05:45", "SV 734 · 07 Oct · JED→LHE 01:55–08:50"], prices: p(274999, 299999, 324999, 369999) },
-  { id: "s05", no: "05", series: "sep", airline: SJ, makkah: H.meridien, madinah: H.taiba, flights: ["SV 739 · 24 Sep · LHE→JED 02:40–05:45", "SV 734 · 14 Oct · JED→LHE 01:55–08:50"], prices: p(289999, 319999, 339999, 379999) },
-  { id: "s06", no: "06", series: "sep", airline: SJ, makkah: H.rawafed, madinah: H.marjan, flights: ["SV 735 · 10 Sep · LHE→JED 10:30–13:35", "SV 738 · 30 Sep · JED→LHE 18:05–01:00"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s07", no: "07", series: "sep", airline: SJ, makkah: H.masar, madinah: H.diyar, flights: ["SV 735 · 11 Sep · LHE→JED 10:30–13:35", "SV 738 · 01 Oct · JED→LHE 18:05–01:00"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s08", no: "08", series: "sep", airline: SJ, makkah: H.juhanni, madinah: H.nozl, flights: ["SV 735 · 28 Sep · LHE→JED 10:30–13:35", "SV 734 · 18 Oct · JED→LHE 18:50–01:00"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s09", no: "09", series: "sep", airline: SJ, makkah: H.eiman, madinah: H.concorde, flights: ["SV 735 · 21 Sep · LHE→JED 10:30–13:35", "SV 734 · 15 Oct · JED→LHE 01:55–08:50"], prices: p(299000, 309000, 325000, 358000) },
-  { id: "s10", no: "10", series: "sep", airline: SJ, makkah: H.meridien, madinah: H.taiba, flights: ["23 Sep · LHE→JED 02:40–05:45", "SV 734 · 18 Oct · JED→LHE 18:50–01:00"], prices: p(299000, 309000, 325000, 358000) },
-  { id: "s11", no: "11", series: "sep", airline: SJ, makkah: H.masar, madinah: H.diyar, flights: ["SV 735 · 05 Sep · LHE→JED 10:30–13:35", "SV 738 · 25 Sep · JED→LHE 18:05–01:00"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s12", no: "12", series: "sep", airline: SJ, makkah: H.masar, madinah: H.diyar, flights: ["SV 739 · 08 Sep · LHE→JED 02:40–05:45", "SV 734 · 28 Sep · JED→LHE 01:55–08:50"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s13", no: "13", series: "sep", airline: SJ, makkah: H.juhanni, madinah: H.nozl, flights: ["SV 735 · 12 Sep · LHE→JED 10:30–13:35", "SV 738 · 02 Oct · JED→LHE 18:05–01:00"], prices: p(282000, 287000, 297000, 315000) },
-  { id: "s14", no: "14", series: "sep", airline: SJ, makkah: H.eiman, madinah: H.concorde, flights: ["SV 739 · 15 Sep · LHE→JED 02:40–05:45", "SV 734 · 05 Oct · JED→LHE 01:55–08:50"], prices: p(299000, 309000, 325000, 358000) },
-  { id: "s15", no: "15", series: "sep", airline: SJ, makkah: H.meridien, madinah: H.taiba, flights: ["SV 739 · 19 Sep · LHE→JED 02:40–05:45", "SV 734 · 09 Oct · JED→LHE 01:55–08:50"], prices: p(299000, 309000, 325000, 358000) },
-  // Oct–Nov Saudia departures
-  { id: "o06", no: "06", series: "oct", airline: "Saudia", makkah: H.rayan, madinah: H.marjan, flights: ["SV 739 · 22 Oct · LHE→JED 02:40–05:45", "SV 734 · 12 Nov · JED→LHE 02:10–08:45"], prices: p(266999, 273999, 286999, 311999) },
-  { id: "o07", no: "07", series: "oct", airline: "Saudia", makkah: H.rayan, madinah: H.marjan, flights: ["SV 739 · 28 Oct → SV 738 · 17 Nov", "SV 739 · 31 Oct → SV 732 · 20 Nov"], prices: p(264999, 272999, 284999, 308999) },
-  { id: "o08", no: "08", series: "oct", airline: "Saudia", makkah: H.juhanni, madinah: H.nozl, flights: ["SV 739 · 04 Oct · LHE→JED 02:40–05:45", "SV 734 · 24 Oct · JED→LHE 02:10–08:45"], prices: p(279999, 290999, 308999, 344999) },
-  { id: "o09", no: "09", series: "oct", airline: "Saudia", makkah: H.juhanni, madinah: H.alkaram, flights: ["SV 739 · 07 Oct · LHE→JED 02:40–05:45", "SV 738 · 28 Oct · JED→LHE 18:05–01:00"], prices: p(290999, 303999, 326999, 371999) },
-  { id: "o10", no: "10", series: "oct", airline: "Saudia", makkah: H.juhanni, madinah: H.alkaram, flights: ["SV 735 · 16 Oct → SV 738 · 05 Nov", "SV 739 · 17 Oct → SV 734 · 06 Nov"], prices: p(287999, 300999, 322999, 366999) },
-  { id: "o11", no: "11", series: "oct", airline: "Saudia", makkah: H.juhanni, madinah: H.alkaram, flights: ["SV 739 · 18 Oct → SV 732 · 07 Nov", "SV 735 · 21 Oct → SV 738 · 10 Nov"], prices: p(287999, 300999, 322999, 366999) },
-  { id: "o12", no: "12", series: "oct", airline: "Saudia", makkah: H.juhanni, madinah: H.alkaram, flights: ["SV 739 · 30 Oct · LHE→JED 02:40–05:45", "SV 734 · 19 Nov · JED→LHE 02:10–08:45"], prices: p(287999, 300999, 322999, 366999) },
+  { id: "o01", no: "01", series: "oct", airline: "Saudia (SV 739 / SV 734)", makkah: H.rayan, madinah: H.marjan, flights: ["22 Oct · LHE→JED 02:40–05:45 → 12 Nov · JED→LHE 02:10–08:45"], prices: p(266999, 273999, 286999, 311999) },
+  { id: "o02", no: "02", series: "oct", airline: "Saudia (SV 739 / SV 738 / SV 732)", makkah: H.rayan, madinah: H.marjan, flights: ["Option A: 28 Oct LHE→JED → 17 Nov JED→LHE", "Option B: 31 Oct LHE→JED → 20 Nov JED→LHE"], prices: p(264999, 272999, 284999, 308999) },
+  { id: "o03", no: "03", series: "oct", airline: "Saudia (SV 739 / SV 734)", makkah: H.juhanni, madinah: H.nozl, flights: ["04 Oct · LHE→JED 02:40–05:45 → 24 Oct · JED→LHE 02:10–08:45"], prices: p(279999, 290999, 308999, 344999) },
+  { id: "o04", no: "04", series: "oct", airline: "Saudia (SV 739 / SV 738)", makkah: H.juhanni, madinah: H.alkaram, flights: ["07 Oct · LHE→JED 02:40–05:45 → 28 Oct · JED→LHE 18:05–01:00"], prices: p(290999, 303999, 326999, 371999) },
+  { id: "o05", no: "05", series: "oct", airline: "Saudia (SV 735 / 738 / 739 / 734 / 732)", makkah: H.juhanni, madinah: H.alkaram, flights: ["Option A: 16 Oct LHE→JED → 05 Nov JED→LHE", "Option B: 17 Oct LHE→JED → 06 Nov JED→LHE", "Option C: 18 Oct LHE→JED → 07 Nov JED→LHE", "Option D: 21 Oct LHE→JED → 10 Nov JED→LHE"], prices: p(287999, 300999, 322999, 366999) },
+  { id: "o06", no: "06", series: "oct", airline: "Saudia (SV 739 / SV 734)", makkah: H.juhanni, madinah: H.alkaram, flights: ["30 Oct · LHE→JED 02:40–05:45 → 19 Nov · JED→LHE 02:10–08:45"], prices: p(287999, 300999, 322999, 366999) },
 ];
 
 export const DISTANCE_BANDS = [
@@ -70,7 +53,7 @@ export const DISTANCE_BANDS = [
   { key: "1000", label: "1000m+ Shuttle", test: (m: number) => m >= 1000 },
 ] as const;
 
-export const MAKKAH_HOTELS: Hotel[] = [H.rawafed, H.masar, H.rayan, { name: "Emar Al Khair Golden", dist: "800–900m", min: 800, note: "Hijra Road" }, H.juhanni, H.eiman, H.meridien, { name: "Mather Al Jewar", dist: "500–550m", min: 500, note: "Hilal Road" }];
-export const MADINAH_HOTELS: Hotel[] = [H.marjan, H.diyar, H.nozl, H.concorde, H.taiba];
+export const MAKKAH_HOTELS: Hotel[] = [H.rayan, H.juhanni, H.rawafed, H.masar, { name: "Emar Al Khair Golden", dist: "800–900m", min: 800, note: "Hijra Road" }, H.eiman, H.meridien];
+export const MADINAH_HOTELS: Hotel[] = [H.marjan, H.nozl, H.alkaram, H.diyar, H.concorde, H.taiba];
 
 export const fmtPKR = (n: number) => `PKR ${n.toLocaleString("en-US")}/-`;

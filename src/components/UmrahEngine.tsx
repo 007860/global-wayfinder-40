@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Image as ImageIcon } from "lucide-react";
 import { toast } from "sonner";
 import { BadgeCheck, Hotel, Plane, ShieldCheck, Bus, BookOpen, BedDouble, X, MessageCircle, Check } from "lucide-react";
 import { UMRAH_PACKAGES, OCCS, DISTANCE_BANDS, MAKKAH_HOTELS, MADINAH_HOTELS, fmtPKR, type Occ, type UmrahPkg, type Hotel as HotelT } from "@/lib/umrah-packages";
@@ -24,7 +25,7 @@ export function UmrahEngine() {
         <h2 className="font-display text-3xl sm:text-4xl mt-2">Umrah &amp; Hajj <span className="text-[#D4AF37]">Booking Engine</span></h2>
       </div>
       <div className="flex gap-2 overflow-x-auto pb-2 mb-6 justify-start sm:justify-center">
-        {([["standard", "Verified Standard Packages"], ["custom", "Make Your Own Package"]] as const).map(([k, l]) => (
+        {([["standard", "Verified October Packages (21 Days)"], ["custom", "Custom Package Builder"]] as const).map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)} className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold border transition ${tab === k ? "bg-[#D4AF37] text-[#0F172A] border-[#D4AF37]" : "border-white/20 text-white/80 hover:border-[#D4AF37]"}`}>{l}</button>
         ))}
       </div>
@@ -48,19 +49,19 @@ function Chips<T extends string>({ label, value, options, onChange }: { label: s
 }
 
 function Standard({ onBook }: { onBook: (s: Summary) => void }) {
-  const [series, setSeries] = useState<"sep" | "oct">("sep");
+  const [flyer, setFlyer] = useState<UmrahPkg | null>(null);
   const [mk, setMk] = useState<string>("all");
   const [md, setMd] = useState<string>("all");
   const [occ, setOcc] = useState<Occ>("sharing");
   const list = useMemo(() => {
     const tm = DISTANCE_BANDS.find((b) => b.key === mk)!.test;
     const td = DISTANCE_BANDS.find((b) => b.key === md)!.test;
-    return UMRAH_PACKAGES.filter((p) => p.series === series && tm(p.makkah.min) && td(p.madinah.min));
-  }, [series, mk, md]);
+    return UMRAH_PACKAGES.filter((p) => tm(p.makkah.min) && td(p.madinah.min));
+  }, [mk, md]);
   const bands = DISTANCE_BANDS.map((b) => ({ key: b.key as string, label: b.label }));
 
   const book = (p: UmrahPkg) => onBook({
-    type: `Standard Package #${p.no} (${series === "sep" ? "Sep–Oct" : "Oct–Nov"} · 21 Days)`,
+    type: `Standard Package #${p.no} (October 2026 · 21 Days)`,
     airline: p.airline,
     makkah: `${p.makkah.name} (${p.makkah.dist}) · 12 Nights`,
     madinah: `${p.madinah.name} (${p.madinah.dist}) · 8 Nights`,
@@ -71,7 +72,6 @@ function Standard({ onBook }: { onBook: (s: Summary) => void }) {
   return (
     <div>
       <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-4 mb-6">
-        <Chips label="DEPARTURE SERIES" value={series} onChange={setSeries} options={[{ key: "sep", label: "21 Days · Saudia / Fly-Jinnah (Sep–Oct) · 15 Pkgs" }, { key: "oct", label: "21 Days · Saudia (Oct–Nov) · 7 Pkgs" }]} />
         <Chips label="MAKKAH HOTEL DISTANCE" value={mk} onChange={setMk} options={bands} />
         <Chips label="MADINAH HOTEL DISTANCE" value={md} onChange={setMd} options={bands} />
         <Chips label="ROOM OCCUPANCY" value={occ} onChange={setOcc} options={OCCS} />
@@ -79,7 +79,7 @@ function Standard({ onBook }: { onBook: (s: Summary) => void }) {
       {list.length === 0 && <p className="text-center text-white/60 py-8">No package matches these distances — try another filter.</p>}
       <div className="grid md:grid-cols-2 gap-4">
         {list.map((p) => (
-          <button key={p.id} onClick={() => book(p)} className="text-left rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur p-5 hover:border-[#D4AF37] transition group">
+          <div key={p.id} className="text-left rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur p-5 hover:border-[#D4AF37] transition group">
             <div className="flex items-center justify-between mb-3">
               <span className="font-display text-2xl text-[#D4AF37]">Package {p.no}</span>
               <span className="text-[10px] tracking-widest rounded-full bg-[#D4AF37]/15 text-[#D4AF37] px-2.5 py-1">{p.airline.toUpperCase()}</span>
@@ -97,15 +97,38 @@ function Standard({ onBook }: { onBook: (s: Summary) => void }) {
             </div>
             <div className="mt-4 flex items-end justify-between">
               <div><p className="text-[10px] tracking-widest text-white/50">PER HEAD</p><p className="font-display text-xl text-[#D4AF37] tabular-nums">{fmtPKR(p.prices[occ])}</p></div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-semibold"><MessageCircle className="size-3.5" />Book</span>
+              <div className="flex gap-2"><button type="button" onClick={() => setFlyer(p)} className="inline-flex items-center gap-1 rounded-full border border-[#D4AF37]/60 text-[#D4AF37] px-3 py-1.5 text-xs font-semibold"><ImageIcon className="size-3.5" />View Flyer</button><button type="button" onClick={() => book(p)} className="inline-flex items-center gap-1 rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-semibold"><MessageCircle className="size-3.5" />Book Now</button></div>
             </div>
             <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap gap-x-3 gap-y-1">
               {FEATURES.map(({ icon: I, label }) => <span key={label} className="inline-flex items-center gap-1 text-[10px] text-white/60"><I className="size-3 text-[#D4AF37]" />{label}</span>)}
             </div>
-          </button>
+          </div>
         ))}
       </div>
+      {flyer && <Flyer p={flyer} onClose={() => setFlyer(null)} onBook={() => { setFlyer(null); book(flyer); }} />}
       <p className="mt-6 text-center text-[11px] text-white/50">Packages in PKR & non-refundable · New tax/fuel charged accordingly · Embassy-sent cases charged at market rate</p>
+    </div>
+  );
+}
+
+function Flyer({ p, onClose, onBook }: { p: UmrahPkg; onClose: () => void; onBook: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-sm rounded-2xl overflow-hidden border-2 border-[#D4AF37] bg-gradient-to-b from-[#0F172A] to-[#1e293b] text-white shadow-2xl">
+        <button onClick={onClose} aria-label="Close flyer" className="absolute top-2 right-2 p-2 z-10"><X className="size-5" /></button>
+        <div className="bg-[#D4AF37] text-[#0F172A] text-center py-3"><p className="text-[10px] tracking-[0.3em] font-bold">AL-BAHR TRAVELS · UMRAH 1448 H</p><p className="font-display text-3xl">Package {p.no}</p><p className="text-xs font-semibold">21 Days · October 2026 · From Lahore</p></div>
+        <div className="p-5 space-y-3 text-sm">
+          <p className="flex gap-2"><Plane className="size-4 text-[#D4AF37] shrink-0 mt-0.5" />{p.airline.toUpperCase()}</p>
+          <div className="text-[11px] text-white/70 space-y-0.5">{p.flights.map((f) => <p key={f}>✈ {f}</p>)}</div>
+          <HotelLine city="Makkah · 12N" h={p.makkah} />
+          <HotelLine city="Madinah · 8N" h={p.madinah} />
+          <div className="grid grid-cols-2 gap-2">{OCCS.map((o) => <div key={o.key} className="rounded-lg bg-white/10 p-2 text-center"><p className="text-[10px] uppercase tracking-wider text-[#D4AF37]">{o.label}</p><p className="font-bold tabular-nums">{fmtPKR(p.prices[o.key])}</p></div>)}</div>
+          <p className="text-[10px] text-white/50 text-center">Visa · Ticket · Hotels · Transport · Ziarat · Per person rates</p>
+          <button onClick={onBook} className="w-full rounded-full bg-[#25D366] font-semibold py-2.5 inline-flex items-center justify-center gap-2"><MessageCircle className="size-4" />Book Now</button>
+          <p className="text-center text-[11px] text-white/60">03434762264 · 03257938125</p>
+        </div>
+      </div>
     </div>
   );
 }
