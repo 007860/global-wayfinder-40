@@ -25,7 +25,7 @@ export function UmrahEngine() {
         <h2 className="font-display text-3xl sm:text-4xl mt-2">Umrah &amp; Hajj <span className="text-[#D4AF37]">Booking Engine</span></h2>
       </div>
       <div className="flex gap-2 overflow-x-auto pb-2 mb-6 justify-start sm:justify-center">
-        {([["standard", "Verified October Packages (21 Days)"], ["custom", "Custom Package Builder"]] as const).map(([k, l]) => (
+        {([["standard", "Verified October Packages (21 Days · 11 Packages)"], ["custom", "Custom Package Builder"]] as const).map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)} className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold border transition ${tab === k ? "bg-[#D4AF37] text-[#0F172A] border-[#D4AF37]" : "border-white/20 text-white/80 hover:border-[#D4AF37]"}`}>{l}</button>
         ))}
       </div>
@@ -186,11 +186,12 @@ function Custom({ onBook }: { onBook: (s: Summary) => void }) {
 function BookingModal({ s, onClose }: { s: Summary; onClose: () => void }) {
   const [f, setF] = useState({ name: "", phone: "", city: "", date: "", pax: "1" });
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement>) => setF({ ...f, [k]: e.target.value });
+  const [to, setTo] = useState(WA);
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!f.name.trim() || !f.phone.trim() || !f.city.trim()) return toast.error("Please fill name, WhatsApp number and city.");
     const msg = `Assalam-o-Alaikum Al-Bahr Travels!\n\nMain Website Se Package Book Karna Chahta Hoon:\n\n📌 PACKAGE SUMMARY:\n- Type: ${s.type}\n- Airline: ${s.airline}\n- Makkah Hotel: ${s.makkah}\n- Madinah Hotel: ${s.madinah}\n- Room Occupancy: ${s.occ}\n- Calculated Rate: ${s.rate === "Quote requested" ? s.rate : `PKR ${s.rate}/-`}\n\n👤 CLIENT INFO:\n- Name: ${f.name}\n- Phone: ${f.phone}\n- City: ${f.city}\n- Travel Date: ${f.date || "Flexible"}\n- Total Persons: ${f.pax}\n\nKripya Mujhse Jald Rabta Karein.`;
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/${to}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     toast.success("Booking sent on WhatsApp — our team will contact you soon.");
     onClose();
   };
@@ -212,8 +213,8 @@ function BookingModal({ s, onClose }: { s: Summary; onClose: () => void }) {
             <input className={inp} type="number" min={1} max={50} value={f.pax} onChange={set("pax")} aria-label="Total passengers" />
           </div>
         </div>
-        <button type="submit" className="mt-5 w-full rounded-full bg-[#25D366] font-semibold py-3 inline-flex items-center justify-center gap-2"><MessageCircle className="size-5" />Confirm &amp; Send to CEO WhatsApp</button>
-        <p className="mt-2 text-center text-[11px] text-white/50">03434762264 · CEO 03257938125</p>
+        <div className="mt-4 grid grid-cols-2 gap-2 text-xs">{[["923434762264", "Office 03434762264"], ["923257938125", "CEO 03257938125"]].map(([n, l]) => <button key={n} type="button" onClick={() => setTo(n)} className={`rounded-full border px-2 py-2 ${to === n ? "border-[#D4AF37] bg-[#D4AF37]/20 text-[#D4AF37]" : "border-white/20 text-white/70"}`}>{l}</button>)}</div>
+        <button type="submit" className="mt-3 w-full rounded-full bg-[#25D366] font-semibold py-3 inline-flex items-center justify-center gap-2"><MessageCircle className="size-5" />Confirm &amp; Send on WhatsApp</button>
       </form>
     </div>
   );
