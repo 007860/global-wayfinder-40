@@ -181,6 +181,39 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Turkish student visa application at Anatolia Visa Center",
     ],
   },
+  {
+    slug: "study-in-germany",
+    route: "/study-in-germany",
+    country: "Germany",
+    title: "Study in Germany",
+    flag: "🇩🇪",
+    heroHeadline: "Study in Germany — Public Universities, Low or No Tuition",
+    heroSub:
+      "Admission, APS certificate, blocked account and German student visa guidance for Pakistani students.",
+    metaTitle: "Study in Germany from Pakistan | APS, Blocked Account & Visa",
+    metaDescription:
+      "Study in Germany from Pakistan: public universities with low or no tuition, APS certificate, blocked account and student visa file guidance. Free assessment from Al-Bahr Travels, Lahore.",
+    benefits: [
+      { title: "Low or No Tuition", detail: "Most public universities charge little or no tuition (semester fee applies)." },
+      { title: "Globally Ranked Degrees", detail: "Strong engineering, IT and science programmes." },
+      { title: "Part-Time Work", detail: "Students may work part-time within German rules." },
+      { title: "Post-Study Job Search", detail: "Residence options to look for work after graduation." },
+      { title: "English-Taught Programmes", detail: "Many Master's programmes are taught in English." },
+    ],
+    requirements: [
+      "Recognised Bachelor's degree for Master's (Intermediate + entry route for BS)",
+      "IELTS / English proficiency or German language certificate",
+      "APS certificate (required for Pakistani applicants)",
+      "Blocked account (amount set by German authorities each year)",
+      "Valid passport and health insurance",
+    ],
+    process: [
+      "Profile assessment and university shortlisting",
+      "APS verification and university applications (uni-assist / direct)",
+      "Admission letter and blocked account opening",
+      "German student visa appointment and file submission",
+    ],
+  },
 ];
 
 export function getDestination(slug: string): StudyDestination {

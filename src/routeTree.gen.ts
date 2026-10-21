@@ -16,12 +16,15 @@ import { Route as B2bRouteImport } from './routes/b2b'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as MedicalAppointmentsRouteImport } from './routes/medical-appointments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
+import { Route as StudyInGermanyRouteImport } from './routes/study-in-germany'
 import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
 import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
 import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
 import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
+import { Route as UmrahPackagesRouteImport } from './routes/umrah-packages'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +61,11 @@ const CountriesRoute = CountriesRouteImport.update({
   path: '/countries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MedicalAppointmentsRoute = MedicalAppointmentsRouteImport.update({
+  id: '/medical-appointments',
+  path: '/medical-appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -66,6 +74,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const StudyInChinaRoute = StudyInChinaRouteImport.update({
   id: '/study-in-china',
   path: '/study-in-china',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyInGermanyRoute = StudyInGermanyRouteImport.update({
+  id: '/study-in-germany',
+  path: '/study-in-germany',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StudyInHungaryRoute = StudyInHungaryRouteImport.update({
@@ -88,6 +101,11 @@ const StudyInTurkeyRoute = StudyInTurkeyRouteImport.update({
   path: '/study-in-turkey',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UmrahPackagesRoute = UmrahPackagesRouteImport.update({
+  id: '/umrah-packages',
+  path: '/umrah-packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -97,12 +115,15 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
   '/study-in-hungary': typeof StudyInHungaryRoute
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-packages': typeof UmrahPackagesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -112,12 +133,15 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
   '/study-in-hungary': typeof StudyInHungaryRoute
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-packages': typeof UmrahPackagesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -128,12 +152,15 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
+  '/study-in-germany': typeof StudyInGermanyRoute
   '/study-in-hungary': typeof StudyInHungaryRoute
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-packages': typeof UmrahPackagesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -145,12 +172,15 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
+    | '/study-in-germany'
     | '/study-in-hungary'
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-packages'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -160,12 +190,15 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
+    | '/study-in-germany'
     | '/study-in-hungary'
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-packages'
   id:
     | '__root__'
     | '/'
@@ -175,12 +208,15 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
+    | '/study-in-germany'
     | '/study-in-hungary'
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-packages'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -191,12 +227,15 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
+  MedicalAppointmentsRoute: typeof MedicalAppointmentsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyInChinaRoute: typeof StudyInChinaRoute
+  StudyInGermanyRoute: typeof StudyInGermanyRoute
   StudyInHungaryRoute: typeof StudyInHungaryRoute
   StudyInItalyRoute: typeof StudyInItalyRoute
   StudyInSouthKoreaRoute: typeof StudyInSouthKoreaRoute
   StudyInTurkeyRoute: typeof StudyInTurkeyRoute
+  UmrahPackagesRoute: typeof UmrahPackagesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -250,6 +289,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/medical-appointments': {
+      id: '/medical-appointments'
+      path: '/medical-appointments'
+      fullPath: '/medical-appointments'
+      preLoaderRoute: typeof MedicalAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -262,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/study-in-china'
       fullPath: '/study-in-china'
       preLoaderRoute: typeof StudyInChinaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-in-germany': {
+      id: '/study-in-germany'
+      path: '/study-in-germany'
+      fullPath: '/study-in-germany'
+      preLoaderRoute: typeof StudyInGermanyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/study-in-hungary': {
@@ -292,6 +345,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyInTurkeyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/umrah-packages': {
+      id: '/umrah-packages'
+      path: '/umrah-packages'
+      fullPath: '/umrah-packages'
+      preLoaderRoute: typeof UmrahPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -303,12 +363,15 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
+  MedicalAppointmentsRoute: MedicalAppointmentsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyInChinaRoute: StudyInChinaRoute,
+  StudyInGermanyRoute: StudyInGermanyRoute,
   StudyInHungaryRoute: StudyInHungaryRoute,
   StudyInItalyRoute: StudyInItalyRoute,
   StudyInSouthKoreaRoute: StudyInSouthKoreaRoute,
   StudyInTurkeyRoute: StudyInTurkeyRoute,
+  UmrahPackagesRoute: UmrahPackagesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
