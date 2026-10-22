@@ -88,7 +88,7 @@ export function JobOffers() {
             </p>
             {(o.age || o.gender) && (
               <p className="mt-1.5 flex items-center gap-2 text-xs text-white/65">
-                {(o.age ? Cake : Users).toString() && o.age ? (
+                {o.age ? (
                   <Cake className="size-4 text-[#D4AF37] shrink-0" />
                 ) : (
                   <Users className="size-4 text-[#D4AF37] shrink-0" />

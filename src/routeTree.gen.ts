@@ -16,6 +16,7 @@ import { Route as B2bRouteImport } from './routes/b2b'
 import { Route as BlogsRouteImport } from './routes/blogs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as MedicalAppointmentsRouteImport } from './routes/medical-appointments'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StudyInChinaRouteImport } from './routes/study-in-china'
@@ -59,6 +60,11 @@ const ContactRoute = ContactRouteImport.update({
 const CountriesRoute = CountriesRouteImport.update({
   id: '/countries',
   path: '/countries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MedicalAppointmentsRoute = MedicalAppointmentsRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -133,6 +140,7 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -152,6 +160,7 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/jobs'
     | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/jobs'
     | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/contact'
     | '/countries'
+    | '/jobs'
     | '/medical-appointments'
     | '/sitemap.xml'
     | '/study-in-china'
@@ -227,6 +239,7 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
+  JobsRoute: typeof JobsRoute
   MedicalAppointmentsRoute: typeof MedicalAppointmentsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyInChinaRoute: typeof StudyInChinaRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/countries'
       fullPath: '/countries'
       preLoaderRoute: typeof CountriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medical-appointments': {
@@ -363,6 +383,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
+  JobsRoute: JobsRoute,
   MedicalAppointmentsRoute: MedicalAppointmentsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyInChinaRoute: StudyInChinaRoute,
