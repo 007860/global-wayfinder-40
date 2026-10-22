@@ -9,7 +9,7 @@ const ExtraSchema = z.object({
 const LeadSchema = z.object({
   first_name: z.string().trim().min(1).max(80),
   last_name: z.string().trim().min(1).max(80),
-  email: z.string().trim().email().max(160),
+  email: z.string().trim().email().max(160).or(z.literal("")).optional().default(""),
   phone: z.string().trim().min(5).max(40),
   residence_country: z.string().trim().max(120).optional().default(""),
   passport_number: z.string().trim().max(40).optional().default(""),
@@ -54,6 +54,7 @@ function serviceLabel(key: string) {
     case "visa": return "Visa Appointment Booking";
     case "flight": return "Air Ticket Booking";
     case "hotel": return "Hotel Booking";
+    case "jobs": return "Jobs Abroad & Work Permit";
     default: return "General Enquiry";
   }
 }
@@ -156,7 +157,7 @@ async function sendLeadEmail(lead: Lead) {
   const boundary = `=_albahr_${Date.now().toString(36)}`;
   const mime = [
     `To: ${LEAD_EMAIL}`,
-    `Reply-To: ${lead.email}`,
+    ...(lead.email ? [`Reply-To: ${lead.email}`] : []),
     `Subject: ${subject}`,
     "MIME-Version: 1.0",
     `Content-Type: multipart/mixed; boundary="${boundary}"`,
