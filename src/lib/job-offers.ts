@@ -17,6 +17,7 @@ export type JobOffer = {
   title: string;
   roles: string[];
   salary: string;
+  baseSalary?: { currency: string; value?: number; min?: number; max?: number };
   age?: string;
   gender?: string;
   paymentPlan?: string;
@@ -33,6 +34,7 @@ export const JOB_OFFERS: JobOffer[] = [
     title: "Turkey Garments Factory Jobs",
     roles: ["Cutting & sewing — garments factory"],
     salary: "PKR 180,000 / month",
+    baseSalary: { currency: "PKR", value: 180000 },
     paymentPlan: "60% advance before processing · 40% after visa",
     benefits: ["Free food", "Legal visa", "Best manpower handling", "Limited seats"],
     flyer: flyerTurkeyGarments.url,
@@ -44,6 +46,7 @@ export const JOB_OFFERS: JobOffer[] = [
     title: "Turkey Biscuit & Cookie Packing",
     roles: ["Biscuit / cookie packing workers"],
     salary: "PKR 180,000 / month",
+    baseSalary: { currency: "PKR", value: 180000 },
     gender: "Ladies only",
     age: "18–40 years (age relaxation possible)",
     benefits: ["Free food", "Free accommodation", "Direct hiring from Pakistan"],
@@ -61,6 +64,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "Stock picker · stock dispatcher",
     ],
     salary: "PKR 180,000 / month",
+    baseSalary: { currency: "PKR", value: 180000 },
     gender: "Male",
     age: "19–40 years",
     benefits: [
@@ -80,6 +84,7 @@ export const JOB_OFFERS: JobOffer[] = [
     title: "Turkey General Workers",
     roles: ["General labour"],
     salary: "TRY 28,000 / month (Turkish Lira)",
+    baseSalary: { currency: "TRY", value: 28000 },
     gender: "Male",
     age: "18–50 years",
     benefits: ["Food & accommodation free", "8-hour duty", "1-year contract (renewable)"],
@@ -140,6 +145,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "General worker",
     ],
     salary: "€1,200 – €1,600 / month",
+    baseSalary: { currency: "EUR", min: 1200, max: 1600 },
     benefits: [
       "Free accommodation (shared)",
       "Food provided (at work)",
