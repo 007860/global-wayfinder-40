@@ -59,8 +59,9 @@ export function JobOffers() {
       <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
         {list.map((o) => (
           <article
+            id={o.id}
             key={o.id}
-            className="text-left rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur p-5 hover:border-[#D4AF37] transition"
+            className="text-left rounded-2xl border border-[#D4AF37]/30 bg-gradient-to-b from-white/[0.07] to-white/[0.02] backdrop-blur p-5 hover:border-[#D4AF37] transition scroll-mt-24"
           >
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-semibold tracking-wide">
