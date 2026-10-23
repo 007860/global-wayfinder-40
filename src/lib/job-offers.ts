@@ -1,11 +1,12 @@
 // Job offer flyers — data taken verbatim from the 7 uploaded Al-Bahr flyers (Oct 2026).
-import flyerTurkeyGarments from "@/assets/job-flyer-turkey-garments.png";
-import flyerTurkeyBiscuit from "@/assets/job-flyer-turkey-biscuit.png";
-import flyerTurkeySewing from "@/assets/job-flyer-turkey-sewing.png";
-import flyerTurkeyGeneral from "@/assets/job-flyer-turkey-general.png";
-import flyerPolandJobs from "@/assets/job-flyer-poland-jobs.png";
-import flyerAlbania from "@/assets/job-flyer-albania.png";
-import flyerPolandPermit from "@/assets/job-flyer-poland-permit.png";
+// Flyer images are CDN asset pointers (.asset.json) — use the `url` field.
+import flyerTurkeyGarments from "@/assets/job-flyer-turkey-garments.png.asset.json";
+import flyerTurkeyBiscuit from "@/assets/job-flyer-turkey-biscuit.png.asset.json";
+import flyerTurkeySewing from "@/assets/job-flyer-turkey-sewing.png.asset.json";
+import flyerTurkeyGeneral from "@/assets/job-flyer-turkey-general.png.asset.json";
+import flyerPolandJobs from "@/assets/job-flyer-poland-jobs.png.asset.json";
+import flyerAlbania from "@/assets/job-flyer-albania.png.asset.json";
+import flyerPolandPermit from "@/assets/job-flyer-poland-permit.png.asset.json";
 
 export type JobCountry = "Turkey" | "Poland" | "Albania";
 
