@@ -35,7 +35,7 @@ export const JOB_OFFERS: JobOffer[] = [
     salary: "PKR 180,000 / month",
     paymentPlan: "60% advance before processing · 40% after visa",
     benefits: ["Free food", "Legal visa", "Best manpower handling", "Limited seats"],
-    flyer: flyerTurkeyGarments,
+    flyer: flyerTurkeyGarments.url,
   },
   {
     id: "tr-biscuit",
@@ -47,7 +47,7 @@ export const JOB_OFFERS: JobOffer[] = [
     gender: "Ladies only",
     age: "18–40 years (age relaxation possible)",
     benefits: ["Free food", "Free accommodation", "Direct hiring from Pakistan"],
-    flyer: flyerTurkeyBiscuit,
+    flyer: flyerTurkeyBiscuit.url,
   },
   {
     id: "tr-sewing",
@@ -71,7 +71,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "Direct hiring from Pakistan",
       "Limited seats",
     ],
-    flyer: flyerTurkeySewing,
+    flyer: flyerTurkeySewing.url,
   },
   {
     id: "tr-general",
@@ -84,7 +84,7 @@ export const JOB_OFFERS: JobOffer[] = [
     age: "18–50 years",
     benefits: ["Food & accommodation free", "8-hour duty", "1-year contract (renewable)"],
     note: "Important notice (flyer): no fee is charged before the work permit is issued.",
-    flyer: flyerTurkeyGeneral,
+    flyer: flyerTurkeyGeneral.url,
   },
   {
     id: "pl-jobs",
@@ -100,7 +100,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "Health insurance",
       "Professional guidance",
     ],
-    flyer: flyerPolandJobs,
+    flyer: flyerPolandJobs.url,
   },
   {
     id: "pl-permit",
@@ -124,7 +124,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "Legal & safe process",
       "Complete support",
     ],
-    flyer: flyerPolandPermit,
+    flyer: flyerPolandPermit.url,
   },
   {
     id: "al-all",
@@ -147,7 +147,7 @@ export const JOB_OFFERS: JobOffer[] = [
       "Transportation support",
       "Legal work permit",
     ],
-    flyer: flyerAlbania,
+    flyer: flyerAlbania.url,
   },
 ];
 
