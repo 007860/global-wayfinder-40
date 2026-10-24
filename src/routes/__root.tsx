@@ -15,6 +15,7 @@ import appCss from "../styles.css?url";
 
 const SITE_NAME = "Al-Bahr Travels & Consultants";
 const SITE_DESC =
+  "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
 const KEYWORDS = [
   "Al-Bahr Travels & Consultants",
   "Gamca medical registration Pakistan",
