@@ -9,23 +9,29 @@ import ceoPortrait from "@/assets/portrait-ceo.jpg";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
-  head: () => ({
-    meta: [
-      { title: "About Us — Leadership & Mission | Al-Bahr Travels & Consultants" },
-      {
-        name: "description",
-        content:
-          "Meet the leadership of Al-Bahr Travels & Consultants — a Lahore-based premium consultancy engineering seamless global mobility since 2015.",
-      },
-      { property: "og:title", content: "About Al-Bahr Travels & Consultants" },
-      {
-        property: "og:description",
-        content:
-          "Leadership, mission, and operational integrity — the story behind Al-Bahr Travels & Consultants.",
-      },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  head: () => {
+    const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
+    return {
+      meta: [
+        { title: "About Us — Leadership & Mission | Al-Bahr Travels & Consultants" },
+        {
+          name: "description",
+          content:
+            "Meet the leadership of Al-Bahr Travels & Consultants — a Lahore-based premium consultancy engineering seamless global mobility since 2015.",
+        },
+        { property: "og:title", content: "About Al-Bahr Travels & Consultants" },
+        {
+          property: "og:description",
+          content:
+            "Leadership, mission, and operational integrity — the story behind Al-Bahr Travels & Consultants.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: `${SITE_URL}/about` },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
+    };
+  },
 });
 
 type Exec = {
