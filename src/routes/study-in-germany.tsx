@@ -13,6 +13,7 @@ export const Route = createFileRoute("/study-in-germany")({
       { property: "og:title", content: d.metaTitle },
       { property: "og:description", content: d.metaDescription },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/study-in-germany" },
       { property: "og:url", content: URL },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: d.metaTitle },

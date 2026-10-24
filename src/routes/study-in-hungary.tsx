@@ -12,9 +12,10 @@ export const Route = createFileRoute("/study-in-hungary")({
       { property: "og:title", content: d.metaTitle },
       { property: "og:description", content: d.metaDescription },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/study-in-hungary" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/study-in-hungary" }],
+    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/study-in-hungary" }],
   }),
   component: () => <StudyDestinationPage destination={d} />,
 });
