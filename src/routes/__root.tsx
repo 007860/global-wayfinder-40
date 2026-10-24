@@ -14,14 +14,8 @@ import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 import appCss from "../styles.css?url";
 
 const SITE_NAME = "Al-Bahr Travels & Consultants";
-const SITE_TITLE =
-  "Al-Bahr Travels & Consultants | Elite Visa & Premium Travel Logistics";
 const SITE_DESC =
   "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
-const OG_TITLE = "Al-Bahr Travels & Consultants | Premium Global Mobility";
-const OG_DESC =
-  "Premium consultancy for Pakistani travellers — Gulf, Europe, and beyond. Embassy-grade expertise, white-glove service.";
-
 const KEYWORDS = [
   "Al-Bahr Travels & Consultants",
   "Gamca medical registration Pakistan",
@@ -164,21 +158,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: SITE_TITLE },
-      { name: "description", content: SITE_DESC },
+      // Sitewide defaults only — page-specific title, description and social
+      // tags belong on each leaf route so no duplicate tags are served.
       { name: "author", content: SITE_NAME },
       { name: "keywords", content: KEYWORDS },
       { name: "geo.region", content: "PK" },
       { name: "geo.placename", content: "Pakistan" },
       { name: "robots", content: "index, follow, max-image-preview:large" },
-      { property: "og:title", content: OG_TITLE },
-      { property: "og:description", content: OG_DESC },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: OG_TITLE },
-      { name: "twitter:description", content: OG_DESC },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

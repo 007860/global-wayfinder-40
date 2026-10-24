@@ -12,9 +12,10 @@ export const Route = createFileRoute("/study-in-south-korea")({
       { property: "og:title", content: d.metaTitle },
       { property: "og:description", content: d.metaDescription },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/study-in-south-korea" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/study-in-south-korea" }],
+    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/study-in-south-korea" }],
   }),
   component: () => <StudyDestinationPage destination={d} />,
 });
