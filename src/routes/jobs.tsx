@@ -7,6 +7,9 @@ import { JobOffers } from "@/components/JobOffers";
 import { JOB_OFFERS, type JobOffer } from "@/lib/job-offers";
 
 const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
+// Social share image: the same Turkey garments flyer the page shows first,
+// served from its stable public asset URL.
+const SHARE_IMG = `${SITE_URL}${JOB_OFFERS[0].flyer}`;
 const COUNTRY_CODE: Record<JobOffer["country"], string> = {
   Turkey: "TR",
   Poland: "PL",
@@ -90,7 +93,9 @@ export const Route = createFileRoute("/jobs")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/jobs` },
+      { property: "og:image", content: SHARE_IMG },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: SHARE_IMG },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/jobs` }],
     scripts: [

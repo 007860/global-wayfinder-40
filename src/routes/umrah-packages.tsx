@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { UmrahEngine } from "@/components/UmrahEngine";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
+import { breadcrumbLd, jsonScript } from "@/lib/seo";
+import { UMRAH_PACKAGES } from "@/lib/umrah-packages";
 
 const URL = "https://https-al-bahr-travels-consultants.lovable.app/umrah-packages";
 const TITLE = "Umrah Packages from Lahore 2026 | Saudia 21 Days | Al-Bahr";
@@ -22,6 +24,22 @@ export const Route = createFileRoute("/umrah-packages")({
       { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: jsonScript(
+      breadcrumbLd([
+        { name: "Home", path: "/" },
+        { name: "Umrah Packages", path: "/umrah-packages" },
+      ]),
+      {
+        "@type": "ItemList",
+        name: "Umrah Packages from Lahore — Saudia 21 Days (October 2026)",
+        itemListElement: UMRAH_PACKAGES.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `Package ${p.no} — ${p.makkah.name} (Makkah) + ${p.madinah.name} (Madinah), ${p.airline}`,
+          url: `${URL}#${p.id}`,
+        })),
+      },
+    ),
   }),
   component: UmrahPage,
 });

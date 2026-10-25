@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
+import { breadcrumbLd } from "@/lib/seo";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/blogs")({
@@ -32,11 +33,19 @@ export const Route = createFileRoute("/blogs")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "Travel Intelligence Blogs",
-          description:
-            "Visa, embassy and travel intelligence briefs by Al-Bahr Travels & Consultants.",
-          url: "https://https-al-bahr-travels-consultants.lovable.app/blogs",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              name: "Travel Intelligence Blogs",
+              description:
+                "Visa, embassy and travel intelligence briefs by Al-Bahr Travels & Consultants.",
+              url: "https://https-al-bahr-travels-consultants.lovable.app/blogs",
+            },
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Travel Briefs", path: "/blogs" },
+            ]),
+          ],
         }),
       },
     ],
