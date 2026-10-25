@@ -13,6 +13,7 @@ import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 
 import appCss from "../styles.css?url";
 
+const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
 const SITE_NAME = "Al-Bahr Travels & Consultants";
 const SITE_DESC =
   "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
