@@ -12,6 +12,7 @@ import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SocialIcons } from "@/components/SocialIcons";
+import { breadcrumbLd } from "@/lib/seo";
 import {
   BRANCH_ADDRESS,
   BRAND_NAME,
@@ -108,7 +109,16 @@ export const Route = createFileRoute("/contact")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify(LOCAL_BUSINESS_LD),
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            LOCAL_BUSINESS_LD,
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Contact Us", path: "/contact" },
+            ]),
+          ],
+        }),
       },
     ],
   }),

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { breadcrumbLd, jsonScript } from "@/lib/seo";
 import { Mail, MessageCircle, Plane, Stethoscope, FileCheck2 } from "lucide-react";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
@@ -30,6 +31,12 @@ export const Route = createFileRoute("/about")({
         { name: "twitter:card", content: "summary_large_image" },
       ],
       links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
+      scripts: jsonScript(
+        breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "About Us", path: "/about" },
+        ]),
+      ),
     };
   },
 });

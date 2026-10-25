@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WHATSAPP_URL } from "@/lib/countries";
+import { breadcrumbLd, jsonScript } from "@/lib/seo";
 
 const URL = "https://https-al-bahr-travels-consultants.lovable.app/medical-appointments";
 const TITLE = "GAMCA / Wafid Medical Appointment Lahore | Al-Bahr Travels";
@@ -36,6 +37,12 @@ export const Route = createFileRoute("/medical-appointments")({
       { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: jsonScript(
+      breadcrumbLd([
+        { name: "Home", path: "/" },
+        { name: "GAMCA / Wafid Medical Appointments", path: "/medical-appointments" },
+      ]),
+    ),
   }),
   component: MedicalPage,
 });

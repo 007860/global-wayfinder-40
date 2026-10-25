@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
+import { breadcrumbLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/countries")({
   component: CountriesPage,
@@ -34,11 +35,19 @@ export const Route = createFileRoute("/countries")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: "Countries We Serve",
-          description:
-            "Directory of destination countries served by Al-Bahr Travels & Consultants for visa, flight, hotel and medical appointment services.",
-          url: "https://https-al-bahr-travels-consultants.lovable.app/countries",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              name: "Countries We Serve",
+              description:
+                "Directory of destination countries served by Al-Bahr Travels & Consultants for visa, flight, hotel and medical appointment services.",
+              url: "https://https-al-bahr-travels-consultants.lovable.app/countries",
+            },
+            breadcrumbLd([
+              { name: "Home", path: "/" },
+              { name: "Visa Services & Destinations", path: "/countries" },
+            ]),
+          ],
         }),
       },
     ],
