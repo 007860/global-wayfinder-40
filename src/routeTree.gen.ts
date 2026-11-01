@@ -26,6 +26,9 @@ import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
 import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
 import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
 import { Route as UmrahPackagesRouteImport } from './routes/umrah-packages'
+import { Route as JobsAlbaniaRouteImport } from './routes/jobs.albania'
+import { Route as JobsPolandRouteImport } from './routes/jobs.poland'
+import { Route as JobsTurkeyRouteImport } from './routes/jobs.turkey'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -112,6 +115,21 @@ const UmrahPackagesRoute = UmrahPackagesRouteImport.update({
   path: '/umrah-packages',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JobsAlbaniaRoute = JobsAlbaniaRouteImport.update({
+  id: '/albania',
+  path: '/albania',
+  getParentRoute: () => JobsRoute,
+} as any)
+const JobsPolandRoute = JobsPolandRouteImport.update({
+  id: '/poland',
+  path: '/poland',
+  getParentRoute: () => JobsRoute,
+} as any)
+const JobsTurkeyRoute = JobsTurkeyRouteImport.update({
+  id: '/turkey',
+  path: '/turkey',
+  getParentRoute: () => JobsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,7 +139,7 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRoute
+  '/jobs': typeof JobsRouteWithChildren
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -131,6 +149,9 @@ export interface FileRoutesByFullPath {
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/jobs/albania': typeof JobsAlbaniaRoute
+  '/jobs/poland': typeof JobsPolandRoute
+  '/jobs/turkey': typeof JobsTurkeyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -140,7 +161,7 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRoute
+  '/jobs': typeof JobsRouteWithChildren
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -150,6 +171,9 @@ export interface FileRoutesByTo {
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/jobs/albania': typeof JobsAlbaniaRoute
+  '/jobs/poland': typeof JobsPolandRoute
+  '/jobs/turkey': typeof JobsTurkeyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -160,7 +184,7 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRoute
+  '/jobs': typeof JobsRouteWithChildren
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -170,6 +194,9 @@ export interface FileRoutesById {
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/jobs/albania': typeof JobsAlbaniaRoute
+  '/jobs/poland': typeof JobsPolandRoute
+  '/jobs/turkey': typeof JobsTurkeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -191,6 +218,9 @@ export interface FileRouteTypes {
     | '/study-in-south-korea'
     | '/study-in-turkey'
     | '/umrah-packages'
+    | '/jobs/albania'
+    | '/jobs/poland'
+    | '/jobs/turkey'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -210,6 +240,9 @@ export interface FileRouteTypes {
     | '/study-in-south-korea'
     | '/study-in-turkey'
     | '/umrah-packages'
+    | '/jobs/albania'
+    | '/jobs/poland'
+    | '/jobs/turkey'
   id:
     | '__root__'
     | '/'
@@ -229,6 +262,9 @@ export interface FileRouteTypes {
     | '/study-in-south-korea'
     | '/study-in-turkey'
     | '/umrah-packages'
+    | '/jobs/albania'
+    | '/jobs/poland'
+    | '/jobs/turkey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -239,7 +275,7 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
-  JobsRoute: typeof JobsRoute
+  JobsRoute: typeof JobsRouteWithChildren
   MedicalAppointmentsRoute: typeof MedicalAppointmentsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyInChinaRoute: typeof StudyInChinaRoute
@@ -372,8 +408,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UmrahPackagesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jobs/albania': {
+      id: '/jobs/albania'
+      path: '/albania'
+      fullPath: '/jobs/albania'
+      preLoaderRoute: typeof JobsAlbaniaRouteImport
+      parentRoute: typeof JobsRoute
+    }
+    '/jobs/poland': {
+      id: '/jobs/poland'
+      path: '/poland'
+      fullPath: '/jobs/poland'
+      preLoaderRoute: typeof JobsPolandRouteImport
+      parentRoute: typeof JobsRoute
+    }
+    '/jobs/turkey': {
+      id: '/jobs/turkey'
+      path: '/turkey'
+      fullPath: '/jobs/turkey'
+      preLoaderRoute: typeof JobsTurkeyRouteImport
+      parentRoute: typeof JobsRoute
+    }
   }
 }
+
+interface JobsRouteChildren {
+  JobsAlbaniaRoute: typeof JobsAlbaniaRoute
+  JobsPolandRoute: typeof JobsPolandRoute
+  JobsTurkeyRoute: typeof JobsTurkeyRoute
+}
+
+const JobsRouteChildren: JobsRouteChildren = {
+  JobsAlbaniaRoute: JobsAlbaniaRoute,
+  JobsPolandRoute: JobsPolandRoute,
+  JobsTurkeyRoute: JobsTurkeyRoute,
+}
+
+const JobsRouteWithChildren = JobsRoute._addFileChildren(JobsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -383,7 +454,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
-  JobsRoute: JobsRoute,
+  JobsRoute: JobsRouteWithChildren,
   MedicalAppointmentsRoute: MedicalAppointmentsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyInChinaRoute: StudyInChinaRoute,

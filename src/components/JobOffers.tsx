@@ -17,8 +17,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { submitLead } from "@/lib/leads.functions";
 import { JOB_OFFERS, JOB_COUNTRIES, type JobOffer, type JobCountry } from "@/lib/job-offers";
 
-export function JobOffers() {
-  const [country, setCountry] = useState<JobCountry | "all">("all");
+export function JobOffers({ fixedCountry }: { fixedCountry?: JobCountry }) {
+  const [country, setCountry] = useState<JobCountry | "all">(fixedCountry ?? "all");
   const [booking, setBooking] = useState<JobOffer | null>(null);
   const [flyer, setFlyer] = useState<JobOffer | null>(null);
 
@@ -28,33 +28,43 @@ export function JobOffers() {
   );
 
   return (
-    <section className="relative bg-[#0F172A] text-white px-4 sm:px-8 py-12">
-      <div className="text-center mb-6">
-        <p className="text-[11px] tracking-[0.35em] text-[#D4AF37]">WORK PERMITS · ABROAD JOBS</p>
-        <h2 className="font-display text-3xl sm:text-4xl mt-2">
-          Job Offers &amp; <span className="text-[#D4AF37]">Work Permits</span>
-        </h2>
-        <p className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
-          Legal work permit jobs in Turkey, Poland and Albania — food, accommodation and medical
-          included as per flyer. Book below and our team contacts you.
-        </p>
-      </div>
+    <section
+      className={
+        fixedCountry
+          ? "relative bg-[#0F172A] text-white px-4 sm:px-8 pb-12"
+          : "relative bg-[#0F172A] text-white px-4 sm:px-8 py-12"
+      }
+    >
+      {!fixedCountry && (
+        <>
+          <div className="text-center mb-6">
+            <p className="text-[11px] tracking-[0.35em] text-[#D4AF37]">WORK PERMITS · ABROAD JOBS</p>
+            <h2 className="font-display text-3xl sm:text-4xl mt-2">
+              Job Offers &amp; <span className="text-[#D4AF37]">Work Permits</span>
+            </h2>
+            <p className="text-sm text-white/60 mt-2 max-w-xl mx-auto">
+              Legal work permit jobs in Turkey, Poland and Albania — food, accommodation and medical
+              included as per flyer. Book below and our team contacts you.
+            </p>
+          </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-2 mb-6 justify-start sm:justify-center">
-        {JOB_COUNTRIES.map((c) => (
-          <button
-            key={c.key}
-            onClick={() => setCountry(c.key)}
-            className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold border transition ${
-              country === c.key
-                ? "bg-[#D4AF37] text-[#0F172A] border-[#D4AF37]"
-                : "border-white/20 text-white/80 hover:border-[#D4AF37]"
-            }`}
-          >
-            {c.flag} {c.label}
-          </button>
-        ))}
-      </div>
+          <div className="flex gap-2 overflow-x-auto pb-2 mb-6 justify-start sm:justify-center">
+            {JOB_COUNTRIES.map((c) => (
+              <button
+                key={c.key}
+                onClick={() => setCountry(c.key)}
+                className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold border transition ${
+                  country === c.key
+                    ? "bg-[#D4AF37] text-[#0F172A] border-[#D4AF37]"
+                    : "border-white/20 text-white/80 hover:border-[#D4AF37]"
+                }`}
+              >
+                {c.flag} {c.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
 
       <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
         {list.map((o) => (

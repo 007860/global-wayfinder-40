@@ -4,72 +4,15 @@ import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { JobOffers } from "@/components/JobOffers";
-import { JOB_OFFERS, type JobOffer } from "@/lib/job-offers";
+import { JOB_OFFERS } from "@/lib/job-offers";
+import { jobPostingSchema } from "@/lib/jobs-seo";
 
 const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
 // Social share image: the same Turkey garments flyer the page shows first,
 // served from its stable public asset URL.
 const SHARE_IMG = `${SITE_URL}${JOB_OFFERS[0].flyer}`;
-const COUNTRY_CODE: Record<JobOffer["country"], string> = {
-  Turkey: "TR",
-  Poland: "PL",
-  Albania: "AL",
-};
 
-function postingDescription(o: JobOffer) {
-  return [
-    `${o.title} — legal work permit opportunity in ${o.country} for Pakistani workers, recruited by Al-Bahr Travels & Consultants (Pvt.) Ltd., Lahore, Pakistan.`,
-    `Roles: ${o.roles.join(", ")}.`,
-    `Salary as per the official offer: ${o.salary}.`,
-    o.gender ? `Open to: ${o.gender}.` : "",
-    o.age ? `Age limit: ${o.age}.` : "",
-    `Benefits: ${o.benefits.join(", ")}.`,
-    o.note ? `Note: ${o.note}` : "",
-    "To apply, contact Al-Bahr Travels & Consultants on WhatsApp +92 343 476 2264 (office) or +92 325 793 8125 (CEO), or visit 78 E Block, Architect Engineering Housing Society, Lahore, Pakistan. Final fees and processing timeline are confirmed on WhatsApp before any payment.",
-  ]
-    .filter(Boolean)
-    .join(" ");
-}
-
-const jobPostingSchemas: Record<string, unknown>[] = JOB_OFFERS.map((o) => {
-  const schema: Record<string, unknown> = {
-    "@type": "JobPosting",
-    title: `${o.title} — Work Permit Jobs for Pakistani Workers`,
-    description: postingDescription(o),
-    datePosted: new Date().toISOString().slice(0, 10),
-    employmentType: "FULL_TIME",
-    directApply: true,
-    hiringOrganization: {
-      "@type": "Organization",
-      name: "Al-Bahr Travels & Consultants (Pvt.) Ltd.",
-      url: SITE_URL,
-    },
-    jobLocation: {
-      "@type": "Place",
-      address: { "@type": "PostalAddress", addressCountry: COUNTRY_CODE[o.country] },
-    },
-    applicationContact: {
-      "@type": "ContactPoint",
-      contactType: "WhatsApp",
-      telephone: "+92-343-4762264",
-      url: "https://wa.me/923434762264",
-    },
-  };
-  if (o.baseSalary) {
-    schema.baseSalary = {
-      "@type": "MonetaryAmount",
-      currency: o.baseSalary.currency,
-      value: {
-        "@type": "QuantitativeValue",
-        unitText: "MONTH",
-        ...(o.baseSalary.max
-          ? { minValue: o.baseSalary.min, maxValue: o.baseSalary.max }
-          : { value: o.baseSalary.value }),
-      },
-    };
-  }
-  return schema;
-});
+const jobPostingSchemas = JOB_OFFERS.map(jobPostingSchema);
 
 export const Route = createFileRoute("/jobs")({
   head: () => ({
@@ -233,6 +176,12 @@ function JobsContent() {
             contract with 8-hour duty. Most Turkey offers include free food, free accommodation,
             free transport and free medical, with direct hiring from Pakistan.
           </p>
+          <Link
+            to="/jobs/turkey"
+            className="mt-3 inline-flex text-sm font-semibold text-[#D4AF37] hover:underline"
+          >
+            See every Turkey job offer in detail →
+          </Link>
         </div>
 
         <div>
@@ -243,6 +192,12 @@ function JobsContent() {
             easy step-by-step payment plan. Accommodation, food facility and health insurance are
             provided. Salaries are confirmed on request before any payment.
           </p>
+          <Link
+            to="/jobs/poland"
+            className="mt-3 inline-flex text-sm font-semibold text-[#D4AF37] hover:underline"
+          >
+            See the full Poland work permit page →
+          </Link>
         </div>
 
         <div>
@@ -252,6 +207,12 @@ function JobsContent() {
             helpers, restaurant workers, bar and coffee attendants and general workers — with free
             shared accommodation, food at work, medical insurance and transportation support.
           </p>
+          <Link
+            to="/jobs/albania"
+            className="mt-3 inline-flex text-sm font-semibold text-[#D4AF37] hover:underline"
+          >
+            See the full Albania jobs page →
+          </Link>
         </div>
 
         <div>
