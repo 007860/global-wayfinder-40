@@ -1,8 +1,17 @@
-# Travel portal refresh
-- [x] Rebuild homepage with WhatsApp consultation, trust banner, services, destinations and review section.
-- [x] Update shared navigation, styling and Lahore contact details; add B2B signup.
-- [x] Verify desktop/mobile layouts and inquiry links.
-- [ ] Real review photos, reviews and current price/processing data: waiting for owner material; do not fabricate.
-- [x] Separate "Jobs Abroad" section (/jobs) with 7 flyer job offers (Turkey x4, Poland x2, Albania) and live booking (WhatsApp + stored lead + email).
-- [ ] Owner: confirm business hours (Maps vs site), provide SECP number, DTS/IATA licence and real client reviews.
-- [x] Dedicated country jobs pages (/jobs/turkey, /jobs/poland, /jobs/albania) with exact-match SEO, 4+2+1 JobPosting schemas, footer/jobs cross-links and sitemap entries; needs publish to reach the live URL.
+# Al-Bahr website update — November 2026 data migration
+
+- [x] Jobs Abroad section, country pages, SEO overhaul (previous work).
+- [ ] Migrate all listing data to database with draft/active/expired statuses + admin approval workflow.
+- [x] Create database tables (umrah_packages, work_demands, tourist_visas, tour_packages, business_invitations, user_roles).
+- [x] Seed 26 November Umrah packages (DRAFT, pending owner approval), 11 October packages backed up (active).
+- [x] Seed work demands, tourist visas, tour packages, business invitations from transcription (DRAFT).
+- [ ] UmrahEngine reads packages from database instead of static file.
+- [ ] New public category pages: /work-visas, /tourist-visas, /tours, /business-invitations, /visa-appointments, /hajj.
+- [ ] Navigation restructured per brief (grouped categories).
+- [ ] Secure admin dashboard (/admin): sign-in, role check, manage listings, status changes, search/filter.
+- [ ] Sitemap + SEO for new pages.
+- [ ] Verification report (duplicates, expired, missing info) + owner approval BEFORE making November packages public.
+- [ ] After approval: set November packages active, archive October listings.
+- [ ] Owner: upload the 3 original PDFs to fill "pending extraction" details (charges, benefits, requirements).
+- [ ] Owner: admin login email/password (or approve account creation).
+- [ ] Package poster upload in admin (needs storage bucket) — deferred.
