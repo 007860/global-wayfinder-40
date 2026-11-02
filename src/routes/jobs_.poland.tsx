@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CountryJobsPage, countryHead } from "@/components/CountryJobsPage";
 
-export const Route = createFileRoute("/jobs/poland")({
+export const Route = createFileRoute("/jobs_/poland")({
   head: () => countryHead("Poland"),
   component: CountryJobsPoland,
 });
