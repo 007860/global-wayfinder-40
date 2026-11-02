@@ -26,9 +26,9 @@ import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
 import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
 import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
 import { Route as UmrahPackagesRouteImport } from './routes/umrah-packages'
-import { Route as JobsAlbaniaRouteImport } from './routes/jobs.albania'
-import { Route as JobsPolandRouteImport } from './routes/jobs.poland'
-import { Route as JobsTurkeyRouteImport } from './routes/jobs.turkey'
+import { Route as JobsAlbaniaRouteImport } from './routes/jobs_.albania'
+import { Route as JobsPolandRouteImport } from './routes/jobs_.poland'
+import { Route as JobsTurkeyRouteImport } from './routes/jobs_.turkey'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -116,19 +116,19 @@ const UmrahPackagesRoute = UmrahPackagesRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const JobsAlbaniaRoute = JobsAlbaniaRouteImport.update({
-  id: '/albania',
-  path: '/albania',
-  getParentRoute: () => JobsRoute,
+  id: '/jobs_/albania',
+  path: '/jobs/albania',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const JobsPolandRoute = JobsPolandRouteImport.update({
-  id: '/poland',
-  path: '/poland',
-  getParentRoute: () => JobsRoute,
+  id: '/jobs_/poland',
+  path: '/jobs/poland',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const JobsTurkeyRoute = JobsTurkeyRouteImport.update({
-  id: '/turkey',
-  path: '/turkey',
-  getParentRoute: () => JobsRoute,
+  id: '/jobs_/turkey',
+  path: '/jobs/turkey',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -139,7 +139,7 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRouteWithChildren
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -161,7 +161,7 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRouteWithChildren
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -184,7 +184,7 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
-  '/jobs': typeof JobsRouteWithChildren
+  '/jobs': typeof JobsRoute
   '/medical-appointments': typeof MedicalAppointmentsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-in-china': typeof StudyInChinaRoute
@@ -194,9 +194,9 @@ export interface FileRoutesById {
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
   '/umrah-packages': typeof UmrahPackagesRoute
-  '/jobs/albania': typeof JobsAlbaniaRoute
-  '/jobs/poland': typeof JobsPolandRoute
-  '/jobs/turkey': typeof JobsTurkeyRoute
+  '/jobs_/albania': typeof JobsAlbaniaRoute
+  '/jobs_/poland': typeof JobsPolandRoute
+  '/jobs_/turkey': typeof JobsTurkeyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -262,9 +262,9 @@ export interface FileRouteTypes {
     | '/study-in-south-korea'
     | '/study-in-turkey'
     | '/umrah-packages'
-    | '/jobs/albania'
-    | '/jobs/poland'
-    | '/jobs/turkey'
+    | '/jobs_/albania'
+    | '/jobs_/poland'
+    | '/jobs_/turkey'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,7 +275,7 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
-  JobsRoute: typeof JobsRouteWithChildren
+  JobsRoute: typeof JobsRoute
   MedicalAppointmentsRoute: typeof MedicalAppointmentsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyInChinaRoute: typeof StudyInChinaRoute
@@ -285,6 +285,9 @@ export interface RootRouteChildren {
   StudyInSouthKoreaRoute: typeof StudyInSouthKoreaRoute
   StudyInTurkeyRoute: typeof StudyInTurkeyRoute
   UmrahPackagesRoute: typeof UmrahPackagesRoute
+  JobsAlbaniaRoute: typeof JobsAlbaniaRoute
+  JobsPolandRoute: typeof JobsPolandRoute
+  JobsTurkeyRoute: typeof JobsTurkeyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -408,43 +411,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UmrahPackagesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/jobs/albania': {
-      id: '/jobs/albania'
-      path: '/albania'
+    '/jobs_/albania': {
+      id: '/jobs_/albania'
+      path: '/jobs/albania'
       fullPath: '/jobs/albania'
       preLoaderRoute: typeof JobsAlbaniaRouteImport
-      parentRoute: typeof JobsRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/jobs/poland': {
-      id: '/jobs/poland'
-      path: '/poland'
+    '/jobs_/poland': {
+      id: '/jobs_/poland'
+      path: '/jobs/poland'
       fullPath: '/jobs/poland'
       preLoaderRoute: typeof JobsPolandRouteImport
-      parentRoute: typeof JobsRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/jobs/turkey': {
-      id: '/jobs/turkey'
-      path: '/turkey'
+    '/jobs_/turkey': {
+      id: '/jobs_/turkey'
+      path: '/jobs/turkey'
       fullPath: '/jobs/turkey'
       preLoaderRoute: typeof JobsTurkeyRouteImport
-      parentRoute: typeof JobsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface JobsRouteChildren {
-  JobsAlbaniaRoute: typeof JobsAlbaniaRoute
-  JobsPolandRoute: typeof JobsPolandRoute
-  JobsTurkeyRoute: typeof JobsTurkeyRoute
-}
-
-const JobsRouteChildren: JobsRouteChildren = {
-  JobsAlbaniaRoute: JobsAlbaniaRoute,
-  JobsPolandRoute: JobsPolandRoute,
-  JobsTurkeyRoute: JobsTurkeyRoute,
-}
-
-const JobsRouteWithChildren = JobsRoute._addFileChildren(JobsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -454,7 +443,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
-  JobsRoute: JobsRouteWithChildren,
+  JobsRoute: JobsRoute,
   MedicalAppointmentsRoute: MedicalAppointmentsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyInChinaRoute: StudyInChinaRoute,
@@ -464,6 +453,9 @@ const rootRouteChildren: RootRouteChildren = {
   StudyInSouthKoreaRoute: StudyInSouthKoreaRoute,
   StudyInTurkeyRoute: StudyInTurkeyRoute,
   UmrahPackagesRoute: UmrahPackagesRoute,
+  JobsAlbaniaRoute: JobsAlbaniaRoute,
+  JobsPolandRoute: JobsPolandRoute,
+  JobsTurkeyRoute: JobsTurkeyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
