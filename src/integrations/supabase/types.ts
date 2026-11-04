@@ -86,6 +86,45 @@ export type Database = {
         }
         Relationships: []
       }
+      business_invitations: {
+        Row: {
+          charges: string
+          country: string
+          created_at: string
+          id: string
+          notes: string | null
+          requirements: string | null
+          service_text: string
+          source_file: string | null
+          source_page: number | null
+          status: string
+        }
+        Insert: {
+          charges?: string
+          country: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          requirements?: string | null
+          service_text: string
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+        }
+        Update: {
+          charges?: string
+          country?: string
+          created_at?: string
+          id?: string
+          notes?: string | null
+          requirements?: string | null
+          service_text?: string
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+        }
+        Relationships: []
+      }
       country_leads: {
         Row: {
           created_at: string
@@ -119,15 +158,289 @@ export type Database = {
         }
         Relationships: []
       }
+      tour_packages: {
+        Row: {
+          country: string
+          created_at: string
+          duration_text: string | null
+          id: string
+          inclusions: Json
+          itinerary: Json
+          notes: string | null
+          price_text: string | null
+          source_file: string | null
+          source_page: number | null
+          status: string
+          title: string
+          travel_dates: string | null
+        }
+        Insert: {
+          country: string
+          created_at?: string
+          duration_text?: string | null
+          id?: string
+          inclusions?: Json
+          itinerary?: Json
+          notes?: string | null
+          price_text?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          title: string
+          travel_dates?: string | null
+        }
+        Update: {
+          country?: string
+          created_at?: string
+          duration_text?: string | null
+          id?: string
+          inclusions?: Json
+          itinerary?: Json
+          notes?: string | null
+          price_text?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          title?: string
+          travel_dates?: string | null
+        }
+        Relationships: []
+      }
+      tourist_visas: {
+        Row: {
+          charges: string
+          country: string
+          created_at: string
+          documents: string | null
+          duration_options: string | null
+          id: string
+          notes: string | null
+          payment_options: string | null
+          processing_time: string | null
+          source_file: string | null
+          source_page: number | null
+          status: string
+          visa_type: string
+        }
+        Insert: {
+          charges?: string
+          country: string
+          created_at?: string
+          documents?: string | null
+          duration_options?: string | null
+          id?: string
+          notes?: string | null
+          payment_options?: string | null
+          processing_time?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          visa_type: string
+        }
+        Update: {
+          charges?: string
+          country?: string
+          created_at?: string
+          documents?: string | null
+          duration_options?: string | null
+          id?: string
+          notes?: string | null
+          payment_options?: string | null
+          processing_time?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          visa_type?: string
+        }
+        Relationships: []
+      }
+      umrah_packages: {
+        Row: {
+          airline: string
+          created_at: string
+          currency: string
+          departure_city: string
+          departure_date: string | null
+          duplicate_note: string | null
+          flights: Json
+          id: string
+          madinah_distance: string
+          madinah_hotel: string
+          madinah_nights: number | null
+          makkah_distance: string
+          makkah_hotel: string
+          makkah_nights: number | null
+          notes: string | null
+          pkg_no: string
+          poster_no: string | null
+          price_double: number
+          price_quad: number
+          price_sharing: number
+          price_triple: number
+          return_date: string | null
+          route: string
+          source_file: string
+          source_page: number | null
+          source_ref: string | null
+          status: string
+          total_nights: number | null
+        }
+        Insert: {
+          airline: string
+          created_at?: string
+          currency?: string
+          departure_city?: string
+          departure_date?: string | null
+          duplicate_note?: string | null
+          flights?: Json
+          id?: string
+          madinah_distance?: string
+          madinah_hotel: string
+          madinah_nights?: number | null
+          makkah_distance?: string
+          makkah_hotel: string
+          makkah_nights?: number | null
+          notes?: string | null
+          pkg_no: string
+          poster_no?: string | null
+          price_double: number
+          price_quad: number
+          price_sharing: number
+          price_triple: number
+          return_date?: string | null
+          route: string
+          source_file: string
+          source_page?: number | null
+          source_ref?: string | null
+          status?: string
+          total_nights?: number | null
+        }
+        Update: {
+          airline?: string
+          created_at?: string
+          currency?: string
+          departure_city?: string
+          departure_date?: string | null
+          duplicate_note?: string | null
+          flights?: Json
+          id?: string
+          madinah_distance?: string
+          madinah_hotel?: string
+          madinah_nights?: number | null
+          makkah_distance?: string
+          makkah_hotel?: string
+          makkah_nights?: number | null
+          notes?: string | null
+          pkg_no?: string
+          poster_no?: string | null
+          price_double?: number
+          price_quad?: number
+          price_sharing?: number
+          price_triple?: number
+          return_date?: string | null
+          route?: string
+          source_file?: string
+          source_page?: number | null
+          source_ref?: string | null
+          status?: string
+          total_nights?: number | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      work_demands: {
+        Row: {
+          advance_payment: string | null
+          benefits: string | null
+          charges: string
+          country: string
+          created_at: string
+          eligibility: string | null
+          experience: string | null
+          id: string
+          job_title: string
+          notes: string | null
+          requirements: string | null
+          salary_text: string | null
+          source_file: string | null
+          source_page: number | null
+          status: string
+          total_cost: string | null
+          vacancies: number | null
+        }
+        Insert: {
+          advance_payment?: string | null
+          benefits?: string | null
+          charges?: string
+          country: string
+          created_at?: string
+          eligibility?: string | null
+          experience?: string | null
+          id?: string
+          job_title: string
+          notes?: string | null
+          requirements?: string | null
+          salary_text?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          total_cost?: string | null
+          vacancies?: number | null
+        }
+        Update: {
+          advance_payment?: string | null
+          benefits?: string | null
+          charges?: string
+          country?: string
+          created_at?: string
+          eligibility?: string | null
+          experience?: string | null
+          id?: string
+          job_title?: string
+          notes?: string | null
+          requirements?: string | null
+          salary_text?: string | null
+          source_file?: string | null
+          source_page?: number | null
+          status?: string
+          total_cost?: string | null
+          vacancies?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
       increment_counter: { Args: { counter_name: string }; Returns: number }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -254,6 +567,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
