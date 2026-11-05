@@ -6,16 +6,29 @@ export const OCCS: { key: Occ; label: string }[] = [
   { key: "double", label: "Double (2 Bed)" },
 ];
 
-export type Hotel = { name: string; dist: string; min: number; note?: string };
+export type Hotel = { name: string; dist: string; min: number | null; note?: string };
 export type UmrahPkg = {
   id: string;
   no: string;
-  series: "sep" | "oct";
+  series: "sep" | "oct" | "nov";
   airline: string;
   makkah: Hotel;
   madinah: Hotel;
   flights: string[];
   prices: Record<Occ, number>;
+  posterNo?: string | null;
+  sourceRef?: string | null;
+  monthLabel?: string;
+  departureCity?: string;
+  departureDate?: string | null;
+  returnDate?: string | null;
+  totalNights?: number | null;
+  makkahNights?: number | null;
+  madinahNights?: number | null;
+  route?: string;
+  nightsLabel?: string;
+  notes?: string;
+  duplicateNote?: string;
 };
 
 const H = {
