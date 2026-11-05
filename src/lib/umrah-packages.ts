@@ -6,7 +6,7 @@ export const OCCS: { key: Occ; label: string }[] = [
   { key: "double", label: "Double (2 Bed)" },
 ];
 
-export type Hotel = { name: string; dist: string; min: number; note?: string };
+export type Hotel = { name: string; dist: string; min: number | null; note?: string };
 export type UmrahPkg = {
   id: string;
   no: string;
