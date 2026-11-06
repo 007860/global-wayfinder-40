@@ -9,11 +9,11 @@ import {
 import type { Tables } from "@/integrations/supabase/types";
 import type { UmrahPkg } from "./umrah-packages";
 
-export type UmrahRow = Tables<"umrah_packages">["Row"];
-export type WorkDemandRow = Tables<"work_demands">["Row"];
-export type TouristVisaRow = Tables<"tourist_visas">["Row"];
-export type TourRow = Tables<"tour_packages">["Row"];
-export type InvitationRow = Tables<"business_invitations">["Row"];
+export type UmrahRow = Tables<"umrah_packages">;
+export type WorkDemandRow = Tables<"work_demands">;
+export type TouristVisaRow = Tables<"tourist_visas">;
+export type TourRow = Tables<"tour_packages">;
+export type InvitationRow = Tables<"business_invitations">;
 
 export const umrahPackagesQuery = queryOptions({
   queryKey: ["umrah-packages-active"],

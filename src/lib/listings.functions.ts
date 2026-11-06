@@ -135,7 +135,7 @@ export const adminUpdateRow = createServerFn({ method: "POST" })
     delete patch.id;
     delete patch.created_at;
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from(table).update(patch).eq("id", data.id);
+    const { error } = await (supabaseAdmin.from(table) as any).update(patch).eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
@@ -152,7 +152,7 @@ export const adminInsertRow = createServerFn({ method: "POST" })
     await requireAdmin(context);
     const table = assertTable(data.table);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: inserted, error } = await supabaseAdmin.from(table).insert(data.row).select("*").single();
+    const { data: inserted, error } = await (supabaseAdmin.from(table) as any).insert(data.row).select("*").single();
     if (error) throw new Error(error.message);
     return inserted;
   });
