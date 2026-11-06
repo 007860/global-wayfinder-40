@@ -94,7 +94,7 @@ export const getBusinessInvitations = createServerFn({ method: "GET" }).handler(
 // Admin CRUD — every handler verifies the admin role server-side.
 // ---------------------------------------------------------------------------
 
-async function requireAdmin(context: { supabase: Database-like; userId: string } | any) {
+async function requireAdmin(context: { supabase: any; userId: string }) {
   const { data: isAdmin, error } = await (context.supabase as any).rpc("has_role", {
     _user_id: context.userId,
     _role: "admin",
