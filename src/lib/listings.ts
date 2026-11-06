@@ -53,8 +53,10 @@ function minOf(dist: string): number | null {
 /** Maps a database row to the shape the Umrah booking engine renders. */
 export function toUmrahPkg(r: UmrahRow): UmrahPkg {
   const label = monthLabel(r.departure_date ?? null);
+  const flightOptions = Array.isArray(r.flights) ? r.flights : [];
+  const firstFlight = flightOptions[0];
   const nights =
-    r.total_nights != null ? `${r.total_nights} Nights` : r.flights?.[0]?.includes("21") ? "21 Days" : "";
+    r.total_nights != null ? `${r.total_nights} Nights` : typeof firstFlight === "string" && firstFlight.includes("21") ? "21 Days" : "";
   return {
     id: r.id,
     no: r.pkg_no,
@@ -82,7 +84,7 @@ export function toUmrahPkg(r: UmrahRow): UmrahPkg {
       min: minOf(r.madinah_distance),
       note: undefined,
     },
-    flights: (r.flights as string[]) ?? [],
+    flights: flightOptions.filter((flight): flight is string => typeof flight === "string"),
     prices: {
       sharing: Number(r.price_sharing),
       quad: Number(r.price_quad),
