@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://https-al-bahr-travels-consultants.lovable.app/sitemap.xml
+Sitemap: https://www.albahrtravels.com/sitemap.xml
