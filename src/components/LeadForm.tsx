@@ -36,10 +36,8 @@ export function LeadForm({
   const [loading, setLoading] = useState(false);
 
   // Derive passport/visa requirements from serviceKey when provided.
-  const needsPassport = serviceKey
-    ? true // medical, visa, flight, hotel all need passport
-    : requirePassport ?? true;
-  const needsVisa = serviceKey === "visa";
+  const needsPassport = requirePassport ?? false; // Request documents later when processing requires them.
+  const needsVisa = needsPassport && serviceKey === "visa";
 
   const [core, setCore] = useState({
     first_name: "",
