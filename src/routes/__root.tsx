@@ -13,12 +13,12 @@ import { FloatingEmailButton } from "@/components/FloatingEmailButton";
 
 import appCss from "../styles.css?url";
 
-const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
-const SITE_NAME = "Al-Bahr Travels & Consultants";
+const SITE_URL = "https://www.albahrtravels.com";
+const SITE_NAME = "AL-BAHR HORIZON TRAVELS & CONSULTANTS";
 const SITE_DESC =
   "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
 const KEYWORDS = [
-  "Al-Bahr Travels & Consultants",
+  "AL-BAHR HORIZON TRAVELS & CONSULTANTS",
   "Gamca medical registration Pakistan",
   "Wafid medical appointment booking online",
   "Gulf medical test center tracking",
@@ -50,11 +50,11 @@ const SITE_GRAPH = {
       "@type": ["TravelAgency", "LocalBusiness"],
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      legalName: "Al-Bahr Travels & Consultants",
+      legalName: "AL-BAHR HORIZON TRAVELS & CONSULTANTS",
       description: SITE_DESC,
-      email: "al.bahr.medical.appointments@gmail.com",
+      email: "albahrtravelconsultants@gmail.com",
       url: SITE_URL,
-      telephone: "+923434762264",
+      telephone: "+923257938125",
       address: {
         "@type": "PostalAddress",
         streetAddress: "78 E Block, Architect Engineering Housing Society",
@@ -82,7 +82,7 @@ const SITE_GRAPH = {
         "Europe",
         "International",
       ],
-      foundingDate: "2015",
+      
       founder: [
         {
           "@type": "Person",
@@ -94,8 +94,8 @@ const SITE_GRAPH = {
         {
           "@type": "ContactPoint",
           contactType: "customer service",
-          telephone: "+923434762264",
-          email: "al.bahr.medical.appointments@gmail.com",
+          telephone: "+923257938125",
+          email: "albahrtravelconsultants@gmail.com",
           areaServed: ["PK", "SA", "QA", "AE", "KW", "OM", "BH", "EU"],
           availableLanguage: ["en", "ur"],
           url: "https://wa.me/923434762264",
