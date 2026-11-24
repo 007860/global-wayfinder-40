@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { breadcrumbLd, jsonScript } from "@/lib/seo";
+import { SITE_URL, LOGO_URL } from "@/lib/seo";
 import { Mail, MessageCircle, Plane, Stethoscope, FileCheck2 } from "lucide-react";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
@@ -11,24 +12,31 @@ import ceoPortrait from "@/assets/portrait-ceo.jpg";
 export const Route = createFileRoute("/about")({
   component: AboutPage,
   head: () => {
-    const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
     return {
       meta: [
-        { title: "About Us — Leadership & Mission | Al-Bahr Travels & Consultants" },
+        { title: "About Us — Leadership & Mission | AL BAHR HORIZON TRAVELS AND CONSULTANTS" },
         {
           name: "description",
           content:
-            "Meet the leadership of Al-Bahr Travels & Consultants — a Lahore-based premium consultancy engineering seamless global mobility since 2015.",
+            "Meet the leadership of AL BAHR HORIZON TRAVELS AND CONSULTANTS — a Lahore-based premium consultancy engineering seamless global mobility since 2015.",
         },
-        { property: "og:title", content: "About Al-Bahr Travels & Consultants" },
+        { property: "og:title", content: "About AL BAHR HORIZON TRAVELS AND CONSULTANTS" },
         {
           property: "og:description",
           content:
-            "Leadership, mission, and operational integrity — the story behind Al-Bahr Travels & Consultants.",
+            "Leadership, mission, and operational integrity — the story behind AL BAHR HORIZON TRAVELS AND CONSULTANTS.",
         },
         { property: "og:type", content: "website" },
         { property: "og:url", content: `${SITE_URL}/about` },
+        { property: "og:image", content: LOGO_URL },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "About AL BAHR HORIZON TRAVELS AND CONSULTANTS" },
+        {
+          name: "twitter:description",
+          content:
+            "Leadership, mission, and operational integrity — the story behind AL BAHR HORIZON TRAVELS AND CONSULTANTS.",
+        },
+        { name: "twitter:image", content: LOGO_URL },
       ],
       links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
       scripts: jsonScript(
@@ -53,10 +61,10 @@ const EXECUTIVES: Exec[] = [
   {
     eyebrow: "01 — Chief Executive Officer",
     name: "MUBASHIR ALI",
-    title: "CEO, Al-Bahr Travels & Consultants",
+    title: "CEO, AL BAHR HORIZON TRAVELS AND CONSULTANTS",
     photo: ceoPortrait,
     message:
-      "At Al-Bahr Travels, we don't just facilitate travel; we engineer seamless global mobility. Our mission is to bridge the gap between premium Pakistani talent and global horizons with absolute transparency, embassy-grade precision, and an unyielding commitment to white-glove consulting.",
+      "At AL BAHR HORIZON, we don't just facilitate travel; we engineer seamless global mobility. Our mission is to bridge the gap between premium Pakistani talent and global horizons with absolute transparency, embassy-grade precision, and an unyielding commitment to white-glove consulting.",
   },
 ];
 
@@ -99,8 +107,8 @@ function AboutPage() {
                 <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-elev bg-[var(--midnight-light)]">
                   <img
                     src={exec.photo}
-                    alt={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
-                    aria-label={`${exec.name} — ${exec.title} at Al-Bahr Travels & Consultants`}
+                    alt={`${exec.name} — ${exec.title} at AL BAHR HORIZON TRAVELS AND CONSULTANTS`}
+                    aria-label={`${exec.name} — ${exec.title} at AL BAHR HORIZON TRAVELS AND CONSULTANTS`}
                     width={768}
                     height={768}
                     loading="lazy"

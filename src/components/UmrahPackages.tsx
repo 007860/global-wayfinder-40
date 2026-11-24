@@ -17,14 +17,18 @@ import {
   Car,
 } from "lucide-react";
 
+// NOTE: this section is currently dead code — it is not rendered anywhere and
+// it self-disables after EXPIRY. It should be deleted once the Umrah booking
+// engine (UmrahEngine, database-driven) is confirmed as the only Umrah UI.
+// Kept in the patch only with brand/address corrections for consistency.
 const EXPIRY = new Date("2026-09-01T00:00:00Z"); // disappears after Aug 31, 2026
 const WHATSAPP_NUMBER = "923434762264";
 const WHATSAPP = `https://wa.me/${WHATSAPP_NUMBER}`;
-const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
+const ADDRESS = "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan 54600";
 
 function bookOnWhatsApp(packageName: string, details: string[]) {
   const lines = [
-    "Assalam-o-Alaikum Al-Bahr Travels,",
+    "Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,",
     "",
     `I want to book the following Umrah package:`,
     `• ${packageName}`,
@@ -45,7 +49,7 @@ const UNIVERSAL = [
   { icon: Plane, label: "Return Air Ticket" },
   { icon: Hotel, label: "Hotel Accommodation" },
   { icon: Car, label: "Transport" },
-  { icon: Headphones, label: "24/7 Assistance" },
+  { icon: Headphones, label: "Dedicated Assistance" },
 ];
 
 const AMENITIES = [
@@ -486,4 +490,3 @@ function AirSialTab() {
     </div>
   );
 }
-

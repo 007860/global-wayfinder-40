@@ -11,6 +11,8 @@ export type StudyDestination = {
   benefits: { title: string; detail: string }[];
   requirements: string[];
   process: string[];
+  /** FAQ content for FAQPage schema — answers must match the copy above. */
+  faqs: { q: string; a: string }[];
 };
 
 export const STUDY_WHATSAPP = "https://wa.me/923434762264";
@@ -24,10 +26,10 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
     flag: "🇮🇹",
     heroHeadline: "Study in Italy with 100% Fully Funded DSU Regional Scholarships",
     heroSub:
-      "Tuition waivers, annual stipends, free meals and accommodation — guided end-to-end by Al-Bahr's Italy admissions desk.",
-    metaTitle: "Study in Italy | 100% Fully Funded DSU Regional Scholarships",
+      "Tuition waivers, annual stipends, free meals and accommodation — guided end-to-end by our Italy admissions desk.",
+    metaTitle: "Study in Italy from Pakistan | 100% Fully Funded DSU Regional Scholarships",
     metaDescription:
-      "Apply for fully funded DSU regional scholarships in Italy: tuition fee waiver, €7,000–€8,000 annual stipend, free canteen meals and accommodation. Free eligibility assessment from Al-Bahr Travels & Consultants, Lahore.",
+      "Apply for fully funded DSU regional scholarships in Italy: tuition fee waiver, €7,000–€8,000 annual stipend, free canteen meals and accommodation. Free eligibility assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "Full Tuition Fee Waiver", detail: "100% tuition covered under DSU regional scholarship awards." },
       { title: "€7,000–€8,000 Annual Stipend", detail: "Paid directly to scholarship holders each academic year." },
@@ -48,6 +50,20 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "DSU regional scholarship application",
       "Visa file submission at the embassy",
     ],
+    faqs: [
+      {
+        q: "What does the DSU scholarship in Italy cover?",
+        a: "A full tuition fee waiver, a €7,000–€8,000 annual stipend, free canteen meals and free university accommodation for DSU regional scholarship winners.",
+      },
+      {
+        q: "What CGPA do I need to study in Italy?",
+        a: "A minimum 2.5+ CGPA in your last qualification, plus an English Medium of Instruction (MOI) letter or IELTS 6.0+.",
+      },
+      {
+        q: "How do I apply to study in Italy from Pakistan?",
+        a: "Send your documents for a free eligibility assessment on WhatsApp — we handle university pre-evaluation, the Universitaly portal, embassy legalization and the DSU application.",
+      },
+    ],
   },
   {
     slug: "study-in-china",
@@ -58,9 +74,9 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
     heroHeadline: "Study in China — Fully Funded CSC & Provincial Government Scholarships",
     heroSub:
       "Professor outreach, CSC filing, and X1 visa handling for Bachelor's, Master's and PhD applicants from Pakistan.",
-    metaTitle: "Study in China | Fully Funded CSC & Provincial Scholarships",
+    metaTitle: "Study in China from Pakistan | Fully Funded CSC & Provincial Scholarships",
     metaDescription:
-      "Fully funded CSC and provincial government scholarships in China: 100% tuition waiver, free hostel, RMB 2,500–3,500 monthly stipend and 98%+ visa approval. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Fully funded CSC and provincial government scholarships in China: 100% tuition waiver, free hostel, RMB 2,500–3,500 monthly stipend and 98%+ visa approval. Free eligibility assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "100% Tuition Waiver", detail: "Complete tuition coverage under CSC and provincial awards." },
       { title: "Free University Hostel", detail: "On-campus accommodation provided by the host university." },
@@ -80,6 +96,20 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "JW201 / JW202 form issuance",
       "X1 student visa application at VFS / Chinese Embassy",
     ],
+    faqs: [
+      {
+        q: "What does the CSC scholarship in China cover?",
+        a: "A 100% tuition waiver, free university hostel and a monthly stipend of RMB 2,500–3,500, depending on degree level.",
+      },
+      {
+        q: "What CGPA do I need to study in China?",
+        a: "A minimum 2.8+ CGPA in your last qualification, plus an English MOI, IELTS or HSK certificate where applicable.",
+      },
+      {
+        q: "How do I apply to study in China from Pakistan?",
+        a: "We arrange professor outreach and acceptance letters, CSC portal filing and the X1 student visa — start with a free eligibility assessment on WhatsApp.",
+      },
+    ],
   },
   {
     slug: "study-in-hungary",
@@ -90,9 +120,9 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
     heroHeadline: "Study in Europe with Stipendium Hungaricum Scholarship",
     heroSub:
       "A fully funded Schengen pathway into EU degrees — HEC nomination, Tempus selection and D-type visa filing handled for you.",
-    metaTitle: "Study in Hungary | Stipendium Hungaricum Scholarship 2026",
+    metaTitle: "Study in Hungary from Pakistan | Stipendium Hungaricum Scholarship 2026",
     metaDescription:
-      "Apply for the Stipendium Hungaricum scholarship in Hungary: full tuition waiver, monthly stipend, free dormitory, medical insurance and Schengen access. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Apply for the Stipendium Hungaricum scholarship in Hungary: full tuition waiver, monthly stipend, free dormitory, medical insurance and Schengen access. Free eligibility assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "100% Tuition Waiver", detail: "Full tuition funded by the Hungarian government." },
       { title: "Monthly Stipend", detail: "Regular monthly allowance for living expenses." },
@@ -113,6 +143,20 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Admission letter issuance",
       "Schengen D-type student visa file at the embassy",
     ],
+    faqs: [
+      {
+        q: "What does the Stipendium Hungaricum scholarship cover?",
+        a: "A full tuition waiver, monthly stipend, free dormitory or housing allowance, medical insurance and Schengen area access.",
+      },
+      {
+        q: "What CGPA do I need to study in Hungary?",
+        a: "A minimum 3.0+ CGPA in your last qualification, plus IELTS 6.0+ or a strong English MOI letter.",
+      },
+      {
+        q: "How do I apply to study in Hungary from Pakistan?",
+        a: "Apply through the HEC portal with Tempus Public Foundation selection — we guide the full process, from documents to the Schengen D-type student visa.",
+      },
+    ],
   },
   {
     slug: "study-in-south-korea",
@@ -123,9 +167,9 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
     heroHeadline: "Study in South Korea — Global Korea Scholarship (GKS) & University Grants",
     heroSub:
       "Embassy track or university track — we build competitive GKS files for Pakistan's strongest applicants.",
-    metaTitle: "Study in South Korea | Global Korea Scholarship (GKS) Guidance",
+    metaTitle: "Study in South Korea from Pakistan | Global Korea Scholarship (GKS) Guidance",
     metaDescription:
-      "Global Korea Scholarship (GKS) and university grants for South Korea: full tuition, round-trip airfare, settlement allowance and 1,000,000 KRW monthly stipend. Free eligibility assessment from Al-Bahr Travels, Lahore.",
+      "Global Korea Scholarship (GKS) and university grants for South Korea: full tuition, round-trip airfare, settlement allowance and 1,000,000 KRW monthly stipend. Free eligibility assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "Full Tuition Coverage", detail: "Complete tuition funded for the entire degree." },
       { title: "Round-trip Airfare", detail: "Flight tickets to and from Korea included." },
@@ -147,6 +191,20 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Official award notice",
       "D-2 student visa application at the Korean Embassy",
     ],
+    faqs: [
+      {
+        q: "What does the Global Korea Scholarship (GKS) cover?",
+        a: "Full tuition, round-trip airfare, a settlement allowance and a monthly stipend of about 1,000,000 KRW.",
+      },
+      {
+        q: "What marks do I need to study in South Korea?",
+        a: "Minimum 80% marks or 3.0+ CGPA, plus IELTS / TOEFL or an English MOI letter.",
+      },
+      {
+        q: "How do I apply to study in South Korea from Pakistan?",
+        a: "Through the embassy track or university track — we build your file, from the study plan to the D-2 student visa.",
+      },
+    ],
   },
   {
     slug: "study-in-turkey",
@@ -157,9 +215,9 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
     heroHeadline: "Study in Turkey — Türkiye Bursları & Top Private Universities",
     heroSub:
       "Fully funded government scholarships or affordable private university placements, with clean visa filing at Anatolia.",
-    metaTitle: "Study in Turkey | Türkiye Bursları Scholarship & Universities",
+    metaTitle: "Study in Turkey from Pakistan | Türkiye Bursları Scholarship & Universities",
     metaDescription:
-      "Study in Turkey with Türkiye Bursları scholarships or top private universities: monthly allowance, health insurance, affordable tuition and no strict bank statement issues. Free assessment from Al-Bahr Travels, Lahore.",
+      "Study in Turkey with Türkiye Bursları scholarships or top private universities: monthly allowance, health insurance, affordable tuition and no strict bank statement issues. Free assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "Fully Funded Scholarship Options", detail: "Türkiye Bursları covers tuition, housing and stipend." },
       { title: "Affordable Tuition", detail: "Competitive private university fees for self-funded students." },
@@ -180,6 +238,20 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Final selection",
       "Turkish student visa application at Anatolia Visa Center",
     ],
+    faqs: [
+      {
+        q: "What does the Türkiye Bursları scholarship cover?",
+        a: "Tuition, housing and a monthly stipend, plus health insurance for fully funded scholarship holders.",
+      },
+      {
+        q: "What marks do I need to study in Turkey?",
+        a: "Minimum 70% for BS and 75% for Master's or MPhil, plus an English MOI letter or IELTS.",
+      },
+      {
+        q: "Can I study in Turkey without a big bank statement?",
+        a: "Yes — Turkey has no strict bank statement issues compared to Europe, and affordable private universities are also available.",
+      },
+    ],
   },
   {
     slug: "study-in-germany",
@@ -192,7 +264,7 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "Admission, APS certificate, blocked account and German student visa guidance for Pakistani students.",
     metaTitle: "Study in Germany from Pakistan | APS, Blocked Account & Visa",
     metaDescription:
-      "Study in Germany from Pakistan: public universities with low or no tuition, APS certificate, blocked account and student visa file guidance. Free assessment from Al-Bahr Travels, Lahore.",
+      "Study in Germany from Pakistan: public universities with low or no tuition, APS certificate, blocked account and student visa file guidance. Free assessment from AL BAHR HORIZON TRAVELS AND CONSULTANTS, Lahore.",
     benefits: [
       { title: "Low or No Tuition", detail: "Most public universities charge little or no tuition (semester fee applies)." },
       { title: "Globally Ranked Degrees", detail: "Strong engineering, IT and science programmes." },
@@ -212,6 +284,24 @@ export const STUDY_DESTINATIONS: StudyDestination[] = [
       "APS verification and university applications (uni-assist / direct)",
       "Admission letter and blocked account opening",
       "German student visa appointment and file submission",
+    ],
+    faqs: [
+      {
+        q: "Is tuition really free in Germany?",
+        a: "Most public universities charge little or no tuition — only a semester fee applies — for Pakistani students.",
+      },
+      {
+        q: "What is the APS certificate for Germany?",
+        a: "The APS certificate is a mandatory academic verification for Pakistani applicants to German universities, and we guide you through it.",
+      },
+      {
+        q: "What is a blocked account for Germany?",
+        a: "A blocked account is the financial proof German authorities require for the student visa; the required amount is set by the German authorities each year.",
+      },
+      {
+        q: "Do I need IELTS to study in Germany?",
+        a: "Many Master's programmes are taught in English and need IELTS or another English proficiency proof; some need a German language certificate.",
+      },
     ],
   },
 ];

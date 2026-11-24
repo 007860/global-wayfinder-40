@@ -1,33 +1,46 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { getBlogs } from "@/lib/listings.functions";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
-import { breadcrumbLd } from "@/lib/seo";
+import { breadcrumbLd, SITE_URL, LOGO_URL } from "@/lib/seo";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/blogs")({
   component: BlogsPage,
+  // Server-side load so the briefs are in the HTML crawlers see. Previously
+  // the page fetched them client-side only and search engines saw an empty
+  // list ("No briefs yet").
+  loader: async () => ({ blogs: (await getBlogs()) as unknown as BlogRow[] }),
   head: () => ({
     meta: [
-      { title: "Recent Global Travel Intelligence Blogs — Al-Bahr Travels" },
+      { title: "Travel Intelligence Blogs for Pakistani Travellers | AL BAHR HORIZON" },
       {
         name: "description",
         content:
-          "AI-curated visa, embassy, and travel intelligence briefs for Pakistani travellers. Updated live by Al-Bahr Travels & Consultants.",
+          "Visa, embassy, and travel intelligence briefs for Pakistani travellers. Updated live by AL BAHR HORIZON TRAVELS AND CONSULTANTS.",
       },
-      { property: "og:title", content: "Travel Intelligence Blogs — Al-Bahr" },
+      { property: "og:title", content: "Travel Intelligence Blogs — AL BAHR HORIZON" },
       {
         property: "og:description",
         content:
-          "Live visa, embassy and Gulf medical briefs from Al-Bahr Travels — practical updates for Pakistani travellers heading to the Gulf and Europe.",
+          "Live visa, embassy and Gulf medical briefs from AL BAHR HORIZON — practical updates for Pakistani travellers heading to the Gulf and Europe.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/blogs" },
+      { property: "og:url", content: `${SITE_URL}/blogs` },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Travel Intelligence Blogs — AL BAHR HORIZON" },
+      {
+        name: "twitter:description",
+        content:
+          "Live visa, embassy and Gulf medical briefs from AL BAHR HORIZON — practical updates for Pakistani travellers heading to the Gulf and Europe.",
+      },
+      { name: "twitter:image", content: LOGO_URL },
     ],
-    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/blogs" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/blogs` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -38,8 +51,8 @@ export const Route = createFileRoute("/blogs")({
               "@type": "CollectionPage",
               name: "Travel Intelligence Blogs",
               description:
-                "Visa, embassy and travel intelligence briefs by Al-Bahr Travels & Consultants.",
-              url: "https://https-al-bahr-travels-consultants.lovable.app/blogs",
+                "Visa, embassy and travel intelligence briefs by AL BAHR HORIZON TRAVELS AND CONSULTANTS.",
+              url: `${SITE_URL}/blogs`,
             },
             breadcrumbLd([
               { name: "Home", path: "/" },
@@ -63,11 +76,14 @@ type BlogRow = {
 };
 
 function BlogsPage() {
-  const [blogs, setBlogs] = useState<BlogRow[]>([]);
+  const { blogs: initialBlogs } = Route.useLoaderData();
+  const [blogs, setBlogs] = useState<BlogRow[]>(initialBlogs ?? []);
   const [active, setActive] = useState<BlogRow | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!(initialBlogs && initialBlogs.length > 0));
 
+  // Fallback: if the server load returned nothing, fetch client-side as before.
   useEffect(() => {
+    if (initialBlogs && initialBlogs.length > 0) return;
     (async () => {
       const { data } = await supabase
         .from("blogs")
@@ -77,7 +93,7 @@ function BlogsPage() {
       setBlogs((data as unknown as BlogRow[]) ?? []);
       setLoading(false);
     })();
-  }, []);
+  }, [initialBlogs]);
 
   return (
     <main className="min-h-screen">

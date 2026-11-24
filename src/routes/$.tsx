@@ -5,11 +5,12 @@ export const Route = createFileRoute("/$")({
   component: CatchAllComponent,
   head: () => ({
     meta: [
-      { title: "Page Not Found - Al-Bahr Travels" },
+      { title: "Page Not Found | AL BAHR HORIZON TRAVELS AND CONSULTANTS" },
       {
         name: "description",
         content: "The page you are looking for does not exist.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
   }),
 });
