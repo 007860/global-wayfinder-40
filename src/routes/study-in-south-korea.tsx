@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { StudyDestinationPage } from "@/components/StudyDestinationPage";
 import { getDestination } from "@/lib/study-destinations";
-import { SITE_URL, breadcrumbLd, jsonScript } from "@/lib/seo";
+import { SITE_URL, LOGO_URL, breadcrumbLd, faqLd, jsonScript } from "@/lib/seo";
 
 const d = getDestination("study-in-south-korea");
 const URL = `${SITE_URL}/study-in-south-korea`;
@@ -15,7 +15,11 @@ export const Route = createFileRoute("/study-in-south-korea")({
       { property: "og:description", content: d.metaDescription },
       { property: "og:type", content: "website" },
       { property: "og:url", content: URL },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: d.metaTitle },
+      { name: "twitter:description", content: d.metaDescription },
+      { name: "twitter:image", content: LOGO_URL },
     ],
     links: [{ rel: "canonical", href: URL }],
     scripts: jsonScript(
@@ -23,6 +27,7 @@ export const Route = createFileRoute("/study-in-south-korea")({
         { name: "Home", path: "/" },
         { name: "Study in South Korea", path: "/study-in-south-korea" },
       ]),
+      faqLd(d.faqs),
     ),
   }),
   component: () => <StudyDestinationPage destination={d} />,

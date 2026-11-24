@@ -1,6 +1,15 @@
 // Shared SEO helpers — single source of truth for the public site URL and
 // JSON-LD builders so every route emits consistent, self-referencing data.
-export const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
+export const SITE_URL = "https://www.albahrtravels.com";
+export const SITE_NAME = "AL BAHR HORIZON TRAVELS AND CONSULTANTS";
+export const LOGO_URL = `${SITE_URL}/logo.png`;
+
+export const SOCIAL_URLS = {
+  facebook: "https://www.facebook.com/profile.php?id=61572071016046",
+  instagram: "https://www.instagram.com/albahr.travels/",
+  tiktok: "https://www.tiktok.com/@albahr.travels",
+  whatsapp: "https://wa.me/923434762264",
+} as const;
 
 export type Crumb = { name: string; path: string };
 
@@ -27,4 +36,21 @@ export function jsonScript(...nodes: unknown[]) {
     type: "application/ld+json" as const,
     children: JSON.stringify(n),
   }));
+}
+
+export type Faq = { q: string; a: string };
+
+/**
+ * FAQPage JSON-LD node for AEO (AI search / voice assistants).
+ * Only use Q&As whose answers are stated on the page itself — never invent.
+ */
+export function faqLd(faqs: Faq[]) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 }

@@ -93,12 +93,16 @@ export const EU_COUNTRIES: Country[] = WORLD_COUNTRIES.filter((c) =>
 
 export const COUNTRIES: Country[] = WORLD_COUNTRIES;
 
-export const LEAD_EMAIL = "al.bahr.medical.appointments@gmail.com";
+// Main public contact email. The medical-appointments address below is only
+// for GAMCA/Wafid medical appointment enquiries.
+export const LEAD_EMAIL = "albahrtravelconsultants@gmail.com";
+export const MEDICAL_EMAIL = "al.bahr.medical.appointments@gmail.com";
 export const WHATSAPP_NUMBER = "923434762264";
 export const WHATSAPP_DISPLAY = "+92 343 4762264";
 export const WHATSAPP_PREFILL =
-  "Hello Al-Bahr Travels & Consultants — I'd like to enquire about your booking and visa services.";
+  "Hello AL BAHR HORIZON TRAVELS AND CONSULTANTS — I'd like to enquire about your booking and visa services.";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFILL)}`;
 export const BRANCH_ADDRESS =
-  "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan";
-export const BRAND_NAME = "Al-Bahr Travels & Consultants";
+  "78 E Block, Architect Engineering Housing Society, Lahore, Pakistan 54600";
+export const BRAND_NAME = "AL BAHR HORIZON TRAVELS AND CONSULTANTS";
+export const BRAND_SHORT = "AL BAHR HORIZON";

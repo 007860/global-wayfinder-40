@@ -13,6 +13,7 @@ import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SocialIcons } from "@/components/SocialIcons";
 import { breadcrumbLd } from "@/lib/seo";
+import { SITE_URL, LOGO_URL, SOCIAL_URLS } from "@/lib/seo";
 import {
   BRANCH_ADDRESS,
   BRAND_NAME,
@@ -21,7 +22,6 @@ import {
   WHATSAPP_DISPLAY,
 } from "@/lib/countries";
 
-const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
 const PHONE_HREF = "tel:+923434762264";
 const PHONE_DISPLAY = "0343 4762264";
 const MAP_QUERY = encodeURIComponent(
@@ -49,11 +49,14 @@ const LOCAL_BUSINESS_LD = {
   url: `${SITE_URL}/contact`,
   telephone: "+92 343 4762264",
   email: LEAD_EMAIL,
+  logo: LOGO_URL,
+  image: LOGO_URL,
   address: {
     "@type": "PostalAddress",
     streetAddress: "78 E Block, Architect Engineering Housing Society",
     addressLocality: "Lahore",
     addressRegion: "Punjab",
+    postalCode: "54600",
     addressCountry: "PK",
   },
   openingHoursSpecification: [
@@ -70,6 +73,15 @@ const LOCAL_BUSINESS_LD = {
       closes: "17:00",
     },
   ],
+  areaServed: [
+    "Lahore, Pakistan",
+    "Islamabad, Pakistan",
+    "Bahawalnagar, Pakistan",
+    "Marla Chowk, Pakistan",
+    "Sahiwal, Pakistan",
+    "Pakpattan, Pakistan",
+    "Pakistan",
+  ],
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -81,7 +93,12 @@ const LOCAL_BUSINESS_LD = {
       url: WHATSAPP_URL,
     },
   ],
-  sameAs: [WHATSAPP_URL],
+  sameAs: [
+    SOCIAL_URLS.facebook,
+    SOCIAL_URLS.instagram,
+    SOCIAL_URLS.tiktok,
+    WHATSAPP_URL,
+  ],
   priceRange: "$$",
 };
 
@@ -89,21 +106,29 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact Us — Lahore Branch | Al-Bahr Travels & Consultants" },
+      { title: "Contact Us — Lahore Branch | AL BAHR HORIZON TRAVELS AND CONSULTANTS" },
       {
         name: "description",
         content:
-          "Visit or call Al-Bahr Travels & Consultants in Lahore. Branch address, map, business hours, WhatsApp, phone and email for visa, medical, flight and hotel bookings.",
+          "Visit or call AL BAHR HORIZON TRAVELS AND CONSULTANTS in Lahore. Branch address, map, business hours, WhatsApp, phone and email for visa, medical, flight and hotel bookings.",
       },
-      { property: "og:title", content: "Contact Al-Bahr Travels & Consultants — Lahore" },
+      { property: "og:title", content: "Contact AL BAHR HORIZON TRAVELS AND CONSULTANTS — Lahore" },
       {
         property: "og:description",
         content:
-          "Branch address, map, hours and contact details for Al-Bahr Travels & Consultants in Lahore.",
+          "Branch address, map, hours and contact details for AL BAHR HORIZON TRAVELS AND CONSULTANTS in Lahore.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/contact` },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact AL BAHR HORIZON TRAVELS AND CONSULTANTS — Lahore" },
+      {
+        name: "twitter:description",
+        content:
+          "Branch address, map, hours and contact details for AL BAHR HORIZON TRAVELS AND CONSULTANTS in Lahore.",
+      },
+      { name: "twitter:image", content: LOGO_URL },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
     scripts: [
@@ -239,7 +264,7 @@ function ContactPage() {
             <div className="rounded-2xl border border-white/10 bg-[var(--midnight-light)]/30 overflow-hidden">
               <div className="aspect-[4/3] w-full relative">
                 <iframe
-                  title="Al-Bahr Travels & Consultants Lahore branch location"
+                  title="AL BAHR HORIZON TRAVELS AND CONSULTANTS Lahore branch location"
                   src={MAP_EMBED_URL}
                   className="absolute inset-0 w-full h-full border-0"
                   allowFullScreen

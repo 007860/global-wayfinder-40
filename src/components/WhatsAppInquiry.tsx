@@ -27,7 +27,7 @@ export function WhatsAppInquiry({ destination = '', b2b = false }: { destination
     } catch (err) {
       console.error('[webhook] lead post failed', err);
     }
-    const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n${b2b ? 'B2B Sub-Agent Signup' : 'Free Visa Consultation'}\n` + Array.from(data.entries()).map(([k,v]) => `${k}: ${v}`).join('\n');
+    const text = `Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n${b2b ? 'B2B Sub-Agent Signup' : 'Free Visa Consultation'}\n` + Array.from(data.entries()).map(([k,v]) => `${k}: ${v}`).join('\n');
     window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
     setReady(true);
   }}>

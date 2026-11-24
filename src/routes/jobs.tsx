@@ -6,11 +6,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { JobOffers } from "@/components/JobOffers";
 import { JOB_OFFERS } from "@/lib/job-offers";
 import { jobPostingSchema } from "@/lib/jobs-seo";
-
-const SITE_URL = "https://https-al-bahr-travels-consultants.lovable.app";
-// Social share image: the same Turkey garments flyer the page shows first,
-// served from its stable public asset URL.
-const SHARE_IMG = `${SITE_URL}${JOB_OFFERS[0].flyer}`;
+import { SITE_URL, LOGO_URL, faqLd } from "@/lib/seo";
 
 const jobPostingSchemas = JOB_OFFERS.map(jobPostingSchema);
 
@@ -18,7 +14,7 @@ export const Route = createFileRoute("/jobs")({
   head: () => ({
     meta: [
       {
-        title: "Jobs Abroad for Pakistanis | Turkey, Poland, Albania Work Permits — Al-Bahr",
+        title: "Jobs Abroad for Pakistanis | Turkey, Poland, Albania Work Permits — AL BAHR HORIZON TRAVELS AND CONSULTANTS",
       },
       {
         name: "description",
@@ -36,9 +32,15 @@ export const Route = createFileRoute("/jobs")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/jobs` },
-      { property: "og:image", content: SHARE_IMG },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: SHARE_IMG },
+      { name: "twitter:title", content: "Jobs Abroad for Pakistanis — Turkey, Poland & Albania Work Permits" },
+      {
+        name: "twitter:description",
+        content:
+          "Legal work permit jobs for Pakistani workers in Turkey, Poland and Albania — garments factory, packing, agriculture, construction and professional roles. Direct hiring from Pakistan, apply on WhatsApp.",
+      },
+      { name: "twitter:image", content: LOGO_URL },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/jobs` }],
     scripts: [
@@ -69,6 +71,7 @@ export const Route = createFileRoute("/jobs")({
                 url: `${SITE_URL}/jobs#${o.id}`,
               })),
             },
+            faqLd(FAQS),
             ...jobPostingSchemas,
           ],
         }),
@@ -126,7 +129,7 @@ const APPLY_STEPS = [
 
 const FAQS = [
   {
-    q: "Which countries offer work permit jobs for Pakistanis through Al-Bahr?",
+    q: "Which countries offer work permit jobs for Pakistanis through AL BAHR HORIZON?",
     a: "Our current official offers are work permit jobs in Turkey, Poland and Albania for Pakistani workers — garments factory, packing, agriculture, warehouse, construction, restaurant, cleaning, parlor, engineering, IT and banking roles.",
   },
   {

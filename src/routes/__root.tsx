@@ -10,19 +10,26 @@ import {
 } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { FloatingEmailButton } from "@/components/FloatingEmailButton";
+import { SITE_URL, SITE_NAME, LOGO_URL, SOCIAL_URLS } from "@/lib/seo";
 
 import appCss from "../styles.css?url";
 
-const SITE_URL = "https://www.albahrtravels.com";
-const SITE_NAME = "AL-BAHR HORIZON TRAVELS & CONSULTANTS";
 const SITE_DESC =
-  "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Top-tier consultancy for Qatar, Saudi Arabia (KSA), UAE, and European pathways — Gulf medical fitness appointments, Schengen pipelines, and premium flight routing.";
+  "Embassy-grade travel consultancy and strategic visa logistics for Pakistani travellers. Umrah packages from Lahore & Islamabad, Gulf medical (GAMCA/Wafid) appointments, visit visas, jobs abroad and study in Germany — serving Lahore, Islamabad, Bahawalnagar, Marla Chowk, Sahiwal and Pakpattan.";
 const KEYWORDS = [
-  "AL-BAHR HORIZON TRAVELS & CONSULTANTS",
+  "AL BAHR HORIZON TRAVELS AND CONSULTANTS",
+  "Umrah packages Lahore",
+  "Umrah packages Islamabad",
+  "Umrah packages Pakistan",
+  "visit visa Pakistan",
+  "GAMCA medical appointment Lahore",
+  "Wafid medical appointment Pakistan",
   "Gamca medical registration Pakistan",
   "Wafid medical appointment booking online",
   "Gulf medical test center tracking",
   "Best visa consultants in Pakistan",
+  "jobs abroad for Pakistanis",
+  "study in Germany from Pakistan",
   "Schengen visa appointment pipeline",
   "Saudi medical token online",
   "Europe work visa consultancy",
@@ -34,7 +41,7 @@ const KEYWORDS = [
 ].join(", ");
 
 // Sitewide JSON-LD graph: WebSite + Organization. Page-specific schemas
-// (BreadcrumbList, JobPosting, CollectionPage, ...) live on each leaf route.
+// (BreadcrumbList, JobPosting, CollectionPage, FAQPage, ...) live on each leaf route.
 const SITE_GRAPH = {
   "@context": "https://schema.org",
   "@graph": [
@@ -50,19 +57,44 @@ const SITE_GRAPH = {
       "@type": ["TravelAgency", "LocalBusiness"],
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
-      legalName: "AL-BAHR HORIZON TRAVELS & CONSULTANTS",
+      legalName: "AL BAHR HORIZON TRAVELS AND CONSULTANTS",
       description: SITE_DESC,
       email: "albahrtravelconsultants@gmail.com",
       url: SITE_URL,
       telephone: "+923257938125",
+      logo: LOGO_URL,
+      image: LOGO_URL,
       address: {
         "@type": "PostalAddress",
         streetAddress: "78 E Block, Architect Engineering Housing Society",
         addressLocality: "Lahore",
         addressRegion: "Punjab",
+        postalCode: "54600",
         addressCountry: "PK",
       },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "10:00",
+          closes: "19:00",
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: "Saturday",
+          opens: "10:00",
+          closes: "17:00",
+        },
+      ],
       areaServed: [
+        // Pakistan focus cities first, then destination countries.
+        "Lahore, Pakistan",
+        "Islamabad, Pakistan",
+        "Bahawalnagar, Pakistan",
+        "Marla Chowk, Pakistan",
+        "Sahiwal, Pakistan",
+        "Pakpattan, Pakistan",
+        "Pakistan",
         "Saudi Arabia",
         "Qatar",
         "United Arab Emirates",
@@ -82,7 +114,7 @@ const SITE_GRAPH = {
         "Europe",
         "International",
       ],
-      
+
       founder: [
         {
           "@type": "Person",
@@ -101,10 +133,16 @@ const SITE_GRAPH = {
           url: "https://wa.me/923434762264",
         },
       ],
-      sameAs: ["https://wa.me/923434762264"],
+      sameAs: [
+        SOCIAL_URLS.facebook,
+        SOCIAL_URLS.instagram,
+        SOCIAL_URLS.tiktok,
+        "https://wa.me/923434762264",
+      ],
       priceRange: "$$",
       knowsAbout: [
         "Umrah packages from Lahore",
+        "Umrah packages from Islamabad",
         "GAMCA medical appointment",
         "Wafid medical appointment booking",
         "Saudi medical token online",
@@ -207,12 +245,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "robots", content: "index, follow, max-image-preview:large" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: SITE_NAME },
+      { property: "og:image", content: LOGO_URL },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: LOGO_URL },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", href: "/logo.png" },
+      { rel: "apple-touch-icon", href: "/logo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Manrope:wght@400..800&display=swap" },

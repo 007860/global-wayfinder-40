@@ -41,6 +41,20 @@ function publicClient() {
 }
 
 export const getUmrahPackages = createServerFn({ method: "GET" }).handler(async () => {
+  // Auto-delete expired packages: the moment a package's departure date has
+  // passed, it is removed from the database itself, so it can never show
+  // again — no manual cleanup needed. Only dated, active rows are deleted;
+  // undated packages ("departure on request") and drafts are left untouched.
+  // A failure here must never break the listing — the booking engine also
+  // filters expired rows client-side as a fallback.
+  try {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const today = new Date().toISOString().slice(0, 10);
+    await supabaseAdmin.from("umrah_packages").delete().eq("status", "active").lt("departure_date", today);
+  } catch {
+    // Prune failed (e.g. service key not configured) — fall through to the
+    // filtered read below so the page still works.
+  }
   const { data, error } = await publicClient()
     .from("umrah_packages")
     .select("*")
@@ -88,6 +102,19 @@ export const getBusinessInvitations = createServerFn({ method: "GET" }).handler(
     .order("country", { ascending: true });
   if (error) return [];
   return data;
+});
+
+// Blog briefs for the /blogs route loader — server-side so the posts are in
+// the HTML crawlers see (previously the page fetched them client-side only
+// and search engines saw an empty list).
+export const getBlogs = createServerFn({ method: "GET" }).handler(async () => {
+  const { data, error } = await publicClient()
+    .from("blogs")
+    .select("id,title,query,country,cover_image,sections,created_at")
+    .order("created_at", { ascending: false })
+    .limit(60);
+  if (error) return [];
+  return data ?? [];
 });
 
 // ---------------------------------------------------------------------------

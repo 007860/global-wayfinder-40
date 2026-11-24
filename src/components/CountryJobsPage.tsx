@@ -9,7 +9,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { JobOffers } from "@/components/JobOffers";
 import { JOB_OFFERS, type JobCountry, type JobOffer } from "@/lib/job-offers";
 import { jobPostingSchema } from "@/lib/jobs-seo";
-import { SITE_URL, breadcrumbLd } from "@/lib/seo";
+import { SITE_URL, LOGO_URL, breadcrumbLd, faqLd } from "@/lib/seo";
 
 type Step = { t: string; x: string };
 type Faq = { q: string; a: string };
@@ -38,14 +38,14 @@ export const COUNTRY_PAGES: Record<JobCountry, CountryPage> = {
     breadcrumb: "Turkey Jobs for Pakistani Workers",
     kicker: "TURKEY WORK PERMITS · DIRECT HIRING FROM PAKISTAN · 2026",
     h1: "Turkey Jobs for Pakistani Workers — Work Permit Jobs 2026",
-    title: "Turkey Jobs for Pakistani Workers 2026 | Work Permit Salaries — Al-Bahr",
+    title: "Turkey Jobs for Pakistani Workers 2026 | Work Permit Salaries — AL BAHR HORIZON TRAVELS AND CONSULTANTS",
     description:
       "Turkey jobs for Pakistani workers: legal work permit jobs — garments factory PKR 180,000/month, ladies packing jobs, general workers TRY 28,000/month. Apply on WhatsApp from Lahore.",
     ogTitle: "Turkey Jobs for Pakistani Workers — Legal Work Permits 2026",
     ogDescription:
       "Garments, packing and general worker jobs in Turkey for Pakistanis — salaries, age limits and benefits exactly as per our official flyers. Direct hiring from Pakistan, apply on WhatsApp.",
     intro:
-      "Al-Bahr Travels recruits Pakistani workers for legal Turkey work permit jobs — garments factory work, biscuit and cookie packing, sewing machine operators and general labour. The salaries below are taken directly from our official Turkey job flyers, with free food, accommodation and medical on most offers. Book live on WhatsApp from any city in Pakistan.",
+      "AL BAHR HORIZON TRAVELS AND CONSULTANTS recruits Pakistani workers for legal Turkey work permit jobs — garments factory work, biscuit and cookie packing, sewing machine operators and general labour. The salaries below are taken directly from our official Turkey job flyers, with free food, accommodation and medical on most offers. Book live on WhatsApp from any city in Pakistan.",
     salaryHeading: "Turkey Job Salary for Pakistani Workers",
     salaryText:
       "As per our official Turkey flyers: garments factory jobs pay PKR 180,000 per month; biscuit and cookie packing jobs (ladies only) pay PKR 180,000 per month; garment factory workers — sewing machine operators, packing, steel press, loading and unloading, stock picker and stock dispatcher — pay PKR 180,000 per month; and general workers earn TRY 28,000 per month (Turkish Lira) on a renewable 1-year contract with 8-hour duty. Your final offer and contract are confirmed on WhatsApp before any payment.",
@@ -98,7 +98,7 @@ export const COUNTRY_PAGES: Record<JobCountry, CountryPage> = {
     breadcrumb: "Poland Work Permit Jobs for Pakistanis",
     kicker: "POLAND WORK PERMITS · LEGAL JOBS FOR PAKISTANIS · 2026",
     h1: "Poland Work Permit Jobs for Pakistani Workers 2026",
-    title: "Poland Work Permit Jobs for Pakistanis 2026 | Legal Process — Al-Bahr",
+    title: "Poland Work Permit Jobs for Pakistanis 2026 | Legal Process — AL BAHR HORIZON TRAVELS AND CONSULTANTS",
     description:
       "Poland work permit jobs for Pakistani workers — agriculture, restaurant, warehouse packing, construction, plus engineers, IT and bankers. Legal process, accommodation and health insurance. Apply on WhatsApp.",
     ogTitle: "Poland Work Permit Jobs for Pakistani Workers — Legal Process 2026",
@@ -154,7 +154,7 @@ export const COUNTRY_PAGES: Record<JobCountry, CountryPage> = {
     breadcrumb: "Albania Jobs for Pakistani Workers",
     kicker: "ALBANIA WORK PERMITS · LEGAL JOBS FOR PAKISTANIS · 2026",
     h1: "Albania Jobs for Pakistani Workers — Work Permit Jobs 2026",
-    title: "Albania Jobs for Pakistani Workers 2026 | €1,200–€1,600 Salary — Al-Bahr",
+    title: "Albania Jobs for Pakistani Workers 2026 | €1,200–€1,600 Salary — AL BAHR HORIZON TRAVELS AND CONSULTANTS",
     description:
       "Albania work permit jobs for Pakistanis: parlor and hair camp, cleaner, helper, restaurant, bar & coffee attendant, general worker — €1,200–€1,600/month with accommodation and medical. Apply on WhatsApp.",
     ogTitle: "Albania Jobs for Pakistani Workers — €1,200–€1,600 Per Month 2026",
@@ -217,7 +217,6 @@ const OTHER: Record<JobCountry, JobCountry> = {
 export function countryHead(country: JobCountry) {
   const c = COUNTRY_PAGES[country];
   const offers = JOB_OFFERS.filter((o) => o.country === country);
-  const shareImg = `${SITE_URL}${offers[0].flyer}`;
   return {
     meta: [
       { title: c.title },
@@ -226,9 +225,11 @@ export function countryHead(country: JobCountry) {
       { property: "og:description", content: c.ogDescription },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}${c.path}` },
-      { property: "og:image", content: shareImg },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: shareImg },
+      { name: "twitter:title", content: c.ogTitle },
+      { name: "twitter:description", content: c.ogDescription },
+      { name: "twitter:image", content: LOGO_URL },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}${c.path}` }],
     scripts: [
@@ -252,6 +253,7 @@ export function countryHead(country: JobCountry) {
                 url: `${SITE_URL}${c.path}#${o.id}`,
               })),
             },
+            faqLd(c.faqs),
             ...offers.map(jobPostingSchema),
           ],
         }),

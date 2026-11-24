@@ -20,7 +20,7 @@ const SUB_SERVICES = [
 ];
 
 const WA_LINK = `${STUDY_WHATSAPP}?text=${encodeURIComponent(
-  "Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want a FREE assessment for Study Abroad & University Admissions.\nLast qualification & CGPA:\nPreferred country:\n\nPlease guide me on scholarships and the visa file process.",
+  "Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n\nI want a FREE assessment for Study Abroad & University Admissions.\nLast qualification & CGPA:\nPreferred country:\n\nPlease guide me on scholarships and the visa file process.",
 )}`;
 
 export function StudyAbroadService() {
@@ -37,7 +37,7 @@ export function StudyAbroadService() {
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Fully funded scholarship applications, admission files and student visa preparation for
-          Italy, China, Hungary, South Korea and Turkey — managed by senior consultants in Lahore.
+          Italy, Germany, China, Hungary, South Korea and Turkey — managed by senior consultants in Lahore.
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

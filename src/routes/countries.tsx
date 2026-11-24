@@ -7,29 +7,37 @@ import { LeadForm } from "@/components/LeadForm";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
-import { breadcrumbLd } from "@/lib/seo";
+import { breadcrumbLd, SITE_URL, LOGO_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/countries")({
   component: CountriesPage,
   head: () => ({
     meta: [
-      { title: "Countries — Al-Bahr Travels | Choose destination & service" },
+      { title: "Countries — AL BAHR HORIZON | Choose destination & service" },
       {
         name: "description",
         content:
           "Browse every country we serve. Pick a destination, choose a service — visa, flight, hotel or medical appointment — and our Lahore consultants will reach you.",
       },
-      { property: "og:title", content: "Countries We Serve — Al-Bahr Travels" },
+      { property: "og:title", content: "Countries We Serve — AL BAHR HORIZON" },
       {
         property: "og:description",
         content:
           "Pick your destination country and service — visa appointments, flights, hotels or Gulf medical fitness — and our Lahore consultants will contact you.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://https-al-bahr-travels-consultants.lovable.app/countries" },
+      { property: "og:url", content: `${SITE_URL}/countries` },
+      { property: "og:image", content: LOGO_URL },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Countries We Serve — AL BAHR HORIZON" },
+      {
+        name: "twitter:description",
+        content:
+          "Pick your destination country and service — visa appointments, flights, hotels or Gulf medical fitness — and our Lahore consultants will contact you.",
+      },
+      { name: "twitter:image", content: LOGO_URL },
     ],
-    links: [{ rel: "canonical", href: "https://https-al-bahr-travels-consultants.lovable.app/countries" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/countries` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -40,8 +48,8 @@ export const Route = createFileRoute("/countries")({
               "@type": "CollectionPage",
               name: "Countries We Serve",
               description:
-                "Directory of destination countries served by Al-Bahr Travels & Consultants for visa, flight, hotel and medical appointment services.",
-              url: "https://https-al-bahr-travels-consultants.lovable.app/countries",
+                "Directory of destination countries served by AL BAHR HORIZON TRAVELS AND CONSULTANTS for visa, flight, hotel and medical appointment services.",
+              url: `${SITE_URL}/countries`,
             },
             breadcrumbLd([
               { name: "Home", path: "/" },
