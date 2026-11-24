@@ -7,12 +7,12 @@ import { LeadForm } from "./LeadForm";
 import { STUDY_WHATSAPP, getDocuments, type StudyDestination } from "@/lib/study-destinations";
 
 function waLink(d: StudyDestination) {
-  const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want a FREE eligibility assessment for: ${d.title}.\nProgramme interest: (BS / Master's / PhD)\nLast qualification & CGPA:\n\nPlease guide me on the scholarship process.`;
+  const text = `Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n\nI want a FREE eligibility assessment for: ${d.title}.\nProgramme interest: (BS / Master's / PhD)\nLast qualification & CGPA:\n\nPlease guide me on the scholarship process.`;
   return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
 }
 
 function docsWaLink(d: StudyDestination) {
-  const text = `Assalam-o-Alaikum Al-Bahr Travels & Consultants,\n\nI want to check my document eligibility for: ${d.title}.\nLast qualification & CGPA:\nDocuments ready: (degree / transcripts / IELTS or MOI / passport)\n\nPlease review my document checklist.`;
+  const text = `Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n\nI want to check my document eligibility for: ${d.title}.\nLast qualification & CGPA:\nDocuments ready: (degree / transcripts / IELTS or MOI / passport)\n\nPlease review my document checklist.`;
   return `${STUDY_WHATSAPP}?text=${encodeURIComponent(text)}`;
 }
 
@@ -34,7 +34,7 @@ export function StudyDestinationPage({ destination: d }: { destination: StudyDes
             <span className="text-lg leading-none">{d.flag}</span>
             <span className="text-foreground/90">STUDY ABROAD — {d.country.toUpperCase()}</span>
             <span className="text-muted-foreground">•</span>
-            <span className="text-gold font-semibold">AL-BAHR EDUCATION DESK</span>
+            <span className="text-gold font-semibold">AL BAHR HORIZON EDUCATION DESK</span>
           </div>
 
           <h1 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl leading-[1.08] max-w-4xl mx-auto">

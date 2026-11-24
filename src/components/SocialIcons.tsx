@@ -4,17 +4,17 @@ import { cn } from "@/lib/utils";
 const SOCIALS = [
   {
     name: "Facebook",
-    href: "https://www.facebook.com/share/14mBvdkH4AA/",
+    href: "https://www.facebook.com/profile.php?id=61572071016046",
     Icon: Facebook,
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/albahrtravelconsultants?igsi=c3p4b2U0dWRoMGk1",
+    href: "https://www.instagram.com/albahr.travels/",
     Icon: Instagram,
   },
   {
     name: "TikTok",
-    href: "https://www.tiktok.com/@albahrtravelconsultants?_r=1&_t=ZS-99DEFljf86O",
+    href: "https://www.tiktok.com/@albahr.travels",
     Icon: TikTokIcon,
   },
   {

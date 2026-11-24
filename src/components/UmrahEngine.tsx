@@ -19,7 +19,13 @@ type Summary = { type: string; ref: string; date: string; airline: string; makka
 
 export function UmrahEngine({ packages: staticPackages }: { packages?: UmrahPkg[] }) {
   const { data: rows } = useQuery({ ...umrahPackagesQuery, enabled: !staticPackages });
-  const packages = staticPackages ?? (rows ?? []).map(toUmrahPkg);
+  const allPackages = staticPackages ?? (rows ?? []).map(toUmrahPkg);
+  // Fallback only: the server already auto-deletes expired packages from the
+  // database (see getUmrahPackages in listings.functions.ts), so departed
+  // packages never reach the page. This filter covers cached/stale data.
+  // Packages with no date stay visible as "departure on request".
+  const today = new Date().toISOString().slice(0, 10);
+  const packages = allPackages.filter((p) => !p.departureDate || p.departureDate >= today);
   const [tab, setTab] = useState<"standard" | "custom">("standard");
   const [booking, setBooking] = useState<Summary | null>(null);
   return (
@@ -137,7 +143,7 @@ function Flyer({ p, onClose, onBook }: { p: UmrahPkg; onClose: () => void; onBoo
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
       <div className="relative w-full max-w-sm rounded-2xl overflow-hidden border-2 border-[#D4AF37] bg-gradient-to-b from-[#0F172A] to-[#1e293b] text-white shadow-2xl">
         <button onClick={onClose} aria-label="Close flyer" className="absolute top-2 right-2 p-2 z-10"><X className="size-5" /></button>
-        <div className="bg-[#D4AF37] text-[#0F172A] text-center py-3"><p className="text-[10px] tracking-[0.3em] font-bold">AL-BAHR TRAVELS · UMRAH 1448 H</p><p className="font-display text-3xl">Package {p.no}</p><p className="text-xs font-semibold">{p.nightsLabel ?? "Umrah Package"} · {p.monthLabel || "Departure on request"} · From {p.departureCity ?? "Lahore"}</p></div>
+        <div className="bg-[#D4AF37] text-[#0F172A] text-center py-3"><p className="text-[10px] tracking-[0.3em] font-bold">AL BAHR HORIZON · UMRAH 1448 H</p><p className="font-display text-3xl">Package {p.no}</p><p className="text-xs font-semibold">{p.nightsLabel ?? "Umrah Package"} · {p.monthLabel || "Departure on request"} · From {p.departureCity ?? "Lahore"}</p></div>
         <div className="p-5 space-y-3 text-sm">
           {p.posterNo && <p className="text-center text-[11px] text-[#D4AF37]">{p.posterNo}{p.sourceRef ? ` · Ref ${p.sourceRef}` : ""}</p>}
           <p className="flex gap-2"><Plane className="size-4 text-[#D4AF37] shrink-0 mt-0.5" />{p.airline.toUpperCase()}</p>
@@ -211,7 +217,7 @@ function BookingModal({ s, onClose }: { s: Summary; onClose: () => void }) {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!f.name.trim() || !f.phone.trim() || !f.city.trim()) return toast.error("Please fill name, WhatsApp number and city.");
-    const msg = `Assalamualaikum AL-BAHR, I am interested in Umrah Package ${s.ref}, departing on ${s.date === "On request" ? "a flexible date" : s.date}. Please confirm the current rate and availability.\n\n📌 PACKAGE SUMMARY:\n- Package: ${s.type}\n- Airline: ${s.airline}\n- Makkah Hotel: ${s.makkah}\n- Madinah Hotel: ${s.madinah}\n- Room Occupancy: ${s.occ}\n- Advertised Rate: ${s.rate === "Quote requested" ? s.rate : `PKR ${s.rate}/-`}\n\n👤 CLIENT INFO:\n- Name: ${f.name}\n- Phone: ${f.phone}\n- City: ${f.city}\n- Preferred Travel Date: ${f.date || "Flexible"}\n- Total Persons: ${f.pax}\n\nKripya Mujhse Jald Rabta Karein.`;
+    const msg = `Assalamualaikum AL BAHR HORIZON, I am interested in Umrah Package ${s.ref}, departing on ${s.date === "On request" ? "a flexible date" : s.date}. Please confirm the current rate and availability.\n\n📌 PACKAGE SUMMARY:\n- Package: ${s.type}\n- Airline: ${s.airline}\n- Makkah Hotel: ${s.makkah}\n- Madinah Hotel: ${s.madinah}\n- Room Occupancy: ${s.occ}\n- Advertised Rate: ${s.rate === "Quote requested" ? s.rate : `PKR ${s.rate}/-`}\n\n👤 CLIENT INFO:\n- Name: ${f.name}\n- Phone: ${f.phone}\n- City: ${f.city}\n- Preferred Travel Date: ${f.date || "Flexible"}\n- Total Persons: ${f.pax}\n\nKripya Mujhse Jald Rabta Karein.`;
     window.open(`https://wa.me/${to}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     toast.success("Booking sent on WhatsApp — our team will contact you soon.");
     onClose();

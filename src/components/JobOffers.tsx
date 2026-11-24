@@ -168,7 +168,7 @@ function FlyerModal({ o, onClose, onBook }: { o: JobOffer; onClose: () => void; 
         <button onClick={onClose} aria-label="Close flyer" className="absolute top-2 right-2 p-2 rounded-full bg-black/60 z-10">
           <X className="size-5" />
         </button>
-        <img src={o.flyer} alt={`${o.title} — official Al-Bahr flyer`} className="w-full h-auto" />
+        <img src={o.flyer} alt={`${o.title} — official AL BAHR HORIZON flyer`} className="w-full h-auto" />
         <div className="p-4">
           <button onClick={onBook} className="w-full rounded-full bg-[#25D366] text-[#0F172A] font-semibold py-2.5 inline-flex items-center justify-center gap-2">
             <MessageCircle className="size-4" /> Book this offer
@@ -217,7 +217,7 @@ function BookingModal({ o, onClose }: { o: JobOffer; onClose: () => void }) {
     } catch (err) {
       console.error("[jobs] lead save failed", err);
     }
-    const msg = `Assalam-o-Alaikum Al-Bahr Travels!\n\nMain Website Se Job Offer Book Karna Chahta Hoon:\n\n📌 JOB DETAILS:\n- Country: ${o.country}\n- Offer: ${o.title}\n- Roles: ${o.roles.join(", ")}\n- Salary (flyer): ${o.salary}\n\n👤 APPLICANT INFO:\n- Name: ${f.name}\n- Phone: ${f.phone}\n- City: ${f.city}\n- Age: ${f.age || "Not given"}\n- Experience / Qualification: ${f.experience || "Not given"}\n\nKripya Mujhse Jald Rabta Karein.`;
+    const msg = `Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS!\n\nMain Website Se Job Offer Book Karna Chahta Hoon:\n\n📌 JOB DETAILS:\n- Country: ${o.country}\n- Offer: ${o.title}\n- Roles: ${o.roles.join(", ")}\n- Salary (flyer): ${o.salary}\n\n👤 APPLICANT INFO:\n- Name: ${f.name}\n- Phone: ${f.phone}\n- City: ${f.city}\n- Age: ${f.age || "Not given"}\n- Experience / Qualification: ${f.experience || "Not given"}\n\nKripya Mujhse Jald Rabta Karein.`;
     window.open(`https://wa.me/${to}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
     toast.success("Booking sent on WhatsApp — our team will contact you soon.");
     setSending(false);
