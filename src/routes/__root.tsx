@@ -260,7 +260,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Manrope:wght@400..800&display=swap" },
     ],
     
-    scripts: [
+  scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify(SITE_GRAPH),
