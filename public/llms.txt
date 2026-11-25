@@ -19,7 +19,13 @@
 ## Pages
 
 - [Home](https://www.albahrtravels.com/): Umrah packages, visa appointments, flight booking, hotel booking, medical appointments, study abroad, jobs, travel briefs.
-- [Umrah Packages](https://www.albahrtravels.com/umrah-packages): Upcoming Umrah departures from Lahore and Islamabad, with sharing/double/triple/quad pricing in PKR. Dates and prices are on request via WhatsApp when not listed.
+- [Umrah Packages](https://www.albahrtravels.com/umrah-packages): December 2026 Umrah groups depart from Lahore (31 groups) and Karachi (4 groups), with sharing/double/triple/quad pricing in PKR. Dates and prices are on request via WhatsApp when not listed.
+- [Umrah from Lahore](https://www.albahrtravels.com/umrah-from-lahore): December 2026 Umrah groups from Lahore, plus visas, ticketing, GAMCA appointments, jobs abroad and study in Germany for travellers from Lahore.
+- [Umrah from Islamabad](https://www.albahrtravels.com/umrah-from-islamabad): Umrah packages, visas, GAMCA appointments, ticketing, jobs abroad and study in Germany for travellers from Islamabad.
+- [Umrah from Bahawalnagar](https://www.albahrtravels.com/umrah-from-bahawalnagar): Umrah packages, visas, GAMCA appointments, ticketing, jobs abroad and study in Germany for travellers from Bahawalnagar.
+- [Umrah from Marla Chowk](https://www.albahrtravels.com/umrah-from-marla-chowk): Umrah packages, visas, GAMCA appointments, ticketing, jobs abroad and study in Germany for travellers from Marla Chowk.
+- [Umrah from Sahiwal](https://www.albahrtravels.com/umrah-from-sahiwal): Umrah packages, visas, GAMCA appointments, ticketing, jobs abroad and study in Germany for travellers from Sahiwal.
+- [Umrah from Pakpattan](https://www.albahrtravels.com/umrah-from-pakpattan): Umrah packages, visas, GAMCA appointments, ticketing, jobs abroad and study in Germany for travellers from Pakpattan.
 - [Medical Appointments (GAMCA/Wafid)](https://www.albahrtravels.com/medical-appointments): Medical fitness appointments for Gulf countries (Saudi Arabia, UAE, Qatar, Bahrain, Oman, Kuwait) at GAMCA/Wafid-approved centres.
 - [Jobs Abroad](https://www.albahrtravels.com/jobs): Work-permit jobs in Turkey, Poland and Albania for Pakistani applicants.
 - [Study in Germany](https://www.albahrtravels.com/study-in-germany): Study in Germany for Pakistani students.
