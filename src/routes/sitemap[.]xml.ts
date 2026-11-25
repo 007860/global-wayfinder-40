@@ -10,6 +10,12 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/umrah-packages", changefreq: "weekly", priority: "0.9" },
+          { path: "/umrah-from-lahore", changefreq: "weekly", priority: "0.8" },
+          { path: "/umrah-from-islamabad", changefreq: "weekly", priority: "0.8" },
+          { path: "/umrah-from-bahawalnagar", changefreq: "weekly", priority: "0.8" },
+          { path: "/umrah-from-marla-chowk", changefreq: "weekly", priority: "0.8" },
+          { path: "/umrah-from-sahiwal", changefreq: "weekly", priority: "0.8" },
+          { path: "/umrah-from-pakpattan", changefreq: "weekly", priority: "0.8" },
           { path: "/medical-appointments", changefreq: "monthly", priority: "0.9" },
           { path: "/jobs", changefreq: "weekly", priority: "0.9" },
           { path: "/jobs/turkey", changefreq: "weekly", priority: "0.9" },
