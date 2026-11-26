@@ -319,7 +319,7 @@ export function CountryJobsPage({ country }: { country: JobCountry }) {
             <div className="mt-4 flex flex-wrap gap-3 justify-center">
               <a
                 href="https://wa.me/923434762264"
-                className="rounded-full bg-[#25D366] text-[#0F172A] px-5 py-2.5 text-sm font-semibold"
+                className="btn-book rounded-full bg-[#25D366] text-[#0F172A] px-5 py-2.5 text-sm font-semibold"
               >
                 WhatsApp Office
               </a>

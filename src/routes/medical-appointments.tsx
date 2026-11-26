@@ -123,7 +123,7 @@ function MedicalPage() {
             <a href={`mailto:${MEDICAL_EMAIL}`} className="text-foreground underline">{MEDICAL_EMAIL}</a>.
           </p>
           <a href={`${WHATSAPP_URL}?text=${msg}`} target="_blank" rel="noopener noreferrer"
-            className="mt-4 inline-block rounded-md bg-primary px-5 py-3 font-semibold text-primary-foreground">
+            className="mt-4 inline-block rounded-md bg-primary px-5 py-3 font-semibold text-primary-foreground transition hover:brightness-110 hover:scale-[1.02] active:scale-[0.97]">
             Book on WhatsApp
           </a>
         </section>

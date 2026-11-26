@@ -123,7 +123,7 @@ function Standard({ packages, onBook }: { packages: UmrahPkg[]; onBook: (s: Summ
             </div>
             <div className="mt-4 flex items-end justify-between">
               <div><p className="text-[10px] tracking-widest text-white/50">PER HEAD</p><p className="font-display text-xl text-[#D4AF37] tabular-nums">{fmtPKR(p.prices[occ])}</p></div>
-              <div className="flex gap-2"><button type="button" onClick={() => setFlyer(p)} className="inline-flex items-center gap-1 rounded-full border border-[#D4AF37]/60 text-[#D4AF37] px-3 py-1.5 text-xs font-semibold"><ImageIcon className="size-3.5" />View Flyer</button><button type="button" onClick={() => book(p)} className="inline-flex items-center gap-1 rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-semibold"><MessageCircle className="size-3.5" />Book Now</button></div>
+              <div className="flex gap-2"><button type="button" onClick={() => setFlyer(p)} className="inline-flex items-center gap-1 rounded-full border border-[#D4AF37]/60 text-[#D4AF37] px-3 py-1.5 text-xs font-semibold"><ImageIcon className="size-3.5" />View Flyer</button><button type="button" onClick={() => book(p)} className="btn-book inline-flex items-center gap-1 rounded-full bg-[#25D366] px-3 py-1.5 text-xs font-semibold"><MessageCircle className="size-3.5" />Book Now</button></div>
             </div>
             <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap gap-x-3 gap-y-1">
               {FEATURES.map(({ icon: I, label }) => <span key={label} className="inline-flex items-center gap-1 text-[10px] text-white/60"><I className="size-3 text-[#D4AF37]" />{label}</span>)}
@@ -152,7 +152,7 @@ function Flyer({ p, onClose, onBook }: { p: UmrahPkg; onClose: () => void; onBoo
           <HotelLine city={`Madinah${p.madinahNights != null ? ` · ${p.madinahNights}N` : ""}`} h={p.madinah} />
           <div className="grid grid-cols-2 gap-2">{OCCS.map((o) => <div key={o.key} className="rounded-lg bg-white/10 p-2 text-center"><p className="text-[10px] uppercase tracking-wider text-[#D4AF37]">{o.label}</p><p className="font-bold tabular-nums">{fmtPKR(p.prices[o.key])}</p></div>)}</div>
           <p className="text-[10px] text-white/50 text-center">Visa · Ticket · Hotels · Transport · Ziarat · Per person rates</p>
-          <button onClick={onBook} className="w-full rounded-full bg-[#25D366] font-semibold py-2.5 inline-flex items-center justify-center gap-2"><MessageCircle className="size-4" />Book Now</button>
+          <button onClick={onBook} className="btn-book w-full rounded-full bg-[#25D366] font-semibold py-2.5 inline-flex items-center justify-center gap-2"><MessageCircle className="size-4" />Book Now</button>
           <p className="text-center text-[11px] text-white/60">03434762264 · 03257938125</p>
         </div>
       </div>
@@ -204,7 +204,7 @@ function Custom({ onBook }: { onBook: (s: Summary) => void }) {
           <li><Check className="inline size-4 text-[#D4AF37]" /> Room: {OCCS.find((o) => o.key === occ)!.label}</li>
         </ul>
         <div className="rounded-xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 p-4 mb-4"><p className="text-[10px] tracking-widest text-[#D4AF37]">ESTIMATED RATE</p><p className="font-display text-lg">Final quote on WhatsApp</p><p className="text-xs text-white/60">Our consultant confirms today's hotel &amp; airline rates for your exact selection.</p></div>
-        <button disabled={!mk || !md} onClick={() => onBook({ type: "Custom Package", ref: "Custom Package Builder", date: "Flexible", airline: "Custom", makkah: `${mk!.name} (${mk!.dist})`, madinah: `${md!.name} (${md!.dist})`, occ: `${OCCS.find((o) => o.key === occ)!.label} · ${duration}`, rate: "Quote requested" })} className="w-full rounded-full bg-[#25D366] font-semibold py-3 disabled:opacity-40">Request this package</button>
+        <button disabled={!mk || !md} onClick={() => onBook({ type: "Custom Package", ref: "Custom Package Builder", date: "Flexible", airline: "Custom", makkah: `${mk!.name} (${mk!.dist})`, madinah: `${md!.name} (${md!.dist})`, occ: `${OCCS.find((o) => o.key === occ)!.label} · ${duration}`, rate: "Quote requested" })} className="btn-book w-full rounded-full bg-[#25D366] font-semibold py-3 disabled:opacity-40">Request this package</button>
       </div>}
     </div>
   );
@@ -241,7 +241,7 @@ function BookingModal({ s, onClose }: { s: Summary; onClose: () => void }) {
           </div>
         </div>
         <div className="mt-4 grid grid-cols-2 gap-2 text-xs">{[["923434762264", "Office 03434762264"], ["923257938125", "CEO 03257938125"]].map(([n, l]) => <button key={n} type="button" onClick={() => setTo(n)} className={`rounded-full border px-2 py-2 ${to === n ? "border-[#D4AF37] bg-[#D4AF37]/20 text-[#D4AF37]" : "border-white/20 text-white/70"}`}>{l}</button>)}</div>
-        <button type="submit" className="mt-3 w-full rounded-full bg-[#25D366] font-semibold py-3 inline-flex items-center justify-center gap-2"><MessageCircle className="size-5" />Confirm &amp; Send on WhatsApp</button>
+        <button type="submit" className="btn-book mt-3 w-full rounded-full bg-[#25D366] font-semibold py-3 inline-flex items-center justify-center gap-2"><MessageCircle className="size-5" />Confirm &amp; Send on WhatsApp</button>
       </form>
     </div>
   );
