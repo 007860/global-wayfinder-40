@@ -22,7 +22,7 @@
 - [x] Logo (`public/logo.png`) as header logo, favicon and Open Graph image.
 - [x] TravelAgency + FAQPage + BreadcrumbList JSON-LD; focus-city areaServed (Lahore, Islamabad, Bahawalnagar, Marla Chowk, Sahiwal, Pakpattan).
 - [x] SSR blog loading so crawlers see the briefs (`getBlogs` server function).
-- [x] Correct social links (Facebook Page, Instagram @albahr.travels, TikTok @albahr.travels); main contact email standardised to albahrtravelconsultants@gmail.com (medical address kept for medical appointments only).
+- [x] Correct social links (Facebook Page, Instagram @albahr.travels, TikTok @albahrtravelconsultants); main contact email standardised to albahrtravelconsultants@gmail.com (medical address kept for medical appointments only).
 - [x] Expired Umrah departures filtered out automatically (client-side date filter in UmrahEngine).
 - [ ] UmrahEngine: add a DB-level date filter so departed packages never appear (the patch adds a client-side filter only).
 - [ ] Add testimonials section (real customer reviews only — never invent).

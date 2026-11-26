@@ -5,10 +5,12 @@ export const SITE_NAME = "AL BAHR HORIZON TRAVELS AND CONSULTANTS";
 export const LOGO_URL = `${SITE_URL}/logo.png`;
 
 export const SOCIAL_URLS = {
-  facebook: "https://www.facebook.com/profile.php?id=61572071016046",
+  facebook: "https://www.facebook.com/61572071016046/",
   instagram: "https://www.instagram.com/albahr.travels/",
-  tiktok: "https://www.tiktok.com/@albahr.travels",
+  tiktok: "https://www.tiktok.com/@albahrtravelconsultants",
   whatsapp: "https://wa.me/923434762264",
+  linkedin: "https://www.linkedin.com/in/mubashar-ali-0101b7452/",
+  youtube: "https://www.youtube.com/@AlBahrHorizonTravels",
 } as const;
 
 export type Crumb = { name: string; path: string };
