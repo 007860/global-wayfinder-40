@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { TopUtilityStrip } from "@/components/TopUtilityStrip";
 import { BurgerMenu } from "@/components/BurgerMenu";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -54,6 +54,10 @@ export const Route = createFileRoute("/b2b")({
           <p>
             Wholesale rates, group fares and a dedicated support desk for travel brokers,
             sub-agents and corporate accounts.
+          </p>
+          <p>
+            Are you a company booking travel for your own staff? See our{" "}
+            <Link to="/corporate-travel">Corporate Travel</Link> page.
           </p>
         </div>
         <WhatsAppInquiry b2b />
