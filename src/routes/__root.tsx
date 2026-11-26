@@ -137,6 +137,8 @@ const SITE_GRAPH = {
         SOCIAL_URLS.facebook,
         SOCIAL_URLS.instagram,
         SOCIAL_URLS.tiktok,
+        SOCIAL_URLS.linkedin,
+        SOCIAL_URLS.youtube,
         "https://wa.me/923434762264",
       ],
       priceRange: "$$",

@@ -97,6 +97,8 @@ const LOCAL_BUSINESS_LD = {
     SOCIAL_URLS.facebook,
     SOCIAL_URLS.instagram,
     SOCIAL_URLS.tiktok,
+    SOCIAL_URLS.linkedin,
+    SOCIAL_URLS.youtube,
     WHATSAPP_URL,
   ],
   priceRange: "$$",
