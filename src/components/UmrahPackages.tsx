@@ -222,7 +222,7 @@ export function UmrahPackages() {
             href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white font-semibold px-6 py-3 shadow-elev hover:scale-[1.02] transition-transform"
+            className="btn-book shrink-0 inline-flex items-center gap-2 rounded-full bg-[#25D366] text-white font-semibold px-6 py-3 shadow-elev whitespace-nowrap"
           >
             <MessageCircle className="size-5" />
             Book on WhatsApp
@@ -478,7 +478,7 @@ function AirSialTab() {
                     `Price: ${g.price}`,
                   ])
                 }
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] text-white text-xs font-semibold px-3.5 py-2 hover:scale-[1.03] transition-transform whitespace-nowrap"
+                className="btn-book inline-flex items-center gap-1.5 rounded-full bg-[#25D366] text-white text-xs font-semibold px-3.5 py-2 whitespace-nowrap"
               >
                 <MessageCircle className="size-3.5" />
                 Book Now

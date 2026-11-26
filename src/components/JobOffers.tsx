@@ -139,7 +139,7 @@ export function JobOffers({ fixedCountry }: { fixedCountry?: JobCountry }) {
                 <button
                   type="button"
                   onClick={() => setBooking(o)}
-                  className="inline-flex items-center gap-1 rounded-full bg-[#25D366] text-[#0F172A] px-3 py-1.5 text-xs font-semibold hover:opacity-90 transition"
+                  className="btn-book inline-flex items-center gap-1 rounded-full bg-[#25D366] text-[#0F172A] px-3 py-1.5 text-xs font-semibold"
                 >
                   <MessageCircle className="size-3.5" /> Book Now
                 </button>
@@ -170,7 +170,7 @@ function FlyerModal({ o, onClose, onBook }: { o: JobOffer; onClose: () => void; 
         </button>
         <img src={o.flyer} alt={`${o.title} — official AL BAHR HORIZON flyer`} className="w-full h-auto" />
         <div className="p-4">
-          <button onClick={onBook} className="w-full rounded-full bg-[#25D366] text-[#0F172A] font-semibold py-2.5 inline-flex items-center justify-center gap-2">
+          <button onClick={onBook} className="btn-book w-full rounded-full bg-[#25D366] text-[#0F172A] font-semibold py-2.5 inline-flex items-center justify-center gap-2">
             <MessageCircle className="size-4" /> Book this offer
           </button>
           <p className="text-center text-[11px] text-white/60 mt-2">03434762264 · 03257938125</p>
@@ -269,7 +269,7 @@ function BookingModal({ o, onClose }: { o: JobOffer; onClose: () => void }) {
         <button
           type="submit"
           disabled={sending}
-          className="mt-3 w-full rounded-full bg-[#25D366] text-[#0F172A] font-semibold py-3 inline-flex items-center justify-center gap-2 disabled:opacity-50"
+          className="btn-book mt-3 w-full rounded-full bg-[#25D366] text-[#0F172A] font-semibold py-3 inline-flex items-center justify-center gap-2 disabled:opacity-50"
         >
           <MessageCircle className="size-5" />
           {sending ? "Sending…" : "Confirm & Send on WhatsApp"}

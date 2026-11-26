@@ -166,6 +166,24 @@
   .shadow-gold { box-shadow: var(--shadow-gold); }
   .shadow-elev { box-shadow: var(--shadow-elev); }
 
+  /* Book / WhatsApp CTA buttons: clear hover lift + pressed state.
+     Applied to every green booking button on the site (Umrah cards,
+     flyer modals, jobs, "Book on WhatsApp" links). */
+  .btn-book {
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-book:hover {
+    background-color: #2bd96b;
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  }
+  .btn-book:active {
+    background-color: #128c4b;
+    transform: scale(0.97);
+    box-shadow: none;
+  }
+
   /* Subtle decorative flight-path lines for hero (no animation, purely static SVG behind content). */
   .flight-paths {
     background-image:

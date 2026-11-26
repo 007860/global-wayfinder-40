@@ -25,7 +25,14 @@ import { Route as StudyInHungaryRouteImport } from './routes/study-in-hungary'
 import { Route as StudyInItalyRouteImport } from './routes/study-in-italy'
 import { Route as StudyInSouthKoreaRouteImport } from './routes/study-in-south-korea'
 import { Route as StudyInTurkeyRouteImport } from './routes/study-in-turkey'
+import { Route as UmrahFromBahawalnagarRouteImport } from './routes/umrah-from-bahawalnagar'
+import { Route as UmrahFromIslamabadRouteImport } from './routes/umrah-from-islamabad'
+import { Route as UmrahFromLahoreRouteImport } from './routes/umrah-from-lahore'
+import { Route as UmrahFromMarlaChowkRouteImport } from './routes/umrah-from-marla-chowk'
+import { Route as UmrahFromPakpattanRouteImport } from './routes/umrah-from-pakpattan'
+import { Route as UmrahFromSahiwalRouteImport } from './routes/umrah-from-sahiwal'
 import { Route as UmrahPackagesRouteImport } from './routes/umrah-packages'
+import { Route as VisitVisasRouteImport } from './routes/visit-visas'
 import { Route as JobsAlbaniaRouteImport } from './routes/jobs_.albania'
 import { Route as JobsPolandRouteImport } from './routes/jobs_.poland'
 import { Route as JobsTurkeyRouteImport } from './routes/jobs_.turkey'
@@ -110,9 +117,44 @@ const StudyInTurkeyRoute = StudyInTurkeyRouteImport.update({
   path: '/study-in-turkey',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UmrahFromBahawalnagarRoute = UmrahFromBahawalnagarRouteImport.update({
+  id: '/umrah-from-bahawalnagar',
+  path: '/umrah-from-bahawalnagar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmrahFromIslamabadRoute = UmrahFromIslamabadRouteImport.update({
+  id: '/umrah-from-islamabad',
+  path: '/umrah-from-islamabad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmrahFromLahoreRoute = UmrahFromLahoreRouteImport.update({
+  id: '/umrah-from-lahore',
+  path: '/umrah-from-lahore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmrahFromMarlaChowkRoute = UmrahFromMarlaChowkRouteImport.update({
+  id: '/umrah-from-marla-chowk',
+  path: '/umrah-from-marla-chowk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmrahFromPakpattanRoute = UmrahFromPakpattanRouteImport.update({
+  id: '/umrah-from-pakpattan',
+  path: '/umrah-from-pakpattan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UmrahFromSahiwalRoute = UmrahFromSahiwalRouteImport.update({
+  id: '/umrah-from-sahiwal',
+  path: '/umrah-from-sahiwal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UmrahPackagesRoute = UmrahPackagesRouteImport.update({
   id: '/umrah-packages',
   path: '/umrah-packages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitVisasRoute = VisitVisasRouteImport.update({
+  id: '/visit-visas',
+  path: '/visit-visas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JobsAlbaniaRoute = JobsAlbaniaRouteImport.update({
@@ -148,7 +190,14 @@ export interface FileRoutesByFullPath {
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-from-bahawalnagar': typeof UmrahFromBahawalnagarRoute
+  '/umrah-from-islamabad': typeof UmrahFromIslamabadRoute
+  '/umrah-from-lahore': typeof UmrahFromLahoreRoute
+  '/umrah-from-marla-chowk': typeof UmrahFromMarlaChowkRoute
+  '/umrah-from-pakpattan': typeof UmrahFromPakpattanRoute
+  '/umrah-from-sahiwal': typeof UmrahFromSahiwalRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/visit-visas': typeof VisitVisasRoute
   '/jobs/albania': typeof JobsAlbaniaRoute
   '/jobs/poland': typeof JobsPolandRoute
   '/jobs/turkey': typeof JobsTurkeyRoute
@@ -170,7 +219,14 @@ export interface FileRoutesByTo {
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-from-bahawalnagar': typeof UmrahFromBahawalnagarRoute
+  '/umrah-from-islamabad': typeof UmrahFromIslamabadRoute
+  '/umrah-from-lahore': typeof UmrahFromLahoreRoute
+  '/umrah-from-marla-chowk': typeof UmrahFromMarlaChowkRoute
+  '/umrah-from-pakpattan': typeof UmrahFromPakpattanRoute
+  '/umrah-from-sahiwal': typeof UmrahFromSahiwalRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/visit-visas': typeof VisitVisasRoute
   '/jobs/albania': typeof JobsAlbaniaRoute
   '/jobs/poland': typeof JobsPolandRoute
   '/jobs/turkey': typeof JobsTurkeyRoute
@@ -193,7 +249,14 @@ export interface FileRoutesById {
   '/study-in-italy': typeof StudyInItalyRoute
   '/study-in-south-korea': typeof StudyInSouthKoreaRoute
   '/study-in-turkey': typeof StudyInTurkeyRoute
+  '/umrah-from-bahawalnagar': typeof UmrahFromBahawalnagarRoute
+  '/umrah-from-islamabad': typeof UmrahFromIslamabadRoute
+  '/umrah-from-lahore': typeof UmrahFromLahoreRoute
+  '/umrah-from-marla-chowk': typeof UmrahFromMarlaChowkRoute
+  '/umrah-from-pakpattan': typeof UmrahFromPakpattanRoute
+  '/umrah-from-sahiwal': typeof UmrahFromSahiwalRoute
   '/umrah-packages': typeof UmrahPackagesRoute
+  '/visit-visas': typeof VisitVisasRoute
   '/jobs_/albania': typeof JobsAlbaniaRoute
   '/jobs_/poland': typeof JobsPolandRoute
   '/jobs_/turkey': typeof JobsTurkeyRoute
@@ -217,7 +280,14 @@ export interface FileRouteTypes {
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-from-bahawalnagar'
+    | '/umrah-from-islamabad'
+    | '/umrah-from-lahore'
+    | '/umrah-from-marla-chowk'
+    | '/umrah-from-pakpattan'
+    | '/umrah-from-sahiwal'
     | '/umrah-packages'
+    | '/visit-visas'
     | '/jobs/albania'
     | '/jobs/poland'
     | '/jobs/turkey'
@@ -239,7 +309,14 @@ export interface FileRouteTypes {
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-from-bahawalnagar'
+    | '/umrah-from-islamabad'
+    | '/umrah-from-lahore'
+    | '/umrah-from-marla-chowk'
+    | '/umrah-from-pakpattan'
+    | '/umrah-from-sahiwal'
     | '/umrah-packages'
+    | '/visit-visas'
     | '/jobs/albania'
     | '/jobs/poland'
     | '/jobs/turkey'
@@ -261,7 +338,14 @@ export interface FileRouteTypes {
     | '/study-in-italy'
     | '/study-in-south-korea'
     | '/study-in-turkey'
+    | '/umrah-from-bahawalnagar'
+    | '/umrah-from-islamabad'
+    | '/umrah-from-lahore'
+    | '/umrah-from-marla-chowk'
+    | '/umrah-from-pakpattan'
+    | '/umrah-from-sahiwal'
     | '/umrah-packages'
+    | '/visit-visas'
     | '/jobs_/albania'
     | '/jobs_/poland'
     | '/jobs_/turkey'
@@ -284,7 +368,14 @@ export interface RootRouteChildren {
   StudyInItalyRoute: typeof StudyInItalyRoute
   StudyInSouthKoreaRoute: typeof StudyInSouthKoreaRoute
   StudyInTurkeyRoute: typeof StudyInTurkeyRoute
+  UmrahFromBahawalnagarRoute: typeof UmrahFromBahawalnagarRoute
+  UmrahFromIslamabadRoute: typeof UmrahFromIslamabadRoute
+  UmrahFromLahoreRoute: typeof UmrahFromLahoreRoute
+  UmrahFromMarlaChowkRoute: typeof UmrahFromMarlaChowkRoute
+  UmrahFromPakpattanRoute: typeof UmrahFromPakpattanRoute
+  UmrahFromSahiwalRoute: typeof UmrahFromSahiwalRoute
   UmrahPackagesRoute: typeof UmrahPackagesRoute
+  VisitVisasRoute: typeof VisitVisasRoute
   JobsAlbaniaRoute: typeof JobsAlbaniaRoute
   JobsPolandRoute: typeof JobsPolandRoute
   JobsTurkeyRoute: typeof JobsTurkeyRoute
@@ -404,11 +495,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StudyInTurkeyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/umrah-from-bahawalnagar': {
+      id: '/umrah-from-bahawalnagar'
+      path: '/umrah-from-bahawalnagar'
+      fullPath: '/umrah-from-bahawalnagar'
+      preLoaderRoute: typeof UmrahFromBahawalnagarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umrah-from-islamabad': {
+      id: '/umrah-from-islamabad'
+      path: '/umrah-from-islamabad'
+      fullPath: '/umrah-from-islamabad'
+      preLoaderRoute: typeof UmrahFromIslamabadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umrah-from-lahore': {
+      id: '/umrah-from-lahore'
+      path: '/umrah-from-lahore'
+      fullPath: '/umrah-from-lahore'
+      preLoaderRoute: typeof UmrahFromLahoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umrah-from-marla-chowk': {
+      id: '/umrah-from-marla-chowk'
+      path: '/umrah-from-marla-chowk'
+      fullPath: '/umrah-from-marla-chowk'
+      preLoaderRoute: typeof UmrahFromMarlaChowkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umrah-from-pakpattan': {
+      id: '/umrah-from-pakpattan'
+      path: '/umrah-from-pakpattan'
+      fullPath: '/umrah-from-pakpattan'
+      preLoaderRoute: typeof UmrahFromPakpattanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/umrah-from-sahiwal': {
+      id: '/umrah-from-sahiwal'
+      path: '/umrah-from-sahiwal'
+      fullPath: '/umrah-from-sahiwal'
+      preLoaderRoute: typeof UmrahFromSahiwalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/umrah-packages': {
       id: '/umrah-packages'
       path: '/umrah-packages'
       fullPath: '/umrah-packages'
       preLoaderRoute: typeof UmrahPackagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit-visas': {
+      id: '/visit-visas'
+      path: '/visit-visas'
+      fullPath: '/visit-visas'
+      preLoaderRoute: typeof VisitVisasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/jobs_/albania': {
@@ -452,7 +592,14 @@ const rootRouteChildren: RootRouteChildren = {
   StudyInItalyRoute: StudyInItalyRoute,
   StudyInSouthKoreaRoute: StudyInSouthKoreaRoute,
   StudyInTurkeyRoute: StudyInTurkeyRoute,
+  UmrahFromBahawalnagarRoute: UmrahFromBahawalnagarRoute,
+  UmrahFromIslamabadRoute: UmrahFromIslamabadRoute,
+  UmrahFromLahoreRoute: UmrahFromLahoreRoute,
+  UmrahFromMarlaChowkRoute: UmrahFromMarlaChowkRoute,
+  UmrahFromPakpattanRoute: UmrahFromPakpattanRoute,
+  UmrahFromSahiwalRoute: UmrahFromSahiwalRoute,
   UmrahPackagesRoute: UmrahPackagesRoute,
+  VisitVisasRoute: VisitVisasRoute,
   JobsAlbaniaRoute: JobsAlbaniaRoute,
   JobsPolandRoute: JobsPolandRoute,
   JobsTurkeyRoute: JobsTurkeyRoute,

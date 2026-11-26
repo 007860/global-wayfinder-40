@@ -17,6 +17,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/umrah-from-sahiwal", changefreq: "weekly", priority: "0.8" },
           { path: "/umrah-from-pakpattan", changefreq: "weekly", priority: "0.8" },
           { path: "/medical-appointments", changefreq: "monthly", priority: "0.9" },
+          { path: "/visit-visas", changefreq: "monthly", priority: "0.9" },
           { path: "/jobs", changefreq: "weekly", priority: "0.9" },
           { path: "/jobs/turkey", changefreq: "weekly", priority: "0.9" },
           { path: "/jobs/poland", changefreq: "weekly", priority: "0.9" },
