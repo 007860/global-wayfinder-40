@@ -22,17 +22,21 @@ import type { Faq } from "@/lib/seo";
 const WA_CORPORATE =
   "https://wa.me/923434762264?text=" +
   encodeURIComponent(
-    "Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n\nI am enquiring on behalf of our company about business travel / group Umrah for our staff.\n\nPlease share the latest options and prices.",
+    "Assalam-o-Alaikum AL BAHR HORIZON TRAVELS AND CONSULTANTS,\n\nI am enquiring on behalf of our company about business travel / group Umrah / team tours for our staff.\n\nPlease share the latest options and prices.",
   );
 
 export const CORPORATE_FAQS: Faq[] = [
   {
     q: "What corporate travel services do you offer?",
-    a: "Group Umrah packages for company staff, international and business air ticketing, visit and work visas, GAMCA/Wafid medical appointments for staff travelling to the Gulf, work-permit jobs abroad, and Study in Germany — all from one travel desk in Lahore.",
+    a: "Group Umrah packages for company staff, international and business air ticketing, visit and work visas, GAMCA/Wafid medical appointments for staff travelling to the Gulf, group tours for company teams, work-permit jobs abroad, and Study in Germany — all from one travel desk in Lahore.",
   },
   {
     q: "Can you arrange group Umrah for our company staff?",
     a: "Yes. We arrange group Umrah packages departing from Lahore and Karachi, with Makkah and Madinah hotel accommodation, transport in Saudi Arabia and group visas. See the latest groups on our Umrah Packages page or message us on WhatsApp at +92 343 4762264 with your dates and the number of travellers.",
+  },
+  {
+    q: "Can you arrange a tour for our whole team?",
+    a: "Yes. Companies that take their teams on tours can book with us and we manage the whole tour properly — flights, visas, hotels, transport and the itinerary, with one point of contact from booking to return. Message us on WhatsApp at +92 343 4762264 with your destination, travel dates and the size of your team for a written quotation.",
   },
   {
     q: "Do you handle business visas for our employees?",
@@ -59,6 +63,13 @@ const SERVICES = [
       "Group Umrah packages departing from Lahore and Karachi, with Makkah and Madinah hotels, transport in Saudi Arabia and group visas.",
     href: "/umrah-packages",
     Icon: Users,
+  },
+  {
+    title: "Corporate Team Tours",
+    detail:
+      "Group tours for company teams — we manage the whole tour end to end: tickets, visas, hotels, transport and itinerary.",
+    href: "/contact",
+    Icon: MapPin,
   },
   {
     title: "Business Air Ticketing",
@@ -145,8 +156,8 @@ export function CorporateTravelPage() {
           </h1>
           <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             One travel desk for Pakistani companies: group Umrah for your staff,
-            business flights, visas and GAMCA medical appointments — with a written
-            quotation before you commit to anything.
+            business flights, visas, GAMCA medical appointments and team tours —
+            with a written quotation before you commit to anything.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -176,7 +187,7 @@ export function CorporateTravelPage() {
           limited company based in Lahore. We work with company owners, managers and
           HR and admin teams across Pakistan who need reliable travel arrangements
           for their people — whether that is a group of employees travelling for
-          Umrah, a team flying abroad for business, or staff who need visas and
+          Umrah, a team flying abroad for business, a team tour, or staff who need visas and
           medical appointments before they travel.
         </p>
         <p className="mt-4 text-base sm:text-lg text-foreground/90 leading-relaxed max-w-4xl">
@@ -236,6 +247,30 @@ export function CorporateTravelPage() {
             See all Umrah packages
           </Link>
         </div>
+      </section>
+
+      {/* Team tours for companies */}
+      <section className="max-w-6xl mx-auto px-6 py-16" aria-labelledby="tours-heading">
+        <p className="text-xs tracking-[0.3em] text-gold mb-3">TEAM TOURS FOR YOUR COMPANY</p>
+        <h2 id="tours-heading" className="font-display text-3xl sm:text-4xl">
+          Team tours, <span className="text-gold-gradient">managed properly</span>
+        </h2>
+        <p className="mt-4 max-w-3xl text-foreground/90 leading-relaxed">
+          Companies that take their teams on tours can book with us. We manage the
+          whole tour properly — flights, visas, hotels, transport and the itinerary
+          — so your team just travels, with one point of contact from booking to
+          return. Message us on WhatsApp at +92 343 4762264 with your destination,
+          travel dates and the size of your team for a written quotation.
+        </p>
+        <a
+          href={WA_CORPORATE}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[var(--midnight)] px-7 py-4 text-sm sm:text-base font-bold hover:opacity-90 transition-opacity shadow-elev"
+        >
+          <MessageCircle className="size-5" />
+          Plan your team tour on WhatsApp
+        </a>
       </section>
 
       {/* How it works */}
